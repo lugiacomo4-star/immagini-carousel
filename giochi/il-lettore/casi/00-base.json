@@ -1,0 +1,547 @@
+[
+ {
+  "id": "rolex",
+  "title": "Il Rolex del notaio",
+  "place": "Masseria Ruggiero, Valle d'Itria",
+  "teaser": "Settant'anni, trenta invitati, un orologio sparito dal comodino.",
+  "intro": "Il notaio Ruggiero festeggia i settant'anni nella sua masseria. A fine cena si accorge che il suo Rolex d'epoca, 40.000 euro, non è più sul comodino della camera al piano di sopra. Nessuno ha lasciato la festa. I sospetti del notaio sono tre, e ti ha chiamato perché la polizia, dice lui, «fa troppe domande e guarda troppo poco».",
+  "details": [
+   {
+    "id": "d1",
+    "label": "La finestra della camera",
+    "text": "Aperta. Sul davanzale polvere e polline gialli, intatti.",
+    "insight": "Nessuno è entrato dalla finestra: il ladro è uno della casa."
+   },
+   {
+    "id": "d2",
+    "label": "Il cassetto del comodino",
+    "text": "La scatola dell'orologio è stata rimessa nel cassetto, chiusa con cura.",
+    "insight": "Il ladro sapeva dove cercare e non aveva fretta."
+   },
+   {
+    "id": "d3",
+    "label": "Il prato",
+    "text": "L'irrigazione automatica è partita alle 21:30. Il prato tra la casa e il parcheggio è fradicio.",
+    "insight": "Chi è andato verso le auto dopo le 21:30 si è bagnato le scarpe."
+   },
+   {
+    "id": "d4",
+    "label": "Il telefono di Davide",
+    "text": "Lasciato sul tavolo. Notifiche di un'app di scommesse: «Saldo insufficiente».",
+    "insight": "Davide ha debiti di gioco."
+   },
+   {
+    "id": "d5",
+    "label": "Il parcheggio",
+    "text": "Tre mezzi degli ospiti: la moto di Davide, la Panda di Ilenia, una berlina grigia di Franco Lattanzi.",
+    "insight": "L'unica auto scura nel parcheggio è la berlina grigia di Franco."
+   },
+   {
+    "id": "d6",
+    "label": "Il bagno di sotto",
+    "text": "Cartello scritto a mano: «Guasto, usate quello di sopra».",
+    "insight": "Tutti sono saliti di sopra almeno una volta: salire non prova niente."
+   },
+   {
+    "id": "d7",
+    "label": "La foto sul mobile",
+    "text": "Bianco e nero, 1979. Il notaio giovane a un tavolo da gioco con un altro uomo. Didascalia: «Con Vito Lattanzi, Circolo Unione». Al polso di Vito, lo stesso Rolex.",
+    "insight": "Nel 1979 l'orologio era al polso di Vito Lattanzi, il padre di Franco."
+   }
+  ],
+  "suspects": [
+   {
+    "id": "davide",
+    "name": "Davide Ruggiero",
+    "role": "Nipote, 28 anni",
+    "look": "Gamba che batte sotto il tavolo, telefono sempre in mano.",
+    "tell": "Guarda dritto negli occhi quando parla dello zio. Si irrigidisce solo quando si parla di soldi. È vergogna, non colpa.",
+    "questions": [
+     {
+      "id": "a1",
+      "q": "Dov'era durante la cena?",
+      "a": "A tavola. Sono salito una volta verso le nove, il bagno di sotto è rotto. Come tutti."
+     },
+     {
+      "id": "a2",
+      "q": "Il suo telefono dice che ha debiti di gioco.",
+      "req": [
+       "d4"
+      ],
+      "a": "Ottomila euro. Sì. Ma lo zio me li aveva già promessi stasera, prima del dolce. Me li dava lunedì. Perché dovrei rubargli un orologio?",
+      "insight": "Lo zio aveva già promesso a Davide il prestito: rubare non gli serviva."
+     },
+     {
+      "id": "a3",
+      "q": "Cosa sa dell'orologio?",
+      "a": "Che lo zio non se lo toglie mai. Stasera l'ha lasciato di sopra perché il cinturino gli stringeva."
+     }
+    ]
+   },
+   {
+    "id": "ilenia",
+    "name": "Ilenia Carone",
+    "role": "Cameriera di sala, 23 anni",
+    "look": "Composta, professionale. Serve dalla cucina da inizio serata.",
+    "tell": "Mani dietro la schiena, postura da sala. Quando nomini Davide abbassa lo sguardo e trattiene un sorriso. Nasconde qualcosa, ma è una cosa che la fa sorridere.",
+    "questions": [
+     {
+      "id": "i1",
+      "q": "È salita al piano di sopra stasera?",
+      "a": "Una volta, alle 21:15, per portare un bicchiere d'acqua al notaio per la pillola. L'orologio era sul comodino, l'ho visto io.",
+      "insight": "Alle 21:15 l'orologio era ancora sul comodino."
+     },
+     {
+      "id": "i2",
+      "q": "Che rapporto ha con Davide?",
+      "a": "Siamo usciti insieme un paio di volte. Non l'ho detto perché qui lavoro e non voglio chiacchiere.",
+      "insight": "Ilenia e Davide si frequentano: ecco il suo imbarazzo."
+     },
+     {
+      "id": "i3",
+      "q": "Dalla cucina si vede il parcheggio. Ha notato qualcosa?",
+      "a": "Verso le dieci meno un quarto si è accesa la luce dentro una macchina scura. Ho pensato che qualcuno stesse andando via. Poi la luce si è spenta e non è partito nessuno.",
+      "insight": "Alle 21:45 qualcuno è andato a una macchina scura ed è tornato alla festa."
+     }
+    ]
+   },
+   {
+    "id": "franco",
+    "name": "Franco Lattanzi",
+    "role": "Socio dello studio, 66 anni",
+    "look": "Elegante, giacca di lino, scarpe di camoscio. Calmo.",
+    "tell": "Calmo, forse troppo. Ha le gambe accavallate e la punta delle scarpe di camoscio ha aloni scuri d'acqua. Il camoscio si macchia solo sul bagnato.",
+    "questions": [
+     {
+      "id": "f1",
+      "q": "Si è mosso dalla tavola durante la cena?",
+      "a": "Una volta sola, per il bagno di sopra. Fuori non sono uscito, se è questo che mi chiede.",
+      "insight": "Franco giura di non essere mai uscito di casa."
+     },
+     {
+      "id": "f2",
+      "q": "Da quanto conosce il notaio?",
+      "a": "Quarant'anni. Prima di essere il mio socio era amico di mio padre. Giocavano a carte insieme, al circolo."
+     },
+     {
+      "id": "f3",
+      "q": "Nella foto del '79 suo padre porta lo stesso Rolex. Come mai?",
+      "req": [
+       "d7"
+      ],
+      "a": "(Un silenzio lungo.) Mio padre l'ha perso a carte con lui. Una sera sola. Tutto quello che aveva al polso. Non ne ha mai più parlato, fino alla morte.",
+      "insight": "Movente: l'orologio era del padre di Franco, perso a carte col notaio.",
+      "lie": true
+     },
+     {
+      "id": "f4",
+      "q": "Il prato è bagnato dalle 21:30 e le sue scarpe hanno aloni d'acqua. Dov'è andato?",
+      "req": [
+       "d3",
+       "t_franco"
+      ],
+      "a": "Sarò passato sull'erba mentre fumavo in terrazza.",
+      "aside": "La terrazza è lastricata e non tocca il prato. Lo sa anche lui. Tace.",
+      "insight": "Franco mente: dopo le 21:30 ha attraversato il prato verso il parcheggio.",
+      "lie": true
+     }
+    ]
+   }
+  ],
+  "bluff": {
+   "text": "Annunci ad alta voce che nel cinturino c'è un localizzatore e che tra dieci minuti sapremo dov'è l'orologio.",
+   "reactions": {
+    "davide": "«Meglio, così la smettete di guardare me.» Sollievo sincero.",
+    "ilenia": "Continua a sparecchiare. Nessuna reazione.",
+    "franco": "Si alza per prendere la giacca, poi ci ripensa e si risiede. Chiede quanto è preciso, un localizzatore."
+   },
+   "insight": "Al bluff del localizzatore solo Franco si è mosso, verso la giacca con le chiavi della macchina."
+  },
+  "culprit": "franco",
+  "key": [
+   "f4",
+   "i3",
+   "t_franco",
+   "x1"
+  ],
+  "solution": "Franco è salito «al bagno» e ha preso l'orologio dal comodino, rimettendo la scatola nel cassetto come chi conosce la casa. Alle 21:45 ha attraversato il prato appena irrigato per nasconderlo nella sua berlina: Ilenia ha visto la luce interna accendersi, il camoscio delle sue scarpe si è macchiato. Il movente sta nella foto del 1979: quell'orologio suo padre l'aveva perso a carte proprio con il notaio. Franco non l'ha rubato. Secondo lui se l'è ripreso.",
+  "contradictions": [
+   {
+    "id": "x1",
+    "a": "f1",
+    "b": "i3",
+    "who": "franco",
+    "reply": "Va bene, sono uscito un momento. A prendere le sigarette in macchina.",
+    "aside": "Ha un sigaro in tasca. Non fuma sigarette.",
+    "insight": "Franco ha ammesso di essere andato alla sua auto alle 21:45, dopo aver giurato di non essere mai uscito.",
+    "lie": true
+   }
+  ]
+ },
+ {
+  "id": "frantoio",
+  "title": "La partita 14",
+  "place": "Frantoio Scarano, campagne di Bitonto",
+  "teaser": "Un frantoiano ai piedi del silo. Sembra un incidente.",
+  "intro": "All'alba del primo giorno di raccolta, Nicola Scarano, 67 anni, viene trovato morto ai piedi della scala del silo. I carabinieri parlano di caduta. Il figlio non ci crede e ti ha chiamato. Sul piazzale ci sono tre persone che avevano motivi per odiarlo, o per temerlo.",
+  "details": [
+   {
+    "id": "d1",
+    "label": "La scala del silo",
+    "text": "Nicola è a terra ai piedi della scala. Sui pioli non c'è una traccia di fango, mentre le sue scarpe sono impastate di terra del piazzale.",
+    "insight": "Nicola non è salito su quella scala: la caduta è una messinscena."
+   },
+   {
+    "id": "d2",
+    "label": "Il registro delle molature",
+    "text": "Ultima riga, grafia di Nicola, ore 23:40: «Partita 14: NON certificare. Chiamare la Greco.»",
+    "insight": "Poco prima di morire Nicola ha bloccato la partita 14 e voleva parlare con Marta Greco."
+   },
+   {
+    "id": "d3",
+    "label": "Il bicchiere blu",
+    "text": "Sul banco d'assaggio, un bicchiere blu da degustazione, di quelli che usano solo gli assaggiatori professionisti. Il fondo è ancora lucido d'olio.",
+    "insight": "Stanotte qualcuno ha assaggiato olio qui, con un bicchiere da professionista."
+   },
+   {
+    "id": "d4",
+    "label": "Il cancello",
+    "text": "Il lucchetto è stato aperto con la chiave. Nessun segno di scasso.",
+    "insight": "Chi è entrato stanotte aveva la chiave."
+   },
+   {
+    "id": "d5",
+    "label": "L'offerta d'acquisto",
+    "text": "Sulla scrivania, un'offerta da 2 milioni di una multinazionale dell'olio. Firmata da Antonio. Manca la firma del padre.",
+    "insight": "Antonio voleva vendere il frantoio, il padre no."
+   },
+   {
+    "id": "d6",
+    "label": "La bacheca delle chiavi",
+    "text": "Un mazzo con l'etichetta «Pinto, restituite ieri ore 18».",
+    "insight": "Sandro ha restituito le chiavi ieri pomeriggio."
+   },
+   {
+    "id": "d7",
+    "label": "Il telefono di Nicola",
+    "text": "Ultima chiamata in uscita alle 23:45, a «Marta Greco». Durata 41 secondi.",
+    "insight": "Alle 23:45 Nicola ha chiamato Marta Greco."
+   }
+  ],
+  "suspects": [
+   {
+    "id": "antonio",
+    "name": "Antonio Scarano",
+    "role": "Figlio, 35 anni",
+    "look": "Occhi rossi, felpa infilata al contrario. È lui che ti ha chiamato.",
+    "tell": "Le lacrime arrivano quando ricorda il padre da vivo, non quando si parla di soldi. Il senso di colpa c'è, ma riguarda l'ultima lite, non la morte.",
+    "questions": [
+     {
+      "id": "a1",
+      "q": "Dov'era stanotte?",
+      "a": "A casa. Mia figlia aveva la febbre, alle due ho chiamato la guardia medica. Potete controllare.",
+      "insight": "Antonio ha un alibi verificabile: la chiamata delle due alla guardia medica."
+     },
+     {
+      "id": "a2",
+      "q": "Lei voleva vendere, suo padre no.",
+      "req": [
+       "d5"
+      ],
+      "a": "Sì. Ieri ci siamo urlati addosso. L'ultima cosa che gli ho detto è stata «sei un vecchio testardo».",
+      "aside": "Si copre la faccia con le mani. Il pianto è vero."
+     },
+     {
+      "id": "a3",
+      "q": "Chi ha le chiavi del frantoio?",
+      "a": "Io, papà e Marta Greco, la consulente. Le servono per i campionamenti. Sandro le aveva fino a ieri.",
+      "insight": "Le chiavi le hanno Antonio, Nicola e Marta. Sandro le aveva fino a ieri."
+     }
+    ]
+   },
+   {
+    "id": "sandro",
+    "name": "Sandro Pinto",
+    "role": "Operaio, licenziato ieri",
+    "look": "Mani grandi, voce alta. Si è presentato da solo appena ha saputo.",
+    "tell": "Alza la voce e ti guarda in faccia. È la rabbia rumorosa di chi si sente accusato ingiustamente. Chi mente di solito abbassa il volume.",
+    "questions": [
+     {
+      "id": "s1",
+      "q": "Perché l'hanno licenziata?",
+      "a": "Perché ho detto che la partita 14 puzzava di olio di semi. Mi ha dato del bugiardo. Poi ieri sera alle undici mi scrive: «Avevi ragione tu. Domani sistemo tutto.» Guardi, è qui.",
+      "insight": "Ieri sera Nicola ha scoperto che la partita 14 era tagliata con olio di semi."
+     },
+     {
+      "id": "s2",
+      "q": "Dov'era stanotte?",
+      "a": "Al bar Centrale fino all'una, poi a casa. Chiedete a Mimmo, il barista."
+     },
+     {
+      "id": "s3",
+      "q": "Chi certifica l'olio che esce da qui?",
+      "a": "La Greco. Assaggia lei e firma lei. Tutto quello che esce da qui come extravergine passa dalla sua firma.",
+      "insight": "Marta firma le certificazioni: la partita 14 l'avrebbe firmata lei."
+     }
+    ]
+   },
+   {
+    "id": "marta",
+    "name": "Marta Greco",
+    "role": "Assaggiatrice e consulente, 42 anni",
+    "look": "Impeccabile anche all'alba. Profumo costoso, taccuino in pelle.",
+    "tell": "Risponde prima che tu finisca la domanda: risposte preparate. Quando si nomina il registro si sistema un orecchino che era già a posto.",
+    "questions": [
+     {
+      "id": "m1",
+      "q": "Quando ha visto Nicola l'ultima volta?",
+      "a": "Ieri alle otto di sera, qui. Poi sono andata a casa. Da sola, purtroppo.",
+      "insight": "Marta dice di essere andata via alle 20 e di non essere più tornata."
+     },
+     {
+      "id": "m2",
+      "q": "Nicola l'ha chiamata alle 23:45. Che cosa voleva?",
+      "req": [
+       "d7"
+      ],
+      "a": "Ah, la chiamata. Parlavamo della raccolta di domani. Quaranta secondi, niente di importante.",
+      "insight": "Marta aveva taciuto la telefonata delle 23:45.",
+      "lie": true
+     },
+     {
+      "id": "m3",
+      "q": "C'è un suo bicchiere da assaggio ancora lucido d'olio.",
+      "req": [
+       "d3",
+       "m1"
+      ],
+      "a": "Ne lascio sempre qualcuno in giro. Sarà di ieri pomeriggio.",
+      "aside": "In dodici ore l'olio su un bicchiere si opacizza e fa la pellicola. Questo brilla.",
+      "insight": "Marta mente: ha assaggiato olio qui stanotte, dopo la chiamata.",
+      "lie": true
+     },
+     {
+      "id": "m4",
+      "q": "Parliamo della partita 14.",
+      "req": [
+       "d2"
+      ],
+      "a": "Io certifico quello che assaggio. Punto.",
+      "aside": "Poi, dopo un attimo: «Chi le ha parlato della partita 14?»",
+      "insight": "Sulla partita 14 Marta non si difende: vuole sapere chi ha parlato."
+     }
+    ]
+   }
+  ],
+  "bluff": {
+   "text": "Dici che la settimana scorsa Nicola aveva fatto installare una telecamera nel magazzino, e che non lo sapeva nessuno.",
+   "reactions": {
+    "antonio": "«Papà? Una telecamera? Non si fidava nemmeno del bancomat.»",
+    "sandro": "«Meglio! Guardatela, così la finite con me.»",
+    "marta": "Chiede, con voce neutra, se la telecamera registra anche l'audio. Nessun altro lo chiede."
+   },
+   "insight": "Al bluff della telecamera Marta ha chiesto dell'audio: le preoccupa quello che si è detto, non quello che si è visto."
+  },
+  "culprit": "marta",
+  "key": [
+   "m3",
+   "m2",
+   "x1"
+  ],
+  "solution": "Sandro aveva ragione: la partita 14 era tagliata con olio di semi e Marta l'aveva certificata extravergine per un compratore che la pagava bene. Ieri sera Nicola se ne accorge, blocca la partita sul registro e alle 23:45 la chiama. Marta arriva con la sua chiave e assaggia l'olio davanti a lui per convincerlo che sbaglia. Nicola minaccia di denunciarla. Lei lo colpisce e trascina il corpo ai piedi del silo per simulare una caduta, ma sui pioli non c'è il fango delle sue scarpe. E il bicchiere blu è rimasto sul banco.",
+  "contradictions": [
+   {
+    "id": "x1",
+    "a": "m2",
+    "b": "d2",
+    "who": "marta",
+    "reply": "Va bene. Mi ha parlato della partita 14. Gli ho detto che si sbagliava. Tutto qui.",
+    "aside": "Tutto qui, in quaranta secondi. Eppure stanotte l’olio l’ha assaggiato qui.",
+    "insight": "Marta ha mentito sulla chiamata: Nicola le aveva contestato la partita 14.",
+    "lie": true
+   }
+  ]
+ },
+ {
+  "id": "veggente",
+  "title": "La veggente di Polignano",
+  "place": "Villa sulla scogliera, Polignano a Mare",
+  "teaser": "Una profezia di morte. Tre giorni dopo, la morte.",
+  "intro": "«Morirai vicino all'acqua, prima della luna piena.» Madame Serena l'aveva detto a Riccardo Dell'Aquila, 49 anni, durante una seduta a casa sua. Ieri notte, due giorni prima della luna piena, Riccardo è precipitato dalla terrazza sulla scogliera. In paese parlano di maledizione. Tu delle veggenti hai un'opinione precisa.",
+  "details": [
+   {
+    "id": "d1",
+    "label": "La ringhiera",
+    "text": "Ferro battuto, alta un metro e dieci, intatta. Sotto, venti metri di scogliera.",
+    "insight": "Da lì non si inciampa: bisogna scavalcare o essere sollevati."
+   },
+   {
+    "id": "d2",
+    "label": "Due bicchierini",
+    "text": "Sul tavolino, due bicchierini di limoncello. Sul fondo di uno, un velo di polvere bianca che il limoncello non ha sciolto.",
+    "insight": "Nel limoncello di Riccardo c'era qualcosa. Forse un sedativo."
+   },
+   {
+    "id": "d3",
+    "label": "L'home banking",
+    "text": "Sul tablet di casa, l'app della banca aperta: bonifico di 3.000 € da Giulia a «S. Lorusso», due settimane fa. Causale: «consulenza».",
+    "insight": "Giulia ha pagato 3.000 € a una certa S. Lorusso."
+   },
+   {
+    "id": "d4",
+    "label": "Il biglietto della profezia",
+    "text": "Scritto a mano dalla veggente: «Acqua. Luna piena. Un tradimento. La lettera R.»",
+    "insight": "Profezia vaga, adatta a chiunque. Tranne la R: quella è un'informazione, non una visione."
+   },
+   {
+    "id": "d5",
+    "label": "La polizza",
+    "text": "In un cassetto dello studio: polizza vita da 800.000 €, stipulata quattro mesi fa. Beneficiaria: Giulia.",
+    "insight": "Giulia incassa 800.000 € dalla morte di Riccardo."
+   },
+   {
+    "id": "d6",
+    "label": "Il messaggio di Marco",
+    "text": "Sul telefono di Riccardo, dal fratello Marco: «Se non mi dai tempo per quei soldi te ne penti.»",
+    "insight": "Marco doveva soldi a Riccardo e l'ha minacciato."
+   },
+   {
+    "id": "d7",
+    "label": "Il flacone in bagno",
+    "text": "Sonnifero prescritto a Giulia dieci giorni fa. Confezione da 30 compresse, ne restano 4.",
+    "insight": "In dieci giorni sono sparite 26 compresse di sonnifero."
+   }
+  ],
+  "suspects": [
+   {
+    "id": "serena",
+    "name": "Madame Serena",
+    "role": "Veggente, al secolo S. Lorusso",
+    "look": "Anelli a ogni dito, voce bassa. È venuta a «portare conforto».",
+    "tell": "Mentre tu la studi, lei studia te: frasi aperte, pause, aspetta la tua reazione per capire dove andare. È una truffatrice, su questo non ci sono dubbi. Ma quando si parla della morte il trucco si ferma: ha paura vera.",
+    "questions": [
+     {
+      "id": "v1",
+      "q": "Come ha previsto la morte di Riccardo?",
+      "a": "Le carte parlano a chi sa ascoltare. Lei, per esempio: ha perso qualcuno di importante, vero? Lo vedo.",
+      "aside": "Lettura a freddo da manuale: vale per chiunque."
+     },
+     {
+      "id": "v2",
+      "q": "Da dove viene la R della profezia?",
+      "req": [
+       "d4"
+      ],
+      "a": "Dalle carte!",
+      "aside": "Troppo in fretta. E per un istante guarda Giulia.",
+      "insight": "Alla domanda sulla R Serena ha guardato Giulia."
+     },
+     {
+      "id": "v3",
+      "q": "Lei è S. Lorusso. Giulia le ha versato 3.000 euro.",
+      "req": [
+       "d3"
+      ],
+      "a": "Va bene. Mi ha pagata per spaventarlo. Diceva che lui usciva in barca ubriaco e voleva che smettesse. I dettagli me li ha dati lei: l'acqua, la luna piena, la R. Io leggo le carte, non ammazzo la gente.",
+      "insight": "Giulia ha pagato la veggente e le ha dettato la profezia.",
+      "lie": true
+     }
+    ]
+   },
+   {
+    "id": "giulia",
+    "name": "Giulia Dell'Aquila",
+    "role": "Moglie, 44 anni",
+    "look": "Occhiali scuri in casa. Un fazzoletto stretto in mano, asciutto.",
+    "tell": "Il dolore arriva in ritardo: prima le frasi pratiche, poi le lacrime, come se si ricordasse di doverle aggiungere. Quando si parla della profezia le spalle si rilassano.",
+    "questions": [
+     {
+      "id": "g1",
+      "q": "Cosa è successo ieri sera?",
+      "a": "Un limoncello in terrazza, come ogni sera. Li ho versati io. Alle undici sono andata a letto. Riccardo era sconvolto dalla profezia, non dormiva più. Forse si è buttato. O è caduto.",
+      "insight": "Giulia ha versato i limoncelli e suggerisce il suicidio."
+     },
+     {
+      "id": "g2",
+      "q": "Mancano 26 sonniferi in dieci giorni.",
+      "req": [
+       "d7"
+      ],
+      "a": "Dormo male. Da mesi. Lo sanno tutti che dormo male.",
+      "insight": "Giulia non sa spiegare le 26 compresse sparite.",
+      "lie": true
+     },
+     {
+      "id": "g3",
+      "q": "Parliamo della polizza da 800.000 euro.",
+      "req": [
+       "d5"
+      ],
+      "a": "L'ha voluta lui. Io non volevo nemmeno firmare. L'ha voluta lui.",
+      "aside": "Ripete la stessa frase due volte. Una risposta provata allo specchio.",
+      "insight": "Sulla polizza Giulia ha una risposta preparata."
+     }
+    ]
+   },
+   {
+    "id": "marco",
+    "name": "Marco Dell'Aquila",
+    "role": "Fratello, 45 anni",
+    "look": "Tuta da lavoro del porto, arrivato di corsa da Bari.",
+    "tell": "Guarda il pavimento quando si parla di soldi e alza gli occhi quando si parla del fratello. È vergogna per il debito. Il dolore è vero.",
+    "questions": [
+     {
+      "id": "k1",
+      "q": "Ha minacciato suo fratello.",
+      "req": [
+       "d6"
+      ],
+      "a": "Gli dovevo ventimila euro, gli ho scritto una cosa stupida. Ieri notte ero di turno al porto di Bari, dalle dieci alle sei. Ci sono le timbrature.",
+      "insight": "Marco ha un alibi: il turno di notte al porto, con le timbrature."
+     },
+     {
+      "id": "k2",
+      "q": "Riccardo credeva alla veggente?",
+      "a": "Riccardo? Rideva degli oroscopi. È Giulia che ha voluto portarla in casa. Insisteva.",
+      "insight": "È stata Giulia a volere la seduta con la veggente."
+     },
+     {
+      "id": "k3",
+      "q": "Com'era il loro matrimonio?",
+      "a": "Da un anno dormivano in stanze separate. Lui parlava di separazione.",
+      "insight": "Riccardo pensava di separarsi da Giulia."
+     }
+    ]
+   }
+  ],
+  "bluff": {
+   "text": "Annunci che l'autopsia ha già trovato un sedativo nel sangue di Riccardo.",
+   "reactions": {
+    "serena": "«Sedativo?» Impallidisce. Non lo sapeva.",
+    "giulia": "«Li prendeva anche lui, ogni tanto, per dormire.» Risponde subito, a una domanda che nessuno le ha fatto.",
+    "marco": "«Sedato? Allora qualcuno l'ha aiutato a cadere.»"
+   },
+   "insight": "Al bluff del sedativo Giulia ha giustificato la cosa prima ancora che qualcuno la accusasse."
+  },
+  "culprit": "giulia",
+  "key": [
+   "v3",
+   "g2",
+   "d2",
+   "x1"
+  ],
+  "solution": "Giulia ha costruito la maledizione. Ha pagato Serena per una profezia su misura (acqua, luna piena, la R di Riccardo) così che una morte sulla scogliera sembrasse destino, o suicidio. Ieri sera ha versato lei i limoncelli, con dentro le compresse del suo sonnifero. Quando Riccardo si è addormentato l'ha portato alla ringhiera. Il movente: la polizza da 800.000 € e una separazione in arrivo. La veggente è una truffatrice, ma non un'assassina.",
+  "contradictions": [
+   {
+    "id": "x1",
+    "a": "g1",
+    "b": "d2",
+    "who": "giulia",
+    "reply": "Ci avrà messo lui qualcosa. Io li ho solo versati.",
+    "aside": "Ha appena ammesso che nessun altro ha toccato i bicchieri.",
+    "insight": "Solo Giulia ha toccato i limoncelli: la polvere nel bicchiere l’ha messa lei.",
+    "lie": true
+   }
+  ]
+ }
+]
