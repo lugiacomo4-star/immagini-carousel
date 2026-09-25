@@ -1,0 +1,1283 @@
+[
+ {
+  "id": "stangadavanti",
+  "title": "L'ultima sosta",
+  "place": "Festa di San Rocco, Casamurgia (BA)",
+  "teaser": "Dodici uomini sotto il santo. Uno non arriva alla terza sosta.",
+  "intro": "A Casamurgia la statua di San Rocco la portano dodici uomini, e il posto davanti si eredita come una casa. Alla terza sosta della processione Vito Lamanna, capo dei portatori, 54 anni, si piega sotto la stanga e non si rialza più. Il medico della festa dice cuore. Sua moglie dice che Vito il cuore ce l'aveva di ferro, e ha chiesto al parroco di chiamarti.",
+  "details": [
+   {
+    "id": "d1",
+    "label": "La borraccia di Vito",
+    "text": "Metallo, col suo nome inciso. Ancora mezza piena. Il tappo è avvitato storto e l'acqua ha un odore amaro, che il limone non copre.",
+    "insight": "Qualcuno ha aperto la borraccia di Vito e l'ha richiusa in fretta."
+   },
+   {
+    "id": "d2",
+    "label": "Il registro delle offerte",
+    "text": "Il libro del comitato. Offerte appuntate al manto del santo, processione del mattino: dichiarati 3.200 €. A margine, a matita, la grafia di Vito: «Contati io: 5.100. Parlare con N.»",
+    "insight": "Vito aveva scoperto che mancavano 1.900 € di offerte e voleva parlarne con qualcuno che comincia per N."
+   },
+   {
+    "id": "d3",
+    "label": "Il foglio del medico",
+    "text": "Appunti del medico della festa: «Alla seconda sosta V.L. dice di vedere tutto giallo. Nausea. Polso irregolare. Alla terza, arresto.»",
+    "insight": "Vista gialla, nausea e aritmia: sono i segni di un avvelenamento da digitale."
+   },
+   {
+    "id": "d4",
+    "label": "La foto di gruppo",
+    "text": "Sul telefono del parroco, ore 18:02: i portatori in posa davanti alla chiesa, camicie bianche e fasce rosse. Ci sono tutti. Manca solo Nicola Dimundo.",
+    "insight": "Alle 18:02 Nicola non era in piazza con gli altri portatori."
+   },
+   {
+    "id": "d5",
+    "label": "Il cestino della sacrestia",
+    "text": "Tra le cartacce, un blister di digossina svuotato, farmaco per il cuore. Le compresse sono state spinte fuori tutte. L'etichetta col nome è stata strappata.",
+    "insight": "In sacrestia, dove stavano le borracce, qualcuno ha svuotato un blister di digossina."
+   },
+   {
+    "id": "d6",
+    "label": "Il video della rissa",
+    "text": "Gira su tutti i telefoni del paese. Ieri sera, fuori dal bar: Lino Sisto spinge Vito contro un muro. «Sotto la stanga davanti non ci torni vivo.»",
+    "insight": "Lino ha minacciato Vito davanti a mezzo paese, per il posto davanti."
+   },
+   {
+    "id": "d7",
+    "label": "Le chiavi della sacrestia",
+    "text": "Due copie soltanto. Una è del parroco, che la lascia a Dora. L'altra è del tesoriere del comitato feste.",
+    "insight": "In sacrestia potevano entrare solo Dora e il tesoriere del comitato."
+   }
+  ],
+  "suspects": [
+   {
+    "id": "lino",
+    "name": "Lino Sisto",
+    "role": "Portatore, 34 anni",
+    "look": "Spalle larghe, camicia bianca sudata, la fascia rossa ancora al collo.",
+    "tell": "Pugni stretti e mascella dura quando si parla del posto davanti. Ma quando dici «Vito è morto» gli trema il mento. La rabbia è per la stanga. Il lutto è vero.",
+    "questions": [
+     {
+      "id": "l1",
+      "q": "Ieri sera ha minacciato Vito davanti al bar.",
+      "req": [
+       "d6"
+      ],
+      "a": "Ho detto una fesseria. Il posto davanti spettava a me, lui l'ha dato a suo figlio. Ma oggi alle cinque ero dal barbiere, alle sei nella foto di gruppo, alle sei e mezza sotto la stanga di sinistra. La sua borraccia non l'ho mai vista.",
+      "insight": "Lino ha un alibi dalle 17 in poi: il barbiere, la foto delle 18, la stanga dal lato opposto."
+     },
+     {
+      "id": "l2",
+      "q": "Chi tiene i soldi della festa?",
+      "a": "Nicola. Tesoriere da dieci anni. Quest'anno però Vito s'era messo in testa di contare lui. Stamattina l'ha detto davanti a tutti: «Stasera i conti li guardo io.»",
+      "insight": "Vito aveva annunciato che avrebbe controllato i conti del tesoriere, Nicola."
+     },
+     {
+      "id": "l3",
+      "q": "Com'era Vito prima della processione?",
+      "a": "Un toro. Ha fatto la scalinata della chiesa di corsa, per sfottere noi giovani. Poi alla seconda sosta ha bevuto dalla borraccia e ha cominciato a sudare freddo."
+     }
+    ]
+   },
+   {
+    "id": "nicola",
+    "name": "Nicola Dimundo",
+    "role": "Tesoriere del comitato feste, 47 anni",
+    "look": "Camicia bianca stirata, fascia rossa, un mazzo di chiavi alla cintura.",
+    "tell": "Ogni volta che qualcuno nomina la sacrestia si tocca il mazzo di chiavi alla cintura, come per contarle. Quando parla di Vito dice «il povero Vito». Quando parla dei soldi dice «noi».",
+    "questions": [
+     {
+      "id": "n1",
+      "q": "Dov'era prima della processione?",
+      "a": "In piazza coi portatori, dalle cinque. Ci sono pure nella foto di gruppo, chiedete al parroco.",
+      "insight": "Nicola dice di essere stato in piazza dalle 17, e di essere nella foto di gruppo."
+     },
+     {
+      "id": "n2",
+      "q": "Vito ha contato 5.100 euro. Lei ne ha dichiarati 3.200.",
+      "req": [
+       "d2"
+      ],
+      "a": "Il povero Vito contava male. Le banconote appuntate al manto si staccano, volano, la gente se le mette in tasca. Succede ogni anno.",
+      "aside": "Millenovecento euro volati via dal santo. Si asciuga le mani sui pantaloni.",
+      "insight": "Nicola non sa spiegare i 1.900 euro che mancano dalle offerte.",
+      "lie": true
+     },
+     {
+      "id": "n3",
+      "q": "Chi prepara le borracce dei portatori?",
+      "a": "Dora, in sacrestia. Acqua e limone, dodici borracce. Poi chiude a chiave. La chiave ce l'ha lei.",
+      "aside": "Non dice che una copia ce l'ha anche lui."
+     },
+     {
+      "id": "n4",
+      "q": "In sacrestia c'è un blister di digossina vuoto. E lei la ritira ogni settimana.",
+      "req": [
+       "d5",
+       "o3"
+      ],
+      "a": "Per mio padre, che ha il cuore malato. Mezzo paese prende quella roba.",
+      "aside": "Suo padre è ricoverato a Bari da un mese. Lì le medicine gliele dà l'ospedale.",
+      "insight": "Nicola ritira la digossina di un padre che è in ospedale e non la prende più.",
+      "lie": true
+     }
+    ]
+   },
+   {
+    "id": "dora",
+    "name": "Addolorata «Dora» Fiore",
+    "role": "Sacrestana, 63 anni",
+    "look": "Vestito blu della festa, capelli appena fatti, rosario attorcigliato alle dita.",
+    "tell": "Vestito buono, piega fresca, odore di lacca. Alle cinque del pomeriggio, per riempire borracce, nessuno si veste così. Quando dice «non mi sono mossa» si liscia la gonna.",
+    "questions": [
+     {
+      "id": "o1",
+      "q": "Quando ha riempito le borracce?",
+      "a": "Alle cinque. Acqua fresca e una fetta di limone, come ha sempre voluto il parroco vecchio. Poi ho chiuso e non mi sono mossa da lì davanti fino alla processione.",
+      "insight": "Dora giura di non essersi mai allontanata dalla sacrestia."
+     },
+     {
+      "id": "o2",
+      "q": "Alle cinque non era vestita così. Quando è andata a cambiarsi?",
+      "req": [
+       "t_dora"
+      ],
+      "a": "(Si porta il rosario alla bocca.) Dalle cinque e mezza alle sei e mezza. Sono andata a casa a farmi i capelli, mia nipote me li fa. Mi vergognavo a dirlo. Ho lasciato il santo da solo.",
+      "insight": "Dalle 17:30 alle 18:30 la sacrestia, con le borracce, è rimasta senza nessuno.",
+      "lie": true
+     },
+     {
+      "id": "o3",
+      "q": "Conosce bene Nicola?",
+      "a": "Come un figlio. Povero, col padre ricoverato a Bari da un mese. Eppure lo vedo ancora in farmacia ogni settimana a ritirare la digossina del padre. Dice che fa scorta.",
+      "insight": "Nicola continua a ritirare la digossina del padre, che è in ospedale da un mese."
+     }
+    ]
+   }
+  ],
+  "bluff": {
+   "text": "Annunci che il tappo della borraccia è già in laboratorio, e che sul metallo le impronte restano per giorni.",
+   "reactions": {
+    "lino": "«Bene. Così vedete che le mie mani stavano sulla stanga.»",
+    "nicola": "«Le borracce le ho portate io in piazza, tutte e dodici. Le mie impronte ci sono per forza.» Nessuno gliel'aveva chiesto.",
+    "dora": "«Ci saranno le mie, le ho riempite io!» Si fa il segno della croce."
+   },
+   "insight": "Al bluff delle impronte Nicola ha giustificato le sue sul tappo prima che qualcuno gliele contestasse."
+  },
+  "culprit": "nicola",
+  "key": [
+   "x1",
+   "n4",
+   "n2"
+  ],
+  "solution": "Nicola rubava dalle offerte appuntate al santo, e Vito se n'era accorto: «Parlare con N.». Stasera avrebbe controllato i conti davanti al comitato. Mentre gli altri posavano per la foto delle 18, Nicola era in sacrestia con la sua chiave, lasciata vuota da Dora che era andata a farsi i capelli. Ha sciolto nella borraccia di Vito la digossina che ritirava per un padre ricoverato. Alla seconda sosta Vito vedeva giallo, alla terza il cuore si è fermato. Lino aveva minacciato Vito, ma alle sei era nella foto.",
+  "contradictions": [
+   {
+    "id": "x1",
+    "a": "n1",
+    "b": "d4",
+    "who": "nicola",
+    "reply": "Sono arrivato dopo, va bene. Ero in sacrestia a contare le offerte del mattino. Da solo.",
+    "aside": "Le offerte stasera doveva contarle Vito. Lo sapeva tutto il paese.",
+    "insight": "Alle 18 Nicola era solo in sacrestia con le borracce, e aveva mentito.",
+    "lie": true
+   }
+  ]
+ },
+ {
+  "id": "spartitomonteleone",
+  "title": "Notte sul porto",
+  "place": "Teatro Galante, Bari",
+  "teaser": "Una prima col sindaco in sala. Una vetrina vuota all'intervallo.",
+  "intro": "Il Teatro Galante riapre dopo tre anni con «Notte sul porto» di Saverio Monteleone. Nel foyer, sotto vetro, lo spartito autografo del 1891, il tesoro del teatro. Quando all'intervallo il pubblico esce, la vetrina è vuota e chiusa a chiave. Trecento persone nel foyer, tutte sospettate. Il sovrintendente vuole la polizia; il sindaco vuole prima te, e senza giornalisti.",
+  "details": [
+   {
+    "id": "d1",
+    "label": "La vetrina",
+    "text": "Richiusa a chiave, vetro intatto, nessun graffio sulla serratura. Sul velluto resta il segno rettangolare dello spartito.",
+    "insight": "Chi ha preso lo spartito ha aperto la vetrina con una chiave."
+   },
+   {
+    "id": "d2",
+    "label": "Il registro della vigilanza",
+    "text": "«19:30 — allarme vetrina foyer escluso. Motivo: falsi allarmi ripetuti. Autorizza: direzione.»",
+    "insight": "L'allarme della vetrina è stato spento alle 19:30 su ordine della direzione."
+   },
+   {
+    "id": "d3",
+    "label": "La polizza",
+    "text": "Rinnovata tre settimane fa. Valore assicurato dello spartito: da 200.000 a 900.000 €. Beneficiario: il teatro. Firma del sovrintendente.",
+    "insight": "Tre settimane prima del furto il valore assicurato è stato più che quadruplicato."
+   },
+   {
+    "id": "d4",
+    "label": "La borsa di Samuele",
+    "text": "Sotto il leggio in buca: fotocopie dello spartito, pagina per pagina, fitte di annotazioni a matita.",
+    "insight": "Samuele conosce lo spartito a memoria, nota per nota."
+   },
+   {
+    "id": "d5",
+    "label": "La cassaforte della direzione",
+    "text": "La chiave di riserva della vetrina è al suo posto. Accanto, una lettera di un antiquario di Ginevra: «Confermo l'interesse del mio cliente. Massima discrezione.»",
+    "insight": "Qualcuno della direzione è in contatto con un compratore privato all'estero."
+   },
+   {
+    "id": "d6",
+    "label": "Il guardaroba",
+    "text": "Un tubo portadisegni nero, scontrino 17, depositato alle 20:35. Il primo atto era cominciato da mezz'ora. La guardarobiera ricorda solo «un signore in smoking». Stasera sono tutti in smoking.",
+    "insight": "Durante il primo atto, con il foyer vuoto, qualcuno ha lasciato un tubo portadisegni al guardaroba."
+   },
+   {
+    "id": "d7",
+    "label": "Il programma di sala",
+    "text": "Primo atto: 20:00-21:15, senza interruzioni. A matita, qualcuno ha segnato «20:40 — assolo al pianoforte».",
+    "insight": "Il primo atto dura 75 minuti senza pause: chi è in buca non può uscire."
+   }
+  ],
+  "suspects": [
+   {
+    "id": "aldo",
+    "name": "Aldo Ferrante",
+    "role": "Sovrintendente del teatro, 61 anni",
+    "look": "Smoking impeccabile, garofano all'occhiello, voce da conferenza stampa.",
+    "tell": "Parla del teatro al passato: «era un gioiello», «avevamo un pubblico». Mentre ti ascolta tocca due volte il taschino dello smoking, dove si vede il bordo di un cartoncino.",
+    "questions": [
+     {
+      "id": "a1",
+      "q": "Dov'era durante il primo atto?",
+      "a": "Nel mio palco, dall'inizio alla fine, accanto al sindaco. Non ho perso una nota.",
+      "insight": "Aldo giura di non aver lasciato il palco durante il primo atto."
+     },
+     {
+      "id": "a2",
+      "q": "Tre settimane fa ha fatto quadruplicare l'assicurazione.",
+      "req": [
+       "d3"
+      ],
+      "a": "Valore di mercato aggiornato. Un Monteleone autografo vale quello. Lo dice il perito.",
+      "aside": "Non dice che il perito l'ha scelto lui.",
+      "insight": "Aldo ha alzato l'assicurazione a 900.000 euro poco prima del furto."
+     },
+     {
+      "id": "a3",
+      "q": "L'allarme della vetrina l'ha fatto spegnere lei.",
+      "req": [
+       "d2"
+      ],
+      "a": "Suonava ogni cinque minuti, alla prima, col sindaco in sala! Cosa dovevo fare, farlo suonare durante l'ouverture?",
+      "insight": "Aldo ammette di aver fatto spegnere l'allarme della vetrina alle 19:30."
+     }
+    ]
+   },
+   {
+    "id": "samuele",
+    "name": "Samuele Loiacono",
+    "role": "Maestro al pianoforte, 33 anni",
+    "look": "Frac un po' largo, capelli spettinati, dita macchiate di matita.",
+    "tell": "Quando parla dello spartito gli brillano gli occhi e muove le dita come se suonasse. Quando parli di furto si chiude, braccia conserte. È orgoglio ferito, non paura.",
+    "questions": [
+     {
+      "id": "s1",
+      "q": "Dov'era durante il primo atto?",
+      "a": "In buca, al pianoforte. Settantacinque minuti senza respirare. Alle 20:40 c'è il mio assolo, l'hanno sentito in duecento. Chieda al direttore d'orchestra.",
+      "insight": "Samuele era in buca per tutto il primo atto, e alle 20:40 suonava davanti a tutti."
+     },
+     {
+      "id": "s2",
+      "q": "Lei ha fotocopiato lo spartito pagina per pagina.",
+      "req": [
+       "d4"
+      ],
+      "a": "Lo studio da due anni. Sì, penso che stia meglio in un archivio che sotto una lampada in foyer. E sì, a Lecce mi hanno già accusato di aver rubato una lettera. Assolto. Lo sanno tutti, per questo guardate me.",
+      "insight": "Samuele è stato accusato di un furto d'archivio in passato, e assolto."
+     },
+     {
+      "id": "s3",
+      "q": "Come stanno i conti del teatro?",
+      "a": "Male. Noi orchestrali non vediamo uno stipendio da aprile. Il sovrintendente ripete che «presto arriveranno soldi». Non ha mai detto da dove.",
+      "insight": "Il teatro è al verde e Aldo aspetta soldi «presto»."
+     }
+    ]
+   },
+   {
+    "id": "tonino",
+    "name": "Tonino Scarpa",
+    "role": "Custode del teatro, 62 anni",
+    "look": "Divisa blu, auricolare nell'orecchio, una sola chiave appesa al collo.",
+    "tell": "Odore di sigaretta sulla divisa. Ogni tanto sbircia il telefono tenuto basso: c'è la partita del Bari in diretta. Non è mai rimasto davanti a una vetrina in vita sua durante una partita.",
+    "questions": [
+     {
+      "id": "c1",
+      "q": "Dov'era durante il primo atto?",
+      "a": "Al mio posto, in foyer, vicino alla vetrina. Non è passato nessuno. Lo giuro sui miei figli.",
+      "insight": "Tonino giura di aver sorvegliato la vetrina per tutto il primo atto."
+     },
+     {
+      "id": "c2",
+      "q": "Lei non era in foyer. Era a guardare la partita.",
+      "req": [
+       "t_tonino"
+      ],
+      "a": "(Si toglie l'auricolare.) All'ingresso artisti. Lì il telefono prende. Verso le otto e mezza è sceso il sovrintendente dalla scala di servizio, con un tubo nero sotto il braccio. Mi ha fatto un cenno e ha tirato dritto verso il foyer. Io ho nascosto il telefono.",
+      "insight": "Verso le 20:30 Aldo è sceso dalla scala di servizio verso il foyer con un tubo nero.",
+      "lie": true
+     },
+     {
+      "id": "c3",
+      "q": "Chi ha le chiavi della vetrina?",
+      "a": "Io, questa qui, sempre al collo. E la riserva, nella cassaforte del sovrintendente. Solo lui ha la combinazione.",
+      "insight": "La chiave di riserva della vetrina sta in una cassaforte che apre solo Aldo."
+     }
+    ]
+   }
+  ],
+  "bluff": {
+   "text": "Annunci che a fine spettacolo la polizia aprirà tutto quello che c'è al guardaroba, cappotto per cappotto.",
+   "reactions": {
+    "aldo": "Si tocca il taschino dove c'è il cartoncino. Poi dice che è una perdita di tempo: «Il ladro sarà già a Brindisi.»",
+    "samuele": "«Aprite pure. Io ho un giubbotto e un ombrello.»",
+    "tonino": "«Il guardaroba? E che c'entra il guardaroba?» Guarda il telefono."
+   },
+   "insight": "Al bluff del guardaroba Aldo si è toccato il taschino con lo scontrino, e ha cercato di spostare le indagini lontano da lì."
+  },
+  "culprit": "aldo",
+  "key": [
+   "x1",
+   "c2",
+   "a2"
+  ],
+  "solution": "Il furto non è avvenuto all'intervallo ma durante il primo atto, con il foyer vuoto. Alle 19:30 Aldo fa spegnere l'allarme. Alle 20:30 scende dalla scala di servizio, apre la vetrina con la chiave della sua cassaforte, arrotola lo spartito nel tubo e lo lascia al guardaroba: lo scontrino 17 ce l'ha nel taschino. Il teatro è al verde: Aldo avrebbe incassato 900.000 € dall'assicurazione e venduto l'originale a Ginevra. Samuele, il sospettato perfetto, alle 20:40 suonava davanti a duecento persone.",
+  "contradictions": [
+   {
+    "id": "x1",
+    "a": "a1",
+    "b": "c2",
+    "who": "aldo",
+    "reply": "Sono sceso un momento. Un problema con le luci del foyer.",
+    "aside": "Le luci si comandano dalla cabina, al terzo piano. Lui è sceso al pianterreno. Con un tubo.",
+    "insight": "Aldo ha lasciato il palco durante il primo atto e l'aveva negato.",
+    "lie": true
+   }
+  ]
+ },
+ {
+  "id": "fornocolonna",
+  "title": "Il criscito",
+  "place": "Forno Colonna, centro storico di Altamura",
+  "teaser": "Alle quattro il pane non esce. Esce solo il fumo.",
+  "intro": "Da cent'anni il Forno Colonna accende la legna alle due e mezza di notte. Stamattina, alle quattro, il garzone trova la stanza piena di fumo e Peppino Colonna, 71 anni, seduto accanto al forno, come se dormisse. Per i vigili del fuoco è una disgrazia: canna fumaria sporca. Ma Peppino quella canna la puliva ogni mese, e il paese lo sa.",
+  "details": [
+   {
+    "id": "d1",
+    "label": "La canna fumaria",
+    "text": "La serranda in basso è aperta. Eppure il tiraggio è zero: il fumo di una candela torna indietro.",
+    "insight": "La canna non è chiusa in basso: è tappata più su, sul tetto."
+   },
+   {
+    "id": "d2",
+    "label": "Il terrazzo",
+    "text": "Si sale dalla scala del palazzo, porta con lucchetto a combinazione. Nel comignolo è infilato un sacco di juta del mulino, annerito. La combinazione la sanno i condomini: Tommaso Colonna e una signora di novant'anni.",
+    "insight": "Qualcuno ha tappato il comignolo dal terrazzo, dove salgono solo i condomini: in pratica, Tommaso."
+   },
+   {
+    "id": "d3",
+    "label": "La bozza del testamento",
+    "text": "Nel cassetto della cassa, la bozza di un notaio di Altamura, datata la settimana scorsa: «Il forno e il marchio Colonna a Karim Benali.» Appuntamento per la firma: lunedì.",
+    "insight": "Lunedì Peppino avrebbe lasciato il forno al garzone, non al nipote."
+   },
+   {
+    "id": "d4",
+    "label": "La madia",
+    "text": "Dentro, il criscito: il lievito madre di famiglia, cent'anni. Ha il segno fresco di un cucchiaio: qualcuno stanotte ne ha preso un pezzo.",
+    "insight": "Stanotte qualcuno è entrato nel forno a prendere un pezzo di lievito madre."
+   },
+   {
+    "id": "d5",
+    "label": "Peppino",
+    "text": "Seduto sulla sedia di paglia accanto al forno, il grembiule addosso. La pelle è rosea, quasi colorita.",
+    "insight": "La pelle rosea è il segno del monossido di carbonio: Peppino è morto nel sonno, avvelenato dal fumo."
+   },
+   {
+    "id": "d6",
+    "label": "Il preliminare",
+    "text": "In una cartellina sotto il bancone: un preliminare di vendita del marchio «Forno Colonna 1921» a un gruppo industriale di Bari. Firmato da Tommaso. Manca la firma del titolare.",
+    "insight": "Tommaso voleva vendere il marchio a un'industria; Peppino non aveva firmato."
+   },
+   {
+    "id": "d7",
+    "label": "Il rilevatore di fumo",
+    "text": "Sopra la porta, il rilevatore di monossido. Senza batteria. La batteria è nel cassetto sotto, ancora nuova.",
+    "insight": "Qualcuno che conosceva il forno ha tolto la batteria al rilevatore."
+   }
+  ],
+  "suspects": [
+   {
+    "id": "karim",
+    "name": "Karim Benali",
+    "role": "Garzone, 24 anni",
+    "look": "Felpa infarinata, occhi rossi, il berretto di Peppino stretto in mano.",
+    "tell": "Voce roca, occhi che lacrimano: il fumo l'ha respirato davvero, entrando a salvarlo. Stringe il berretto di Peppino e non lo molla mai, nemmeno per gesticolare.",
+    "questions": [
+     {
+      "id": "k1",
+      "q": "Cosa è successo stanotte?",
+      "a": "Alle quattro meno cinque apro, e la stanza è grigia. Peppino sulla sedia, rosso in faccia come se dormisse. L'ho trascinato fuori. Troppo tardi. Il fumo dal camino non usciva, usciva tutto dentro."
+     },
+     {
+      "id": "k2",
+      "q": "Peppino le lasciava il forno.",
+      "req": [
+       "d3"
+      ],
+      "a": "Me l'ha detto la settimana scorsa, qui, davanti a Tommaso. Tommaso ha buttato a terra un vassoio di taralli e se n'è andato. Io non volevo niente. Volevo lui.",
+      "insight": "Tommaso sapeva del testamento: Peppino l'ha annunciato davanti a lui."
+     },
+     {
+      "id": "k3",
+      "q": "Dov'era prima delle quattro?",
+      "a": "In pizzeria a Gravina fino alle due, a pulire. Poi il titolare mi ha dato un passaggio, mi ha lasciato qui davanti alle quattro meno cinque. Può chiamarlo.",
+      "insight": "Karim ha un alibi fino alle 3:55: la pizzeria e il passaggio del titolare."
+     }
+    ]
+   },
+   {
+    "id": "donato",
+    "name": "Donato Mastrangelo",
+    "role": "Fornaio rivale, 66 anni",
+    "look": "Grembiule ancora addosso, mani screpolate, un taglio fresco sul pollice.",
+    "tell": "Arrossisce ogni volta che il suo sguardo cade sulla madia di Peppino. Parla di Peppino con rabbia, ma ne parla al presente. Chi odia qualcuno da quarant'anni non si abitua in un'ora.",
+    "questions": [
+     {
+      "id": "o1",
+      "q": "Dov'era stanotte?",
+      "a": "Nel mio forno, qui di fronte, da mezzanotte. Come ogni notte da quarant'anni. Da solo. Di qua non ci metto piede.",
+      "insight": "Donato dice di non essere mai entrato nel Forno Colonna stanotte."
+     },
+     {
+      "id": "o2",
+      "q": "Stanotte qualcuno ha preso un pezzo del criscito.",
+      "req": [
+       "d4"
+      ],
+      "a": "(Diventa viola.) A mezzanotte. La porta di servizio non la chiude nessuno. Il mio lievito muore ogni estate, il suo ha cent'anni... Il forno era freddo, Peppino non c'era ancora. E uscendo, verso mezzanotte e dieci, ho visto una torcia sul terrazzo, sopra il forno. Ho pensato ai ladri. Ladro ero io.",
+      "insight": "A mezzanotte e dieci qualcuno con una torcia era sul terrazzo sopra il forno.",
+      "lie": true
+     },
+     {
+      "id": "o3",
+      "q": "Chi ci guadagna dalla morte di Peppino?",
+      "a": "Io, dicono. Un concorrente in meno. Ma il marchio Colonna lo voleva l'industria, mica io. E Tommaso con quelli ci andava a pranzo, a Bari. Tutte le settimane.",
+      "insight": "Tommaso trattava da settimane con l'industria per il marchio."
+     }
+    ]
+   },
+   {
+    "id": "tommaso",
+    "name": "Tommaso Colonna",
+    "role": "Nipote, 38 anni, abita sopra il forno",
+    "look": "Camicia pulita, barba fatta, profumo. Alle cinque del mattino.",
+    "tell": "Mani curatissime, unghie spazzolate da poco. Ma sotto l'unghia del pollice destro resta un nero che non è farina: è fuliggine. E si è fatto la barba, la mattina in cui è morto suo zio.",
+    "questions": [
+     {
+      "id": "m1",
+      "q": "Dov'era stanotte?",
+      "a": "A letto, qui sopra. Ho il sonno pesante, non mi sono mai alzato. Mi ha svegliato Karim che urlava.",
+      "insight": "Tommaso dice di non essersi mai alzato stanotte."
+     },
+     {
+      "id": "m2",
+      "q": "Ha firmato un preliminare per vendere il marchio.",
+      "req": [
+       "d6"
+      ],
+      "a": "Lo zio aveva settantun anni. Prima o poi doveva lasciare. Ci avrebbe ripensato.",
+      "aside": "«Doveva lasciare». Già al passato.",
+      "insight": "Tommaso voleva vendere il marchio, lo zio si opponeva."
+     },
+     {
+      "id": "m3",
+      "q": "Chi erediterà il forno?",
+      "a": "Io, credo. Sono l'unico parente. Lo zio di testamenti non ha mai parlato.",
+      "insight": "Tommaso dice di non sapere niente di un testamento."
+     },
+     {
+      "id": "m4",
+      "q": "Ha fuliggine sotto l'unghia, e il comignolo è stato tappato dal terrazzo.",
+      "req": [
+       "d2",
+       "t_tommaso"
+      ],
+      "a": "Ho pulito il barbecue sul terrazzo. Domenica.",
+      "aside": "Domenica era quattro giorni fa. Le unghie le ha spazzolate stamattina, e il nero è rimasto dove la spazzola non arriva.",
+      "insight": "Tommaso mente sulla fuliggine: stanotte ha messo le mani nel comignolo.",
+      "lie": true
+     }
+    ]
+   }
+  ],
+  "bluff": {
+   "text": "Annunci che il mulino numera i suoi sacchi e che tra un'ora saprai a chi è stato consegnato quello nel comignolo.",
+   "reactions": {
+    "karim": "«I sacchi li scarico io, ogni lunedì. Controllate pure.»",
+    "donato": "«Io compro da un altro mulino, da trent'anni. Per principio.»",
+    "tommaso": "«Quei sacchi vuoti li teniamo tutti sul terrazzo. Ci può salire chiunque.» Poi si accorge di aver detto «sul terrazzo»."
+   },
+   "insight": "Al bluff del sacco Tommaso ha subito spiegato che i sacchi stavano sul terrazzo, dove il sacco era: sapeva da dove veniva."
+  },
+  "culprit": "tommaso",
+  "key": [
+   "x1",
+   "m4",
+   "o2"
+  ],
+  "solution": "Peppino avrebbe firmato lunedì un testamento che lasciava il forno a Karim, e Tommaso aveva già promesso il marchio all'industria. Verso mezzanotte Tommaso sale sul terrazzo, dove solo lui ha accesso, e infila un sacco nel comignolo: Donato, che rubava il lievito, vede la sua torcia. Toglie anche la batteria al rilevatore. Alle due e mezza Peppino accende la legna, il fumo non esce, e il monossido lo addormenta per sempre. Tommaso si è spazzolato le unghie, ma la fuliggine sotto il pollice è rimasta.",
+  "contradictions": [
+   {
+    "id": "x1",
+    "a": "m3",
+    "b": "k2",
+    "who": "tommaso",
+    "reply": "Sì, lo sapevo. Una sparata da vecchio. Non l'avrebbe mai firmato.",
+    "aside": "L'appuntamento dal notaio era lunedì. Peppino è morto giovedì.",
+    "insight": "Tommaso sapeva che lo zio lo stava diseredando, e l'aveva negato.",
+    "lie": true
+   }
+  ]
+ },
+ {
+  "id": "scoglimonopoli",
+  "title": "Luce d'oro",
+  "place": "Cala Pietrabianca, Monopoli",
+  "teaser": "Un milione di follower, un tramonto perfetto, un passo indietro.",
+  "intro": "Giada Leone, 24 anni, un milione di follower, sta posando sugli scogli di Cala Pietrabianca al tramonto. Fa un passo indietro per la foto e scivola giù per quattro metri. È viva, in coma al Policlinico di Bari. I carabinieri parlano di imprudenza. Ma Giada su quegli scogli ci è cresciuta, e sua madre ti ha chiesto di guardare la troupe.",
+  "details": [
+   {
+    "id": "d1",
+    "label": "Lo scoglio del set",
+    "text": "Sul punto esatto della posa, una chiazza unta e lucida. Profuma di cocco. Il mare lì non arriva nemmeno con la tramontana.",
+    "insight": "Qualcuno ha unto lo scoglio apposta, sul punto dove Giada doveva posare."
+   },
+   {
+    "id": "d2",
+    "label": "Il video del drone",
+    "text": "La caduta ripresa dall'alto. Giada è sola sul bordo, nessuno a meno di trenta metri. Fa un passo indietro e il piede parte come sul ghiaccio.",
+    "insight": "Nessuno ha spinto Giada: è scivolata su una roccia asciutta."
+   },
+   {
+    "id": "d3",
+    "label": "Il volo delle 11:30",
+    "text": "Sulla scheda del drone c'è anche un volo di prova di stamattina. In un angolo, sugli scogli deserti, una donna con un cappello di paglia a tesa larga, accovacciata proprio sul punto della caduta.",
+    "insight": "Stamattina alle 11:30 una donna con un cappello a tesa larga era accovacciata sul punto della caduta."
+   },
+   {
+    "id": "d4",
+    "label": "Il cestino del parcheggio",
+    "text": "Un flacone di olio abbronzante al cocco, vuoto. Attaccato col nastro, lo scontrino di una farmacia di Monopoli: ore 11:05 di oggi.",
+    "insight": "L'olio al cocco è stato comprato stamattina alle 11:05 e buttato vuoto."
+   },
+   {
+    "id": "d5",
+    "label": "Il telefono di Giada",
+    "text": "Ultima mail inviata ieri, a un avvocato: «Voglio vedere tutti i contratti che Martina ha firmato a mio nome. Credo che mi rubi.»",
+    "insight": "Giada sospettava che la sua manager le rubasse, e aveva chiamato un avvocato."
+   },
+   {
+    "id": "d6",
+    "label": "La storia di Mattia",
+    "text": "Uno screenshot girato tra i follower. Storia di Mattia, tre settimane fa, poi cancellata: «Chi ti tocca si fa male. Ricordatelo.»",
+    "insight": "Mattia ha pubblicato una frase minacciosa dopo la rottura con Giada."
+   },
+   {
+    "id": "d7",
+    "label": "I sandali di Giada",
+    "text": "Suola di corda, liscia. Sul tallone destro, una patina unta che profuma di cocco.",
+    "insight": "Giada è scivolata sull'olio al cocco."
+   }
+  ],
+  "suspects": [
+   {
+    "id": "mattia",
+    "name": "Mattia Scarcia",
+    "role": "Fotografo ed ex fidanzato, 29 anni",
+    "look": "Radiocomando del drone ancora al collo, nocche sbucciate.",
+    "tell": "Guarda il radiocomando quando nomini Giada, come se il video fosse ancora lì. Le nocche sbucciate sono di chi ha scavalcato gli scogli a mani nude per raggiungerla. Non si è ancora lavato il sangue.",
+    "questions": [
+     {
+      "id": "m1",
+      "q": "Dov'era quando è caduta?",
+      "a": "Al radiocomando, trenta metri indietro. Un drone con il vento di stasera non si pilota con una mano. L'ho vista cadere dallo schermo.",
+      "insight": "Mattia pilotava il drone: mani occupate e trenta metri di distanza."
+     },
+     {
+      "id": "m2",
+      "q": "«Chi ti tocca si fa male.» L'ha scritto lei.",
+      "req": [
+       "d6"
+      ],
+      "a": "Per il tizio che la molestava nei commenti, non per lei! Ma letta così sembra altro, lo so. Per questo l'ho cancellata.",
+      "insight": "La frase di Mattia era contro un molestatore, non contro Giada."
+     },
+     {
+      "id": "m3",
+      "q": "Chi ha scelto il punto dello scatto?",
+      "a": "Martina. Io volevo la caletta a nord, la luce è migliore. Lei ha insistito: quello scoglio lì, nessun altro. Non l'ho mai vista insistere su una luce.",
+      "insight": "È stata Martina a imporre lo scoglio della caduta."
+     }
+    ]
+   },
+   {
+    "id": "martina",
+    "name": "Martina Fanelli",
+    "role": "Manager di Giada, 41 anni",
+    "look": "Pelle chiarissima, crema bianca sul naso, cappello di paglia a tesa larga.",
+    "tell": "Pelle di latte, protezione 50 sul naso, le braccia sempre all'ombra del cappello. Una che al sole non si abbronza: si difende. Quando parli di Giada abbassa la tesa del cappello.",
+    "questions": [
+     {
+      "id": "r1",
+      "q": "Quando è arrivata qui?",
+      "a": "Alle sette, in macchina con Giada. Prima ero in ufficio a Bari tutto il giorno. Questi scogli li ho visti stasera per la prima volta.",
+      "insight": "Martina dice di non essere mai stata sugli scogli prima delle 19."
+     },
+     {
+      "id": "r2",
+      "q": "Giada aveva scritto a un avvocato per i suoi contratti.",
+      "req": [
+       "d5"
+      ],
+      "a": "Non ne sapevo niente.",
+      "aside": "Non chiede quale avvocato, né perché. Abbassa la tesa del cappello.",
+      "insight": "Martina finge di non sapere che Giada voleva controllare i suoi contratti.",
+      "lie": true
+     },
+     {
+      "id": "r3",
+      "q": "Chi ha scelto lo scoglio?",
+      "a": "Il fotografo. Io mi occupo dei contratti, non della luce.",
+      "insight": "Martina dice che il punto l'ha scelto Mattia."
+     }
+    ]
+   },
+   {
+    "id": "noemi",
+    "name": "Noemi Russo",
+    "role": "Truccatrice, 26 anni",
+    "look": "Unghie perfette, trousse aperta, il telefono sempre in mano.",
+    "tell": "Tiene il telefono con la fotocamera frontale accesa e si controlla nello schermo mentre ti parla. Quando dice «ero accanto alle borse» il pollice scorre, di riflesso, verso la galleria video.",
+    "questions": [
+     {
+      "id": "n1",
+      "q": "Che olio ha messo a Giada?",
+      "a": "Illuminante alla vaniglia, sulle gambe. Sulle piante dei piedi mai, non sono scema. Senta, profuma ancora.",
+      "insight": "L'olio di Noemi è alla vaniglia, e solo sulle gambe."
+     },
+     {
+      "id": "n2",
+      "q": "Dov'era quando Giada è caduta?",
+      "a": "Accanto alle borse, a sistemare i trucchi. Non ho visto niente.",
+      "insight": "Noemi dice di non aver visto niente."
+     },
+     {
+      "id": "n3",
+      "q": "Lei non sistemava i trucchi. Si stava filmando.",
+      "req": [
+       "t_noemi"
+      ],
+      "a": "(Arrossisce.) Un video per il mio profilo, col tramonto. Ho duemila follower, lei un milione. Guardi: dietro di me si vede Martina. Non guarda il tramonto. Guarda i piedi di Giada. E quando cade non grida.",
+      "insight": "Nel video di Noemi, Martina fissa i piedi di Giada e non reagisce alla caduta.",
+      "lie": true
+     }
+    ]
+   }
+  ],
+  "bluff": {
+   "text": "Annunci che dal Policlinico hanno chiamato: Giada ha aperto gli occhi e tra poco potrà parlare.",
+   "reactions": {
+    "mattia": "«Posso vederla?» Si alza prima di finire la frase.",
+    "noemi": "«Oddio, meno male!» E scrive subito un messaggio.",
+    "martina": "«Con una botta così non ricorderà niente, poverina. I medici dicono sempre così.» Nessun medico l'ha detto."
+   },
+   "insight": "Al bluff del risveglio Martina si è affrettata a dire che Giada non ricorderà niente."
+  },
+  "culprit": "martina",
+  "key": [
+   "x1",
+   "d4",
+   "x2"
+  ],
+  "solution": "Giada aveva capito che Martina le rubava sui contratti e aveva chiamato un avvocato. Stamattina Martina compra l'olio al cocco a Monopoli e alle 11:30 va a ungere lo scoglio: il volo di prova del drone la riprende col suo cappello. Una donna che non si abbronza mai non ha altri motivi per comprare olio abbronzante. La sera impone quel punto preciso per la foto, e aspetta. Mattia, l'ex con la storia minacciosa, stava trenta metri indietro col drone in mano.",
+  "contradictions": [
+   {
+    "id": "x1",
+    "a": "r1",
+    "b": "d3",
+    "who": "martina",
+    "reply": "Va bene, sono passata stamattina. Un sopralluogo. Non è un reato.",
+    "aside": "Accovacciata sulla roccia, per un sopralluogo. Con un olio comprato mezz'ora prima.",
+    "insight": "Stamattina Martina era accovacciata sul punto della caduta, e l'aveva negato.",
+    "lie": true
+   },
+   {
+    "id": "x2",
+    "a": "r3",
+    "b": "m3",
+    "who": "martina",
+    "reply": "Ho detto che quello scoglio era carino. Mattia esagera sempre.",
+    "insight": "È stata Martina a imporre il punto della caduta, e ha provato a scaricarlo su Mattia.",
+    "lie": true
+   }
+  ]
+ },
+ {
+  "id": "paliomurgia",
+  "title": "Scirocco non corre",
+  "place": "Masseria Pozzo Nuovo, tra Santeramo e Gioia del Colle",
+  "teaser": "Il favorito del palio sta morendo nel box. Il cane non ha abbaiato.",
+  "intro": "Scirocco è il cavallo da battere al Palio dei Casali, tra sei giorni. Stanotte alle undici la veterinaria lo trova nel box in un bagno di sudore, col cuore che batte a scatti. Vivrà, forse. Correre, mai. Il proprietario ha un nome in testa, quello del suo rivale, e ti ha chiamato per sentirselo confermare.",
+  "details": [
+   {
+    "id": "d1",
+    "label": "La mangiatoia",
+    "text": "Nella biada, frammenti di foglie verdi, lunghe e coriacee, sminuzzate a mano. Oleandro.",
+    "insight": "Scirocco è stato avvelenato con oleandro mescolato alla biada."
+   },
+   {
+    "id": "d2",
+    "label": "La siepe",
+    "text": "Lungo il viale d'ingresso, la siepe di oleandri ha rami strappati di fresco. Strappati, non tagliati. Il lattice bianco è ancora appiccicoso.",
+    "insight": "Qualcuno ha strappato l'oleandro a mani nude, poche ore fa. Il lattice irrita la pelle."
+   },
+   {
+    "id": "d3",
+    "label": "Il cancello elettrico",
+    "text": "La memoria registra: «20:47 apertura, telecomando n. 3 (fantino)». «21:12 uscita, telecomando n. 3.»",
+    "insight": "Ieri sera alle 20:47 qualcuno è entrato col telecomando del fantino, ed è rimasto 25 minuti."
+   },
+   {
+    "id": "d4",
+    "label": "Il cane",
+    "text": "Brigante, pastore maremmano, abbaia a chiunque non sia di casa. Il custode giura che ieri sera non ha fatto un verso.",
+    "insight": "Chi è entrato ieri sera era uno di casa: il cane lo conosceva."
+   },
+   {
+    "id": "d5",
+    "label": "Il biglietto del padrone",
+    "text": "Sulla bacheca della selleria, datato ieri: «Enzo, grazie di tutto. Al palio Scirocco lo monta il ragazzo.»",
+    "insight": "Ieri Enzo ha saputo che non avrebbe più montato Scirocco al palio."
+   },
+   {
+    "id": "d6",
+    "label": "L'armadietto della veterinaria",
+    "text": "Siringhe usate, un flacone di cortisone quasi finito. Nel registro dei trattamenti di Scirocco mancano due pagine, strappate.",
+    "insight": "Qualcuno ha curato Scirocco di nascosto e ha fatto sparire le pagine del registro."
+   },
+   {
+    "id": "d7",
+    "label": "Il fango del paddock",
+    "text": "Impronte fresche verso il box: stivaletti piccoli, numero 39, con la suola liscia da equitazione.",
+    "insight": "Chi è andato al box ieri sera ha il piede piccolo e porta stivali da cavaliere."
+   }
+  ],
+  "suspects": [
+   {
+    "id": "enzo",
+    "name": "Enzo Cassano",
+    "role": "Fantino, 31 anni",
+    "look": "Piccolo e asciutto, stivaletti da monta lucidi, guanti infilati in tasca.",
+    "tell": "Si strofina i palmi sui calzoni di continuo. Sono arrossati, con vesciche piccole come chicchi di riso. Ha i guanti da monta in tasca e non se li mette, nemmeno adesso che fa freddo.",
+    "questions": [
+     {
+      "id": "e1",
+      "q": "Dov'era ieri sera?",
+      "a": "A Santeramo, a cena con gli amici, dalle otto a mezzanotte. In scuderia non ci ho messo piede.",
+      "insight": "Enzo giura di non essere venuto in scuderia ieri sera."
+     },
+     {
+      "id": "e2",
+      "q": "Ieri le hanno tolto Scirocco.",
+      "req": [
+       "d5"
+      ],
+      "a": "Il padrone è libero. Ci sono altri cavalli, altri palii. Io sono giovane.",
+      "aside": "Lo dice sorridendo. Il sorriso si ferma sotto gli occhi.",
+      "insight": "Enzo ha perso la monta di Scirocco e fa finta che non conti."
+     },
+     {
+      "id": "e3",
+      "q": "Ha i palmi pieni di vesciche. Il lattice dell'oleandro fa così.",
+      "req": [
+       "d2",
+       "t_enzo"
+      ],
+      "a": "Le redini. Sono un fantino, cosa si aspetta?",
+      "aside": "Le redini fanno calli sulle dita, non vesciche sul palmo. E lui monta con i guanti: ce li ha in tasca.",
+      "insight": "Enzo mente sulle vesciche: ha strappato oleandro a mani nude.",
+      "lie": true
+     }
+    ]
+   },
+   {
+    "id": "gino",
+    "name": "Gino Pastore",
+    "role": "Allevatore rivale, 58 anni",
+    "look": "Due metri di uomo, scarpe numero 46, voce che riempie il cortile.",
+    "tell": "Urla, gesticola, ti punta il dito addosso. Ma quando parla di Scirocco malato abbassa la voce e chiede come respira. Un uomo di cavalli non gode di un cavallo che muore, nemmeno di quello dell'avversario.",
+    "questions": [
+     {
+      "id": "g1",
+      "q": "In piazza ha detto che Scirocco al palio non ci arriva.",
+      "a": "Intendevo che lo battevo io, con Tramontana! Ieri sera ero alla fiera di Foggia, col camion e due puledri. Rientrato alle due. C'è la ricevuta del casello.",
+      "insight": "Gino era a Foggia fino a notte: la ricevuta del casello lo prova."
+     },
+     {
+      "id": "g2",
+      "q": "Come funzionano le cose al palio?",
+      "a": "Male. I fantini si comprano. I rioni non pagano per vincere, pagano per far perdere gli altri. E quest'anno il rione Borgo ha soldi da buttare e paura di Scirocco.",
+      "insight": "Al palio il rione Borgo paga i fantini per far perdere Scirocco."
+     },
+     {
+      "id": "g3",
+      "q": "Il cane della masseria non ha abbaiato.",
+      "req": [
+       "d4"
+      ],
+      "a": "Brigante? Quello a me mi mangia vivo. L'anno scorso mi ha strappato un pantalone qui al cancello. Chiedete al custode.",
+      "insight": "Brigante abbaia a Gino: se fosse venuto lui avrebbe svegliato la masseria."
+     }
+    ]
+   },
+   {
+    "id": "anna",
+    "name": "Anna Mele",
+    "role": "Veterinaria, 45 anni",
+    "look": "Zoccoli di gomma, camice sporco, stetoscopio in tasca. Non dorme da ieri.",
+    "tell": "Risponde con precisione su tutto, tranne quando si parla della zampa posteriore di Scirocco: lì diventa vaga e si guarda le mani. Nasconde qualcosa sul cavallo, non sull'avvelenamento.",
+    "questions": [
+     {
+      "id": "v1",
+      "q": "Come sta Scirocco?",
+      "a": "Vivo, per ora. Il cuore batte a scatti. Al palio non ci va, questo è sicuro."
+     },
+     {
+      "id": "v2",
+      "q": "Cortisone, e due pagine strappate dal registro.",
+      "req": [
+       "d6"
+      ],
+      "a": "Un'infiammazione al garretto. Il padrone non voleva che si sapesse prima del palio, perdeva valore. Le pagine le ho strappate io. Ma il cortisone non avvelena nessuno, e io quel cavallo lo curo da quando è nato.",
+      "insight": "Anna nascondeva una cura al garretto di Scirocco per conto del proprietario.",
+      "lie": true
+     },
+     {
+      "id": "v3",
+      "q": "Chi dà la biada la sera?",
+      "a": "L'artiere, alle sei in punto. Dopo quell'ora nessuno ha motivo di toccare la mangiatoia. Le foglie ce le ha messe qualcuno dopo le sei.",
+      "insight": "L'oleandro è stato messo nella biada dopo le 18."
+     }
+    ]
+   }
+  ],
+  "bluff": {
+   "text": "Annunci che il rione Borgo ha già ammesso di aver pagato un fantino per questo palio.",
+   "reactions": {
+    "enzo": "«Quale fantino? A palio siamo dieci.» Poi chiede, piano, se il Borgo ha fatto dei nomi.",
+    "gino": "«Era ora! Lo dico da vent'anni!»",
+    "anna": "«Io di rioni non so niente. Io curo cavalli.»"
+   },
+   "insight": "Al bluff sul rione Borgo Enzo ha voluto sapere se era stato fatto il suo nome."
+  },
+  "culprit": "enzo",
+  "key": [
+   "x1",
+   "e3",
+   "d7"
+  ],
+  "solution": "Il rione Borgo aveva pagato Enzo per far perdere Scirocco. Ieri il padrone gli toglie la monta: Enzo non può più perdere apposta, e il patto salta. Allora toglie di mezzo il cavallo. Alle 20:47 entra col suo telecomando, il cane lo conosce e tace, strappa l'oleandro a mani nude e lo mescola alla biada. Le vesciche sui palmi e gli stivaletti del 39 nel fango lo tradiscono. Gino, il rivale che tutti accusano, era a Foggia; Anna nascondeva solo un garretto infiammato.",
+  "contradictions": [
+   {
+    "id": "x1",
+    "a": "e1",
+    "b": "d3",
+    "who": "enzo",
+    "reply": "Sono passato a salutarlo. Dieci minuti. Era il mio cavallo, no?",
+    "aside": "Venticinque minuti, dice il cancello. E l'ha detto solo quando ha dovuto.",
+    "insight": "Enzo è entrato in scuderia ieri sera alle 20:47, e l'aveva negato.",
+    "lie": true
+   }
+  ]
+ },
+ {
+  "id": "sedutacastellana",
+  "title": "Vieni con me",
+  "place": "Villa Fanizzi, campagne di Castellana Grotte",
+  "teaser": "Le luci si spengono. La moglie morta chiama. Il marito risponde.",
+  "intro": "Ernesto Fanizzi, 76 anni, vedovo da due, voleva risentire la voce di sua moglie Clara. Stasera, nella sua villa, il Professor Orfeo spegne le luci e la voce arriva: «Ernesto, vieni con me.» Quando le luci si riaccendono Ernesto è riverso sul tavolo, la mano stretta sullo spray per il cuore. Tutti accusano il medium. Tu i medium li conosci. Il problema è che il medium, forse, non c'entra.",
+  "details": [
+   {
+    "id": "d1",
+    "label": "Sotto il tavolo",
+    "text": "Una piccola cassa bluetooth fissata con nastro biadesivo sotto il piano, al centro.",
+    "insight": "La voce di Clara usciva da una cassa: il medium è un truffatore."
+   },
+   {
+    "id": "d2",
+    "label": "Il tavolino",
+    "text": "Una delle tre gambe ha un piolo retrattile. Basta un ginocchio, dal posto del medium, per far «alzare» il tavolo.",
+    "insight": "Il tavolo che si muove è un trucco, azionato dal posto del medium."
+   },
+   {
+    "id": "d3",
+    "label": "Lo spray di Ernesto",
+    "text": "Trinitrina sublinguale, nuovo. Pieno fino all'orlo. Uno spruzzo sulla lingua non pizzica, non brucia, non sa di niente.",
+    "insight": "Nello spray di Ernesto c'era acqua: la trinitrina vera pizzica sotto la lingua."
+   },
+   {
+    "id": "d4",
+    "label": "Il cestino del bagno",
+    "text": "Uno spray di trinitrina vecchio, mezzo pieno, scadenza fra undici mesi. Accanto, la scatola del nuovo: «Farmacia Fanizzi, Putignano».",
+    "insight": "Lo spray buono, non scaduto, è stato buttato. Quello nuovo viene dalla farmacia di Filippo."
+   },
+   {
+    "id": "d5",
+    "label": "Il contratto del medium",
+    "text": "Firmato da Ernesto la settimana scorsa: dieci sedute, 2.000 € l'una, pagamento a fine seduta. Stasera era la prima.",
+    "insight": "A Orfeo Ernesto vivo rendeva 20.000 euro. Morto, niente."
+   },
+   {
+    "id": "d6",
+    "label": "La lettera nello studio",
+    "text": "Scritta da Ernesto al suo notaio, non ancora spedita: «Chiedere a Filippo la restituzione dei 180.000 € entro il mese. Altrimenti procedere.»",
+    "insight": "Ernesto stava per chiedere indietro a Filippo 180.000 euro, anche per vie legali."
+   },
+   {
+    "id": "d7",
+    "label": "Il foglio del cardiologo",
+    "text": "Attaccato al frigo con una calamita: «In caso di dolore al petto: trinitrina sotto la lingua, subito. Evitare emozioni forti.»",
+    "insight": "In casa tutti sapevano che uno spavento poteva uccidere Ernesto, e che lo salvava solo lo spray."
+   }
+  ],
+  "suspects": [
+   {
+    "id": "orfeo",
+    "name": "Il Professor Orfeo",
+    "role": "Medium, al secolo Oronzo Pace",
+    "look": "Tunica scura, anello d'argento al pollice, voce impostata da teatro.",
+    "tell": "Ti tiene lo sguardo troppo a lungo, e ogni frase è aperta a metà: aspetta che tu la completi. Truffatore di mestiere. Ma quando guarda il corpo di Ernesto la voce da teatro gli si rompe: ha paura, e non l'aveva previsto.",
+    "questions": [
+     {
+      "id": "o1",
+      "q": "Cosa è successo al buio?",
+      "a": "Clara è venuta. L'avete sentita tutti. Ernesto ha detto «sì, amore mio» e poi... il cuore. L'emozione. Io sono solo un canale.",
+      "aside": "Parla a occhi socchiusi. Sta ancora recitando."
+     },
+     {
+      "id": "o2",
+      "q": "La voce di Clara usciva da una cassa sotto il tavolo.",
+      "req": [
+       "d1"
+      ],
+      "a": "(Un silenzio lungo.) La gente vuole una voce. Io gliela do. È teatro, non omicidio. Ernesto l'ho visto stasera per la prima volta, e stamattina ero a Lecce a fare una seduta per sei signore. Morto, mi è costato diciottomila euro.",
+      "insight": "Orfeo ammette il trucco, ma non era mai stato solo con Ernesto e la sua morte gli costa soldi.",
+      "lie": true
+     },
+     {
+      "id": "o3",
+      "q": "Chi le ha dato i dettagli su Clara?",
+      "req": [
+       "o2"
+      ],
+      "a": "Il nipote, Filippo. Mi ha cercato lui, un mese fa. Mi ha dato tutto: il soprannome, la canzone, la collana di perle. E una frase precisa da far dire a Clara: «Ernesto, vieni con me.» Su quella ha insistito.",
+      "insight": "È stato Filippo a ingaggiare Orfeo e a dettargli la frase che ha spaventato Ernesto."
+     }
+    ]
+   },
+   {
+    "id": "livia",
+    "name": "Livia Fanizzi",
+    "role": "Figlia, 44 anni",
+    "look": "Occhi gonfi, cardigan abbottonato storto, il telefono stretto nella mano sinistra.",
+    "tell": "Il pollice sinistro scorre sul telefono anche adesso, a vuoto. Quando dice «non l'ho mai lasciata» guarda il telefono, non te. Mente su qualcosa di piccolo, e se ne vergogna.",
+    "questions": [
+     {
+      "id": "l1",
+      "q": "Cosa ricorda del buio?",
+      "a": "Tenevo la mano di papà, a sinistra. Non l'ho mai lasciata. Mai.",
+      "insight": "Livia dice di non aver mai lasciato la mano del padre."
+     },
+     {
+      "id": "l2",
+      "q": "Al buio lei ha lasciato la mano di suo padre e ha preso il telefono.",
+      "req": [
+       "t_livia"
+      ],
+      "a": "(Piange.) Registravo. Volevo le prove che quel ciarlatano ci derubava. Senta. (Nella registrazione, dopo la voce di Clara, Ernesto ansima: «Lo spray... non fa niente... Filippo, non fa niente!»)",
+      "insight": "Al buio Ernesto ha usato lo spray, non ha funzionato, e ha chiamato Filippo.",
+      "lie": true
+     },
+     {
+      "id": "l3",
+      "q": "Chi ha trovato il medium?",
+      "a": "Filippo. Diceva che a papà avrebbe fatto bene sentire la mamma. Io ero contraria. Per questo ho registrato.",
+      "insight": "La seduta l'ha voluta Filippo, non Livia."
+     }
+    ]
+   },
+   {
+    "id": "filippo",
+    "name": "Filippo Fanizzi",
+    "role": "Nipote e farmacista, 39 anni",
+    "look": "Occhiali sottili, giacca grigia, mani in tasca.",
+    "tell": "Tiene le mani in tasca e le tira fuori solo per sistemarsi gli occhiali. Parla dello zio come di un bugiardino: «evento cardiaco», «soggetto a rischio». Non dice mai «zio».",
+    "questions": [
+     {
+      "id": "f1",
+      "q": "Chi ha voluto la seduta?",
+      "a": "Livia. Io ero contrario, figuriamoci. Sono un uomo di scienza.",
+      "insight": "Filippo dice che la seduta l'ha voluta Livia."
+     },
+     {
+      "id": "f2",
+      "q": "Chi si occupava dei farmaci di Ernesto?",
+      "a": "Io, da anni. Stamattina gli ho portato uno spray nuovo. Il vecchio era scaduto.",
+      "insight": "Filippo dice di aver sostituito lo spray stamattina perché quello vecchio era scaduto."
+     },
+     {
+      "id": "f3",
+      "q": "Ernesto le chiedeva indietro 180.000 euro.",
+      "req": [
+       "d6"
+      ],
+      "a": "Stavamo trattando. Il soggetto minacciava, poi perdonava. Funzionava così da sempre.",
+      "aside": "«Il soggetto». E la lettera dice «procedere»: non sembra un uomo che perdona.",
+      "insight": "Ernesto stava per chiedere a Filippo 180.000 euro: il movente."
+     },
+     {
+      "id": "f4",
+      "q": "Nello spray che lei gli ha dato c'era acqua.",
+      "req": [
+       "d3"
+      ],
+      "a": "Impossibile, era sigillato. Sarà un difetto di produzione. Capita.",
+      "aside": "Un farmacista che crede ai difetti di produzione della trinitrina.",
+      "insight": "Filippo non sa spiegare l'acqua nello spray che ha consegnato lui.",
+      "lie": true
+     }
+    ]
+   }
+  ],
+  "bluff": {
+   "text": "Annunci che il medico legale ha già notato una cosa: nessuno spray di trinitrina esce dalla fabbrica pieno fino all'orlo come quello di Ernesto.",
+   "reactions": {
+    "orfeo": "«Spray? Io di medicine non so niente, faccio spettacolo!» Alza le mani.",
+    "livia": "«Ma papà se l'è spruzzato, l'ho sentito!»",
+    "filippo": "«I flaconi da duecento dosi sono pienissimi, sono tutti così. Lo dico da professionista.» Si sistema gli occhiali due volte."
+   },
+   "insight": "Al bluff sullo spray Filippo ha difeso il flacone con un dettaglio tecnico che nessuno gli aveva chiesto."
+  },
+  "culprit": "filippo",
+  "key": [
+   "x1",
+   "f4",
+   "l2"
+  ],
+  "solution": "Il medium è un truffatore: cassa sotto il tavolo, piolo nella gamba. Ma a uccidere è stato Filippo, che doveva allo zio 180.000 euro e rischiava di finire davanti a un giudice. Un mese fa trova il medium e gli detta i ricordi di Clara e la frase «vieni con me», sapendo che quel cuore non regge uno spavento. Stamattina butta lo spray buono, non scaduto, e gli consegna un flacone della sua farmacia pieno d'acqua. Al buio Ernesto spruzza, non succede niente, e chiama Filippo. Livia l'ha registrato.",
+  "contradictions": [
+   {
+    "id": "x1",
+    "a": "f2",
+    "b": "d4",
+    "who": "filippo",
+    "reply": "Avrò letto male la data. Ero di corsa.",
+    "aside": "Un farmacista che legge male una scadenza. Sulla medicina che tiene in vita suo zio.",
+    "insight": "Filippo ha buttato uno spray buono per sostituirlo con il suo: la scadenza era una scusa.",
+    "lie": true
+   },
+   {
+    "id": "x2",
+    "a": "f1",
+    "b": "l3",
+    "who": "filippo",
+    "reply": "Va bene, l'ho proposto io. Volevo che si desse pace.",
+    "insight": "È stato Filippo a volere la seduta, e aveva provato a scaricarla su Livia.",
+    "lie": true
+   }
+  ]
+ },
+ {
+  "id": "studiodentistico",
+  "title": "Il sorriso perfetto",
+  "place": "Studio dentistico Mancuso, quartiere Poggiofranco, Bari",
+  "teaser": "Trentamila euro, o le foto vanno a due famiglie.",
+  "intro": "Il dottor Sergio Mancuso, 52 anni, dentista, sposato, ha una relazione con la sua collega di studio, Irene Caputo, anche lei sposata. Stamattina nella cassetta dello studio c'era una busta: quattro foto di loro due, di notte, nella sala 2, e una lettera. «30.000 € in contanti, o le foto arrivano a tua moglie e al marito di Irene.» Sergio non vuole la polizia. Vuole sapere chi, dei suoi, lo sta tradendo.",
+  "details": [
+   {
+    "id": "d1",
+    "label": "La lettera",
+    "text": "Stampata al computer. La carta è quella intestata dello studio, con l'intestazione tagliata via: in alto resta un filo del logo blu.",
+    "insight": "La lettera è stampata su carta dello studio: il ricattatore lavora qui."
+   },
+   {
+    "id": "d2",
+    "label": "Le foto",
+    "text": "Scattate dall'alto, dalla mensola della sala 2 dove sta la reflex per le foto dei sorrisi. Sergio si vede sempre in faccia. Irene sempre di spalle, o di profilo coperta dai capelli. In quattro scatti, mai il suo viso.",
+    "insight": "Chi ha piazzato la macchina ha fatto in modo che Irene non si riconoscesse mai."
+   },
+   {
+    "id": "d3",
+    "label": "Il registro dell'allarme",
+    "text": "Giovedì scorso: «20:58 disattivato — codice 03 (E. Barone)». «23:40 riattivato — codice 03.»",
+    "insight": "Giovedì sera qualcuno è entrato con il codice d'allarme di Elisa."
+   },
+   {
+    "id": "d4",
+    "label": "Il post-it",
+    "text": "Attaccato sotto la tastiera della reception: tutti i codici dell'allarme, scritti a penna, con una grafia tonda.",
+    "insight": "Chiunque abbia frugato alla reception può conoscere il codice di chiunque."
+   },
+   {
+    "id": "d5",
+    "label": "La chat di Sergio",
+    "text": "Te la mostra lui, a malincuore. Giovedì, 20:41, Sergio a Irene: «Entra tu, io arrivo alle nove e un quarto.» Irene: «Ok. Ti aspetto in sala 2.»",
+    "insight": "Giovedì sera Irene è entrata per prima, da sola, un quarto d'ora prima di Sergio."
+   },
+   {
+    "id": "d6",
+    "label": "La raccomandata",
+    "text": "Nella posta dello studio, per Irene, già aperta: uno studio legale di Bari. «Ricorso per separazione consensuale. Udienza fissata al 12 ottobre.»",
+    "insight": "Irene si sta già separando: la minaccia di mandare le foto a suo marito per lei non vale niente."
+   },
+   {
+    "id": "d7",
+    "label": "Le istruzioni per il pagamento",
+    "text": "In fondo alla lettera: «Contanti in una scatola per impronte. Da lasciare nel laboratorio, armadietto 4.» L'armadietto 4 è quello di Elisa.",
+    "insight": "Le istruzioni del ricatto portano dritte all'armadietto di Elisa."
+   }
+  ],
+  "suspects": [
+   {
+    "id": "elisa",
+    "name": "Elisa Barone",
+    "role": "Igienista dentale, 29 anni",
+    "look": "Divisa verde, occhiaie, una foto di un bambino attaccata al badge.",
+    "tell": "Risponde di getto, senza pause, e ti guarda in faccia anche quando la domanda è brutta. Si arrabbia sul serio quando nomini l'armadietto. È la rabbia di chi si sente incastrata.",
+    "questions": [
+     {
+      "id": "e1",
+      "q": "Giovedì sera il suo codice ha disattivato l'allarme.",
+      "req": [
+       "d3"
+      ],
+      "a": "Giovedì ero al matrimonio di mia cugina a Conversano, dalle sei all'una di notte. Trecento invitati e un videografo. Mi trovate in tutti i balli.",
+      "insight": "Giovedì sera Elisa era a un matrimonio a Conversano: alibi."
+     },
+     {
+      "id": "e2",
+      "q": "Lei ha problemi di soldi?",
+      "a": "Un mutuo e un figlio di tre anni. Chi non ne ha? Ma chi ricatta non scrive di lasciare i soldi nel suo armadietto. Sarei scema.",
+      "insight": "Elisa fa notare che le istruzioni la accusano troppo apertamente."
+     },
+     {
+      "id": "e3",
+      "q": "Chi usa la reflex della sala 2?",
+      "a": "La dottoressa Caputo. Fa le foto prima e dopo delle faccette. La regola lei, la carica lei. Se la tocchi ti uccide.",
+      "insight": "La reflex della sala 2 la usa e la regola solo Irene."
+     }
+    ]
+   },
+   {
+    "id": "irene",
+    "name": "Irene Caputo",
+    "role": "Dentista, collega di Sergio, 44 anni",
+    "look": "Camice su misura, fede ancora al dito, voce bassa e controllata.",
+    "tell": "Dice sempre «ci»: «ci ricatta», «ci rovina». Ma quando Sergio sparge le foto sul tavolo lei non le guarda nemmeno. Chi vede una foto per la prima volta la guarda. Lei le conosce già.",
+    "questions": [
+     {
+      "id": "i1",
+      "q": "Giovedì sera, come siete entrati?",
+      "a": "Mi ha aperto Sergio. Io l'allarme non l'ho toccato.",
+      "insight": "Irene dice di essere arrivata dopo Sergio e di non aver toccato l'allarme."
+     },
+     {
+      "id": "i2",
+      "q": "Nelle foto lei non si vede mai in faccia.",
+      "req": [
+       "d2"
+      ],
+      "a": "Fortuna. O forse il ricattatore vuole colpire lui, non me.",
+      "aside": "Un mezzo sorriso. Poi si ricorda che dovrebbe essere spaventata.",
+      "insight": "Il ricattatore ha protetto Irene, e lei non se ne stupisce."
+     },
+     {
+      "id": "i3",
+      "q": "Lei si sta già separando.",
+      "req": [
+       "d6"
+      ],
+      "a": "Sì. E allora? Non lo sapeva nessuno. Adesso lo sa lei.",
+      "aside": "Sergio si gira di scatto. Lui non lo sapeva.",
+      "insight": "Per Irene la minaccia era vuota: si separa già, e l'ha tenuto nascosto a Sergio.",
+      "lie": true
+     }
+    ]
+   },
+   {
+    "id": "tina",
+    "name": "Tina Sgaramella",
+    "role": "Segretaria, 47 anni",
+    "look": "Occhiali alla catenella, agenda aperta, penna dietro l'orecchio.",
+    "tell": "Sull'agenda aperta la sua grafia è tonda, con le «a» chiuse a ricciolo. Quando si parla di codici d'allarme chiude l'agenda e ci appoggia sopra la mano.",
+    "questions": [
+     {
+      "id": "s1",
+      "q": "Chi conosce i codici dell'allarme?",
+      "a": "Ognuno il suo. Io li so tutti a memoria, li ho impostati io.",
+      "insight": "Tina dice di sapere i codici a memoria."
+     },
+     {
+      "id": "s2",
+      "q": "Sotto la sua tastiera c'è un post-it con tutti i codici. Scritto da lei.",
+      "req": [
+       "d4"
+      ],
+      "a": "(Arrossisce.) Non ho memoria per i numeri, va bene? L'ha visto solo... la dottoressa Caputo, una volta. Due settimane fa. Frugava nel mio cassetto, cercava un modulo, disse.",
+      "insight": "Due settimane fa Irene ha frugato alla reception, dove c'erano tutti i codici.",
+      "lie": true
+     },
+     {
+      "id": "s3",
+      "q": "Come vanno le cose tra i due dottori?",
+      "a": "Lei voleva diventare socia al cinquanta per cento. Un mese fa lui le ha detto di no, qui, a voce alta. Lei è uscita sbattendo la porta. Il giorno dopo era tutta miele.",
+      "insight": "Un mese fa Sergio ha negato a Irene la società: il rancore c'è."
+     }
+    ]
+   }
+  ],
+  "bluff": {
+   "text": "Annunci che la reflex della sala 2 salva ogni scatto anche su una seconda scheda, e che la stai facendo leggere adesso.",
+   "reactions": {
+    "elisa": "«Magari! Così la finiamo con l'armadietto.»",
+    "irene": "«Quel modello ha uno slot solo.» Poi tace, e si guarda la fede.",
+    "tina": "«Una seconda scheda? Io non so neanche accenderla, quella.»"
+   },
+   "insight": "Al bluff della seconda scheda Irene ha corretto subito: conosce la reflex e sapeva che la copia non esisteva."
+  },
+  "culprit": "irene",
+  "key": [
+   "x1",
+   "i3",
+   "s2"
+  ],
+  "solution": "La ricattatrice è la donna nelle foto. Sergio le aveva negato la società e Irene, che si stava già separando, aveva bisogno di soldi. Due settimane fa prende il codice di Elisa dal post-it di Tina. Giovedì entra per prima con quel codice, sistema la reflex della sala 2, che usa solo lei, e inquadra in modo che il suo viso non si veda mai. Poi lettera su carta dello studio e soldi nell'armadietto di Elisa, per incastrarla. Ma Elisa quella sera ballava a Conversano, e la minaccia di scriverlo al marito di Irene non spaventava nessuno.",
+  "contradictions": [
+   {
+    "id": "x1",
+    "a": "i1",
+    "b": "d5",
+    "who": "irene",
+    "reply": "Va bene, sono entrata io. Col codice di Elisa, sì: il mio avrebbe lasciato traccia. Per discrezione.",
+    "aside": "Sergio la fissa. Del codice di Elisa non sapeva niente.",
+    "insight": "Giovedì Irene è entrata per prima, da sola, col codice di Elisa: aveva un quarto d'ora nella sala delle foto.",
+    "lie": true
+   }
+  ]
+ }
+]
