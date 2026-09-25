@@ -1,0 +1,561 @@
+<title>Il Lettore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0e1719;
+    --bg-2: #142124;
+    --line: #26393c;
+    --ink: #e7ece6;
+    --ink-2: #a9b8b3;
+    --ink-3: #6f827e;
+    --tea: #d9a441;
+    --tea-soft: rgba(217, 164, 65, 0.14);
+    --card: #ebe7da;
+    --card-ink: #1d2624;
+    --card-ink-2: #56605c;
+    --lie: #e07a5f;
+    --ok: #7fb89a;
+    --display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+    --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { background: var(--bg); }
+  body {
+    color: var(--ink);
+    font: 16px/1.55 var(--body);
+    padding-inline: 16px;
+    padding-block: 0 48px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 560px; margin: 0 auto; }
+  button { font: inherit; color: inherit; }
+  button:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--tea); outline-offset: 2px; }
+  h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; margin: 0; }
+  .eyebrow { font: 500 11px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+
+  /* Home */
+  .home-hero { padding-block: 56px 28px; display: grid; gap: 14px; }
+  .home-hero h1 { font-size: clamp(56px, 16vw, 88px); line-height: .9; letter-spacing: -.01em; }
+  .home-hero h1 em { color: var(--tea); }
+  .home-hero p { color: var(--ink-2); margin: 0; max-width: 34ch; font-size: 17px; }
+  .rules { display: grid; gap: 10px; margin-block: 8px 28px; padding: 16px 0; border-block: 1px solid var(--line); }
+  .rule { display: grid; grid-template-columns: 88px 1fr; gap: 12px; font-size: 14px; color: var(--ink-2); }
+  .rule b { font: 500 12px/1.6 var(--mono); color: var(--tea); letter-spacing: .06em; text-transform: uppercase; }
+  .case-list { display: grid; gap: 12px; }
+  .case-btn {
+    display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px;
+    text-align: left; background: var(--bg-2); border: 1px solid var(--line); border-radius: 6px;
+    padding: 18px; cursor: pointer; transition: border-color .15s;
+  }
+  .case-btn:hover { border-color: var(--tea); }
+  .case-btn .n { font: 500 11px/1 var(--mono); color: var(--ink-3); letter-spacing: .12em; }
+  .case-btn h3 { font-size: 28px; line-height: 1.1; margin-top: 6px; }
+  .case-btn p { margin: 4px 0 0; color: var(--ink-2); font-size: 14px; }
+  .stars { font: 500 14px/1 var(--mono); color: var(--tea); white-space: nowrap; }
+  .stars .off { color: var(--line); }
+  .draft-note { margin-top: 28px; color: var(--ink-3); font-size: 13px; }
+
+  /* Case header */
+  .top {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg);
+    padding-block: 12px 0; border-bottom: 1px solid var(--line);
+  }
+  .top-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .back { background: none; border: 0; color: var(--ink-2); cursor: pointer; padding: 6px 0; font-size: 14px; }
+  .budgets { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+  .chip { font: 500 12px/1 var(--mono); padding: 7px 9px; border: 1px solid var(--line); border-radius: 99px; color: var(--ink-2); white-space: nowrap; }
+  .chip b { color: var(--ink); font-weight: 500; }
+  .chip.empty b { color: var(--lie); }
+  .tabs { display: flex; gap: 4px; margin-top: 10px; overflow-x: auto; }
+  .tab {
+    background: none; border: 0; border-bottom: 2px solid transparent; padding: 10px 12px; cursor: pointer;
+    color: var(--ink-3); font-weight: 600; font-size: 14px; white-space: nowrap;
+  }
+  .tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--tea); }
+  .tab .count { font: 500 11px/1 var(--mono); color: var(--tea); margin-left: 4px; }
+
+  .case-title { padding-block: 24px 8px; display: grid; gap: 8px; }
+  .case-title h2 { font-size: clamp(34px, 9vw, 46px); line-height: 1; }
+  .lede { color: var(--ink-2); margin: 0; }
+  section.panel { display: grid; gap: 14px; padding-top: 16px; }
+  .hint { font-size: 14px; color: var(--ink-3); margin: 0; }
+
+  /* Details */
+  .detail {
+    display: grid; gap: 6px; text-align: left; width: 100%; cursor: pointer;
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 6px; padding: 14px 16px;
+  }
+  .detail:hover:not([disabled]) { border-color: var(--tea); }
+  .detail[disabled] { cursor: default; }
+  .detail .lbl { font-weight: 600; display: flex; justify-content: space-between; gap: 10px; }
+  .detail .lbl span { font: 500 11px/1.6 var(--mono); color: var(--ink-3); letter-spacing: .08em; text-transform: uppercase; }
+  .detail .txt { color: var(--ink-2); font-size: 15px; }
+  .detail.seen { border-color: var(--tea); background: var(--tea-soft); }
+  .detail.locked { opacity: .45; }
+
+  /* Suspects */
+  .suspect { border: 1px solid var(--line); border-radius: 6px; background: var(--bg-2); overflow: hidden; }
+  .suspect-head { padding: 16px; display: grid; gap: 4px; }
+  .suspect-head h3 { font-size: 28px; line-height: 1.05; }
+  .suspect-head .role { font: 500 11px/1.4 var(--mono); color: var(--ink-3); letter-spacing: .1em; text-transform: uppercase; }
+  .suspect-head p { margin: 6px 0 0; color: var(--ink-2); font-size: 15px; }
+  .suspect-body { display: grid; gap: 10px; padding: 0 16px 16px; }
+  .act {
+    text-align: left; background: none; border: 1px dashed var(--line); border-radius: 6px; padding: 11px 13px;
+    cursor: pointer; color: var(--ink); font-size: 15px;
+  }
+  .act:hover:not([disabled]) { border-color: var(--tea); border-style: solid; }
+  .act[disabled] { color: var(--ink-3); cursor: default; }
+  .act .tag { display: block; font: 500 10px/1.6 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--tea); margin-bottom: 2px; }
+  .exchange { display: grid; gap: 6px; padding: 12px 14px; border-left: 2px solid var(--tea); background: rgba(0,0,0,.18); }
+  .exchange .q { color: var(--ink-3); font-size: 14px; }
+  .exchange .a { font-family: var(--display); font-size: 20px; line-height: 1.3; }
+  .exchange .a i { font-family: var(--body); font-style: normal; font-size: 14px; color: var(--ink-3); display: block; margin-top: 4px; }
+  .reading { padding: 12px 14px; border-left: 2px solid var(--ok); background: rgba(0,0,0,.18); font-size: 15px; color: var(--ink-2); }
+  .reading b { color: var(--ok); font: 500 10px/1.8 var(--mono); letter-spacing: .1em; text-transform: uppercase; display: block; }
+
+  .bluff { border: 1px solid var(--tea); border-radius: 6px; padding: 16px; display: grid; gap: 10px; background: var(--tea-soft); }
+  .bluff h3 { font-size: 26px; }
+  .bluff p { margin: 0; color: var(--ink-2); font-size: 15px; }
+  .btn {
+    background: var(--tea); color: #1a1407; border: 0; border-radius: 6px; padding: 13px 18px;
+    font-weight: 700; cursor: pointer; font-size: 15px; justify-self: start;
+  }
+  .btn.ghost { background: none; color: var(--ink); border: 1px solid var(--line); }
+  .btn[disabled] { opacity: .4; cursor: default; }
+  .reactions { display: grid; gap: 8px; }
+  .reactions div { font-size: 15px; color: var(--ink); }
+  .reactions b { color: var(--tea); font-weight: 600; }
+
+  /* Notebook */
+  .notebook { background: var(--card); color: var(--card-ink); border-radius: 4px; padding: 20px 18px; display: grid; gap: 0;
+    background-image: repeating-linear-gradient(to bottom, transparent 0 35px, rgba(29,38,36,.1) 35px 36px); }
+  .notebook h3 { font-size: 26px; margin-bottom: 6px; }
+  .note { display: grid; grid-template-columns: 22px 1fr; gap: 8px; padding-block: 8px; font-size: 15px; line-height: 1.45; }
+  .note .src { font: 500 10px/1.9 var(--mono); color: var(--card-ink-2); text-transform: uppercase; letter-spacing: .08em; }
+  .note .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--card-ink-2); margin-top: 7px; }
+  .note.lie .dot { background: var(--lie); }
+  .empty-nb { color: var(--card-ink-2); font-style: italic; font-size: 15px; }
+
+  /* Accuse */
+  .pick { display: grid; gap: 8px; }
+  .opt {
+    text-align: left; background: var(--bg-2); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px;
+    cursor: pointer; font-size: 15px;
+  }
+  .opt[aria-pressed="true"] { border-color: var(--tea); background: var(--tea-soft); }
+  .opt small { display: block; color: var(--ink-3); font: 500 10px/1.8 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+
+  /* Result */
+  .result { padding-block: 32px 8px; display: grid; gap: 16px; }
+  .verdict { font-family: var(--display); font-size: clamp(44px, 12vw, 64px); line-height: .95; }
+  .verdict.bad { color: var(--lie); }
+  .big-stars { font: 500 28px/1 var(--mono); color: var(--tea); letter-spacing: .1em; }
+  .big-stars .off { color: var(--line); }
+  .explain { background: var(--card); color: var(--card-ink); border-radius: 4px; padding: 18px; font-size: 15px; display: grid; gap: 10px; }
+  .explain p { margin: 0; }
+  .score-lines { display: grid; gap: 6px; font-size: 14px; color: var(--ink-2); }
+  .score-lines div::before { content: "— "; color: var(--ink-3); }
+  .share-box { width: 100%; min-height: 110px; background: var(--bg-2); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 12px; font: 13px/1.5 var(--mono); resize: none; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .toast { font-size: 14px; color: var(--ok); min-height: 1.4em; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { animation: rise .35s ease-out both; }
+    @keyframes rise { from { transform: translateY(6px); opacity: .3; } to { transform: none; opacity: 1; } }
+  }
+</style>
+
+<div class="wrap" id="app"></div>
+
+<script>
+const CASES = [
+{
+  id: "rolex",
+  title: "Il Rolex del notaio",
+  place: "Masseria Ruggiero, Valle d'Itria",
+  teaser: "Settant'anni, trenta invitati, un orologio sparito dal comodino.",
+  intro: "Il notaio Ruggiero festeggia i settant'anni nella sua masseria. A fine cena si accorge che il suo Rolex d'epoca, 40.000 euro, non è più sul comodino della camera al piano di sopra. Nessuno ha lasciato la festa. I sospetti del notaio sono tre, e ti ha chiamato perché la polizia, dice lui, «fa troppe domande e guarda troppo poco».",
+  details: [
+    { id: "d1", label: "La finestra della camera", text: "Aperta. Sul davanzale polvere e polline gialli, intatti.", insight: "Nessuno è entrato dalla finestra: il ladro è uno della casa." },
+    { id: "d2", label: "Il cassetto del comodino", text: "La scatola dell'orologio è stata rimessa nel cassetto, chiusa con cura.", insight: "Il ladro sapeva dove cercare e non aveva fretta." },
+    { id: "d3", label: "Il prato", text: "L'irrigazione automatica è partita alle 21:30. Il prato tra la casa e il parcheggio è fradicio.", insight: "Chi è andato verso le auto dopo le 21:30 si è bagnato le scarpe." },
+    { id: "d4", label: "Il telefono di Davide", text: "Lasciato sul tavolo. Notifiche di un'app di scommesse: «Saldo insufficiente».", insight: "Davide ha debiti di gioco." },
+    { id: "d5", label: "Il parcheggio", text: "Tre mezzi degli ospiti: la moto di Davide, la Panda di Ilenia, una berlina grigia di Franco Lattanzi.", insight: "L'unica auto scura nel parcheggio è la berlina grigia di Franco." },
+    { id: "d6", label: "Il bagno di sotto", text: "Cartello scritto a mano: «Guasto, usate quello di sopra».", insight: "Tutti sono saliti di sopra almeno una volta: salire non prova niente." },
+    { id: "d7", label: "La foto sul mobile", text: "Bianco e nero, 1979. Il notaio giovane a un tavolo da gioco con un altro uomo. Didascalia: «Con Vito Lattanzi, Circolo Unione». Al polso di Vito, lo stesso Rolex.", insight: "Nel 1979 l'orologio era al polso di Vito Lattanzi, il padre di Franco." }
+  ],
+  suspects: [
+    { id: "davide", name: "Davide Ruggiero", role: "Nipote, 28 anni", look: "Gamba che batte sotto il tavolo, telefono sempre in mano.",
+      tell: "Guarda dritto negli occhi quando parla dello zio. Si irrigidisce solo quando si parla di soldi. È vergogna, non colpa.",
+      questions: [
+        { id: "a1", q: "Dov'era durante la cena?", a: "A tavola. Sono salito una volta verso le nove, il bagno di sotto è rotto. Come tutti." },
+        { id: "a2", q: "Il suo telefono dice che ha debiti di gioco.", req: ["d4"], a: "Ottomila euro. Sì. Ma lo zio me li aveva già promessi stasera, prima del dolce. Me li dava lunedì. Perché dovrei rubargli un orologio?", insight: "Lo zio aveva già promesso a Davide il prestito: rubare non gli serviva." },
+        { id: "a3", q: "Cosa sa dell'orologio?", a: "Che lo zio non se lo toglie mai. Stasera l'ha lasciato di sopra perché il cinturino gli stringeva." }
+      ] },
+    { id: "ilenia", name: "Ilenia Carone", role: "Cameriera di sala, 23 anni", look: "Composta, professionale. Serve dalla cucina da inizio serata.",
+      tell: "Mani dietro la schiena, postura da sala. Quando nomini Davide abbassa lo sguardo e trattiene un sorriso. Nasconde qualcosa, ma è una cosa che la fa sorridere.",
+      questions: [
+        { id: "i1", q: "È salita al piano di sopra stasera?", a: "Una volta, alle 21:15, per portare un bicchiere d'acqua al notaio per la pillola. L'orologio era sul comodino, l'ho visto io.", insight: "Alle 21:15 l'orologio era ancora sul comodino." },
+        { id: "i2", q: "Che rapporto ha con Davide?", a: "Siamo usciti insieme un paio di volte. Non l'ho detto perché qui lavoro e non voglio chiacchiere.", insight: "Ilenia e Davide si frequentano: ecco il suo imbarazzo." },
+        { id: "i3", q: "Dalla cucina si vede il parcheggio. Ha notato qualcosa?", a: "Verso le dieci meno un quarto si è accesa la luce dentro una macchina scura. Ho pensato che qualcuno stesse andando via. Poi la luce si è spenta e non è partito nessuno.", insight: "Alle 21:45 qualcuno è andato a una macchina scura ed è tornato alla festa." }
+      ] },
+    { id: "franco", name: "Franco Lattanzi", role: "Socio dello studio, 66 anni", look: "Elegante, giacca di lino, scarpe di camoscio. Calmo.",
+      tell: "Calmo, forse troppo. Ha le gambe accavallate e la punta delle scarpe di camoscio ha aloni scuri d'acqua. Il camoscio si macchia solo sul bagnato.",
+      questions: [
+        { id: "f1", q: "Si è mosso dalla tavola durante la cena?", a: "Una volta sola, per il bagno di sopra. Fuori non sono uscito, se è questo che mi chiede.", insight: "Franco giura di non essere mai uscito di casa." },
+        { id: "f2", q: "Da quanto conosce il notaio?", a: "Quarant'anni. Prima di essere il mio socio era amico di mio padre. Giocavano a carte insieme, al circolo." },
+        { id: "f3", q: "Nella foto del '79 suo padre porta lo stesso Rolex. Come mai?", req: ["d7"], a: "(Un silenzio lungo.) Mio padre l'ha perso a carte con lui. Una sera sola. Tutto quello che aveva al polso. Non ne ha mai più parlato, fino alla morte.", insight: "Movente: l'orologio era del padre di Franco, perso a carte col notaio.", lie: true },
+        { id: "f4", q: "Il prato è bagnato dalle 21:30 e le sue scarpe hanno aloni d'acqua. Dov'è andato?", req: ["d3", "t_franco"], a: "Sarò passato sull'erba mentre fumavo in terrazza.", aside: "La terrazza è lastricata e non tocca il prato. Lo sa anche lui. Tace.", insight: "Franco mente: dopo le 21:30 ha attraversato il prato verso il parcheggio.", lie: true }
+      ] }
+  ],
+  bluff: {
+    text: "Annunci ad alta voce che nel cinturino c'è un localizzatore e che tra dieci minuti sapremo dov'è l'orologio.",
+    reactions: {
+      davide: "«Meglio, così la smettete di guardare me.» Sollievo sincero.",
+      ilenia: "Continua a sparecchiare. Nessuna reazione.",
+      franco: "Si alza per prendere la giacca, poi ci ripensa e si risiede. Chiede quanto è preciso, un localizzatore."
+    },
+    insight: "Al bluff del localizzatore solo Franco si è mosso, verso la giacca con le chiavi della macchina."
+  },
+  culprit: "franco",
+  key: ["f4", "i3", "t_franco"],
+  solution: "Franco è salito «al bagno» e ha preso l'orologio dal comodino, rimettendo la scatola nel cassetto come chi conosce la casa. Alle 21:45 ha attraversato il prato appena irrigato per nasconderlo nella sua berlina: Ilenia ha visto la luce interna accendersi, il camoscio delle sue scarpe si è macchiato. Il movente sta nella foto del 1979: quell'orologio suo padre l'aveva perso a carte proprio con il notaio. Franco non l'ha rubato. Secondo lui se l'è ripreso."
+},
+{
+  id: "frantoio",
+  title: "La partita 14",
+  place: "Frantoio Scarano, campagne di Bitonto",
+  teaser: "Un frantoiano ai piedi del silo. Sembra un incidente.",
+  intro: "All'alba del primo giorno di raccolta, Nicola Scarano, 67 anni, viene trovato morto ai piedi della scala del silo. I carabinieri parlano di caduta. Il figlio non ci crede e ti ha chiamato. Sul piazzale ci sono tre persone che avevano motivi per odiarlo, o per temerlo.",
+  details: [
+    { id: "d1", label: "La scala del silo", text: "Nicola è a terra ai piedi della scala. Sui pioli non c'è una traccia di fango, mentre le sue scarpe sono impastate di terra del piazzale.", insight: "Nicola non è salito su quella scala: la caduta è una messinscena." },
+    { id: "d2", label: "Il registro delle molature", text: "Ultima riga, grafia di Nicola, ore 23:40: «Partita 14: NON certificare. Chiamare la Greco.»", insight: "Poco prima di morire Nicola ha bloccato la partita 14 e voleva parlare con Marta Greco." },
+    { id: "d3", label: "Il bicchiere blu", text: "Sul banco d'assaggio, un bicchiere blu da degustazione, di quelli che usano solo gli assaggiatori professionisti. Il fondo è ancora lucido d'olio.", insight: "Stanotte qualcuno ha assaggiato olio qui, con un bicchiere da professionista." },
+    { id: "d4", label: "Il cancello", text: "Il lucchetto è stato aperto con la chiave. Nessun segno di scasso.", insight: "Chi è entrato stanotte aveva la chiave." },
+    { id: "d5", label: "L'offerta d'acquisto", text: "Sulla scrivania, un'offerta da 2 milioni di una multinazionale dell'olio. Firmata da Antonio. Manca la firma del padre.", insight: "Antonio voleva vendere il frantoio, il padre no." },
+    { id: "d6", label: "La bacheca delle chiavi", text: "Un mazzo con l'etichetta «Pinto, restituite ieri ore 18».", insight: "Sandro ha restituito le chiavi ieri pomeriggio." },
+    { id: "d7", label: "Il telefono di Nicola", text: "Ultima chiamata in uscita alle 23:45, a «Marta Greco». Durata 41 secondi.", insight: "Alle 23:45 Nicola ha chiamato Marta Greco." }
+  ],
+  suspects: [
+    { id: "antonio", name: "Antonio Scarano", role: "Figlio, 35 anni", look: "Occhi rossi, felpa infilata al contrario. È lui che ti ha chiamato.",
+      tell: "Le lacrime arrivano quando ricorda il padre da vivo, non quando si parla di soldi. Il senso di colpa c'è, ma riguarda l'ultima lite, non la morte.",
+      questions: [
+        { id: "a1", q: "Dov'era stanotte?", a: "A casa. Mia figlia aveva la febbre, alle due ho chiamato la guardia medica. Potete controllare.", insight: "Antonio ha un alibi verificabile: la chiamata delle due alla guardia medica." },
+        { id: "a2", q: "Lei voleva vendere, suo padre no.", req: ["d5"], a: "Sì. Ieri ci siamo urlati addosso. L'ultima cosa che gli ho detto è stata «sei un vecchio testardo».", aside: "Si copre la faccia con le mani. Il pianto è vero." },
+        { id: "a3", q: "Chi ha le chiavi del frantoio?", a: "Io, papà e Marta Greco, la consulente. Le servono per i campionamenti. Sandro le aveva fino a ieri.", insight: "Le chiavi le hanno Antonio, Nicola e Marta. Sandro le aveva fino a ieri." }
+      ] },
+    { id: "sandro", name: "Sandro Pinto", role: "Operaio, licenziato ieri", look: "Mani grandi, voce alta. Si è presentato da solo appena ha saputo.",
+      tell: "Alza la voce e ti guarda in faccia. È la rabbia rumorosa di chi si sente accusato ingiustamente. Chi mente di solito abbassa il volume.",
+      questions: [
+        { id: "s1", q: "Perché l'hanno licenziata?", a: "Perché ho detto che la partita 14 puzzava di olio di semi. Mi ha dato del bugiardo. Poi ieri sera alle undici mi scrive: «Avevi ragione tu. Domani sistemo tutto.» Guardi, è qui.", insight: "Ieri sera Nicola ha scoperto che la partita 14 era tagliata con olio di semi." },
+        { id: "s2", q: "Dov'era stanotte?", a: "Al bar Centrale fino all'una, poi a casa. Chiedete a Mimmo, il barista." },
+        { id: "s3", q: "Chi certifica l'olio che esce da qui?", a: "La Greco. Assaggia lei e firma lei. Tutto quello che esce da qui come extravergine passa dalla sua firma.", insight: "Marta firma le certificazioni: la partita 14 l'avrebbe firmata lei." }
+      ] },
+    { id: "marta", name: "Marta Greco", role: "Assaggiatrice e consulente, 42 anni", look: "Impeccabile anche all'alba. Profumo costoso, taccuino in pelle.",
+      tell: "Risponde prima che tu finisca la domanda: risposte preparate. Quando si nomina il registro si sistema un orecchino che era già a posto.",
+      questions: [
+        { id: "m1", q: "Quando ha visto Nicola l'ultima volta?", a: "Ieri alle otto di sera, qui. Poi sono andata a casa. Da sola, purtroppo.", insight: "Marta dice di essere andata via alle 20 e di non essere più tornata." },
+        { id: "m2", q: "Nicola l'ha chiamata alle 23:45. Che cosa voleva?", req: ["d7"], a: "Ah, la chiamata. Parlavamo della raccolta di domani. Quaranta secondi, niente di importante.", insight: "Marta aveva taciuto la telefonata delle 23:45.", lie: true },
+        { id: "m3", q: "C'è un suo bicchiere da assaggio ancora lucido d'olio.", req: ["d3", "m1"], a: "Ne lascio sempre qualcuno in giro. Sarà di ieri pomeriggio.", aside: "In dodici ore l'olio su un bicchiere si opacizza e fa la pellicola. Questo brilla.", insight: "Marta mente: ha assaggiato olio qui stanotte, dopo la chiamata.", lie: true },
+        { id: "m4", q: "Parliamo della partita 14.", req: ["d2"], a: "Io certifico quello che assaggio. Punto.", aside: "Poi, dopo un attimo: «Chi le ha parlato della partita 14?»", insight: "Sulla partita 14 Marta non si difende: vuole sapere chi ha parlato." }
+      ] }
+  ],
+  bluff: {
+    text: "Dici che la settimana scorsa Nicola aveva fatto installare una telecamera nel magazzino, e che non lo sapeva nessuno.",
+    reactions: {
+      antonio: "«Papà? Una telecamera? Non si fidava nemmeno del bancomat.»",
+      sandro: "«Meglio! Guardatela, così la finite con me.»",
+      marta: "Chiede, con voce neutra, se la telecamera registra anche l'audio. Nessun altro lo chiede."
+    },
+    insight: "Al bluff della telecamera Marta ha chiesto dell'audio: le preoccupa quello che si è detto, non quello che si è visto."
+  },
+  culprit: "marta",
+  key: ["m3", "m2"],
+  solution: "Sandro aveva ragione: la partita 14 era tagliata con olio di semi e Marta l'aveva certificata extravergine per un compratore che la pagava bene. Ieri sera Nicola se ne accorge, blocca la partita sul registro e alle 23:45 la chiama. Marta arriva con la sua chiave e assaggia l'olio davanti a lui per convincerlo che sbaglia. Nicola minaccia di denunciarla. Lei lo colpisce e trascina il corpo ai piedi del silo per simulare una caduta, ma sui pioli non c'è il fango delle sue scarpe. E il bicchiere blu è rimasto sul banco."
+},
+{
+  id: "veggente",
+  title: "La veggente di Polignano",
+  place: "Villa sulla scogliera, Polignano a Mare",
+  teaser: "Una profezia di morte. Tre giorni dopo, la morte.",
+  intro: "«Morirai vicino all'acqua, prima della luna piena.» Madame Serena l'aveva detto a Riccardo Dell'Aquila, 49 anni, durante una seduta a casa sua. Ieri notte, due giorni prima della luna piena, Riccardo è precipitato dalla terrazza sulla scogliera. In paese parlano di maledizione. Tu delle veggenti hai un'opinione precisa.",
+  details: [
+    { id: "d1", label: "La ringhiera", text: "Ferro battuto, alta un metro e dieci, intatta. Sotto, venti metri di scogliera.", insight: "Da lì non si inciampa: bisogna scavalcare o essere sollevati." },
+    { id: "d2", label: "Due bicchierini", text: "Sul tavolino, due bicchierini di limoncello. Sul fondo di uno, un velo di polvere bianca che il limoncello non ha sciolto.", insight: "Nel limoncello di Riccardo c'era qualcosa. Forse un sedativo." },
+    { id: "d3", label: "L'home banking", text: "Sul tablet di casa, l'app della banca aperta: bonifico di 3.000 € da Giulia a «S. Lorusso», due settimane fa. Causale: «consulenza».", insight: "Giulia ha pagato 3.000 € a una certa S. Lorusso." },
+    { id: "d4", label: "Il biglietto della profezia", text: "Scritto a mano dalla veggente: «Acqua. Luna piena. Un tradimento. La lettera R.»", insight: "Profezia vaga, adatta a chiunque. Tranne la R: quella è un'informazione, non una visione." },
+    { id: "d5", label: "La polizza", text: "In un cassetto dello studio: polizza vita da 800.000 €, stipulata quattro mesi fa. Beneficiaria: Giulia.", insight: "Giulia incassa 800.000 € dalla morte di Riccardo." },
+    { id: "d6", label: "Il messaggio di Marco", text: "Sul telefono di Riccardo, dal fratello Marco: «Se non mi dai tempo per quei soldi te ne penti.»", insight: "Marco doveva soldi a Riccardo e l'ha minacciato." },
+    { id: "d7", label: "Il flacone in bagno", text: "Sonnifero prescritto a Giulia dieci giorni fa. Confezione da 30 compresse, ne restano 4.", insight: "In dieci giorni sono sparite 26 compresse di sonnifero." }
+  ],
+  suspects: [
+    { id: "serena", name: "Madame Serena", role: "Veggente, al secolo S. Lorusso", look: "Anelli a ogni dito, voce bassa. È venuta a «portare conforto».",
+      tell: "Mentre tu la studi, lei studia te: frasi aperte, pause, aspetta la tua reazione per capire dove andare. È una truffatrice, su questo non ci sono dubbi. Ma quando si parla della morte il trucco si ferma: ha paura vera.",
+      questions: [
+        { id: "v1", q: "Come ha previsto la morte di Riccardo?", a: "Le carte parlano a chi sa ascoltare. Lei, per esempio: ha perso qualcuno di importante, vero? Lo vedo.", aside: "Lettura a freddo da manuale: vale per chiunque." },
+        { id: "v2", q: "Da dove viene la R della profezia?", req: ["d4"], a: "Dalle carte!", aside: "Troppo in fretta. E per un istante guarda Giulia.", insight: "Alla domanda sulla R Serena ha guardato Giulia." },
+        { id: "v3", q: "Lei è S. Lorusso. Giulia le ha versato 3.000 euro.", req: ["d3"], a: "Va bene. Mi ha pagata per spaventarlo. Diceva che lui usciva in barca ubriaco e voleva che smettesse. I dettagli me li ha dati lei: l'acqua, la luna piena, la R. Io leggo le carte, non ammazzo la gente.", insight: "Giulia ha pagato la veggente e le ha dettato la profezia.", lie: true }
+      ] },
+    { id: "giulia", name: "Giulia Dell'Aquila", role: "Moglie, 44 anni", look: "Occhiali scuri in casa. Un fazzoletto stretto in mano, asciutto.",
+      tell: "Il dolore arriva in ritardo: prima le frasi pratiche, poi le lacrime, come se si ricordasse di doverle aggiungere. Quando si parla della profezia le spalle si rilassano.",
+      questions: [
+        { id: "g1", q: "Cosa è successo ieri sera?", a: "Un limoncello in terrazza, come ogni sera. Li ho versati io. Alle undici sono andata a letto. Riccardo era sconvolto dalla profezia, non dormiva più. Forse si è buttato. O è caduto.", insight: "Giulia ha versato i limoncelli e suggerisce il suicidio." },
+        { id: "g2", q: "Mancano 26 sonniferi in dieci giorni.", req: ["d7"], a: "Dormo male. Da mesi. Lo sanno tutti che dormo male.", insight: "Giulia non sa spiegare le 26 compresse sparite.", lie: true },
+        { id: "g3", q: "Parliamo della polizza da 800.000 euro.", req: ["d5"], a: "L'ha voluta lui. Io non volevo nemmeno firmare. L'ha voluta lui.", aside: "Ripete la stessa frase due volte. Una risposta provata allo specchio.", insight: "Sulla polizza Giulia ha una risposta preparata." }
+      ] },
+    { id: "marco", name: "Marco Dell'Aquila", role: "Fratello, 45 anni", look: "Tuta da lavoro del porto, arrivato di corsa da Bari.",
+      tell: "Guarda il pavimento quando si parla di soldi e alza gli occhi quando si parla del fratello. È vergogna per il debito. Il dolore è vero.",
+      questions: [
+        { id: "k1", q: "Ha minacciato suo fratello.", req: ["d6"], a: "Gli dovevo ventimila euro, gli ho scritto una cosa stupida. Ieri notte ero di turno al porto di Bari, dalle dieci alle sei. Ci sono le timbrature.", insight: "Marco ha un alibi: il turno di notte al porto, con le timbrature." },
+        { id: "k2", q: "Riccardo credeva alla veggente?", a: "Riccardo? Rideva degli oroscopi. È Giulia che ha voluto portarla in casa. Insisteva.", insight: "È stata Giulia a volere la seduta con la veggente." },
+        { id: "k3", q: "Com'era il loro matrimonio?", a: "Da un anno dormivano in stanze separate. Lui parlava di separazione.", insight: "Riccardo pensava di separarsi da Giulia." }
+      ] }
+  ],
+  bluff: {
+    text: "Annunci che l'autopsia ha già trovato un sedativo nel sangue di Riccardo.",
+    reactions: {
+      serena: "«Sedativo?» Impallidisce. Non lo sapeva.",
+      giulia: "«Li prendeva anche lui, ogni tanto, per dormire.» Risponde subito, a una domanda che nessuno le ha fatto.",
+      marco: "«Sedato? Allora qualcuno l'ha aiutato a cadere.»"
+    },
+    insight: "Al bluff del sedativo Giulia ha giustificato la cosa prima ancora che qualcuno la accusasse."
+  },
+  culprit: "giulia",
+  key: ["v3", "g2", "d2"],
+  solution: "Giulia ha costruito la maledizione. Ha pagato Serena per una profezia su misura (acqua, luna piena, la R di Riccardo) così che una morte sulla scogliera sembrasse destino, o suicidio. Ieri sera ha versato lei i limoncelli, con dentro le compresse del suo sonnifero. Quando Riccardo si è addormentato l'ha portato alla ringhiera. Il movente: la polizza da 800.000 € e una separazione in arrivo. La veggente è una truffatrice, ma non un'assassina."
+}
+];
+
+const BUDGET = { eye: 4, questions: 6, good: 4 };
+
+const store = {
+  get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+};
+
+const app = document.getElementById("app");
+let S = null; // current case state
+
+function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+function starStr(n) { return "★".repeat(n) + '<span class="off">' + "★".repeat(3 - n) + "</span>"; }
+
+function home() {
+  S = null;
+  const best = store.get("lettore-best") || {};
+  app.innerHTML = `
+    <header class="home-hero">
+      <span class="eyebrow">Un gioco di osservazione</span>
+      <h1>Il <em>Lettore</em></h1>
+      <p>Non ho poteri. Guardo le persone finché non mi dicono la verità, anche quando parlano d'altro.</p>
+    </header>
+    <div class="rules">
+      <div class="rule"><b>Occhio ${BUDGET.eye}</b><span>Sulla scena puoi esaminare solo ${BUDGET.eye} dettagli su 7. Scegli bene.</span></div>
+      <div class="rule"><b>Domande ${BUDGET.questions}</b><span>Hai ${BUDGET.questions} domande in tutto. Alcune si sbloccano solo se hai visto il dettaglio giusto.</span></div>
+      <div class="rule"><b>Leggi</b><span>Osservare un sospettato è gratis. Il corpo parla prima della bocca.</span></div>
+      <div class="rule"><b>Bluff</b><span>Un solo trucco per caso: dici una bugia a tutti e guardi chi si muove.</span></div>
+    </div>
+    <div class="case-list">
+      ${CASES.map((c, i) => `
+        <button class="case-btn" data-case="${i}">
+          <div>
+            <div class="n">CASO ${i + 1} · ${esc(c.place.toUpperCase())}</div>
+            <h3>${esc(c.title)}</h3>
+            <p>${esc(c.teaser)}</p>
+          </div>
+          <div class="stars" aria-label="${best[c.id] || 0} stelle su 3">${starStr(best[c.id] || 0)}</div>
+        </button>`).join("")}
+    </div>
+    <p class="draft-note">Bozza di prova. Tre casi, nessuna grafica definitiva.</p>`;
+  app.querySelectorAll("[data-case]").forEach(b => b.onclick = () => start(+b.dataset.case));
+  window.scrollTo(0, 0);
+}
+
+function start(i) {
+  S = { i, c: CASES[i], tab: "scena", seen: [], read: [], asked: [], bluff: false, accuse: { who: null, ev: null } };
+  render();
+  window.scrollTo(0, 0);
+}
+
+function notes() {
+  const c = S.c, out = [];
+  c.details.forEach(d => { if (S.seen.includes(d.id)) out.push({ id: d.id, src: "Scena", text: d.insight }); });
+  c.suspects.forEach(s => {
+    if (S.read.includes(s.id)) out.push({ id: "t_" + s.id, src: s.name.split(" ")[0] + ", osservato", text: s.tell });
+    s.questions.forEach(q => { if (S.asked.includes(q.id) && q.insight) out.push({ id: q.id, src: s.name.split(" ")[0] + ", interrogato", text: q.insight, lie: q.lie }); });
+  });
+  if (S.bluff) out.push({ id: "bluff", src: "Bluff", text: c.bluff.insight });
+  return out;
+}
+function have(id) {
+  if (id.startsWith("t_")) return S.read.includes(id.slice(2));
+  return S.seen.includes(id) || S.asked.includes(id);
+}
+
+function render() {
+  const c = S.c;
+  const eyeLeft = BUDGET.eye - S.seen.length, qLeft = BUDGET.questions - S.asked.length;
+  const nb = notes();
+  app.innerHTML = `
+    <div class="top">
+      <div class="top-row">
+        <button class="back" id="back">← Casi</button>
+        <div class="budgets">
+          <span class="chip ${eyeLeft ? "" : "empty"}">Occhio <b>${eyeLeft}</b>/${BUDGET.eye}</span>
+          <span class="chip ${qLeft ? "" : "empty"}">Domande <b>${qLeft}</b>/${BUDGET.questions}</span>
+        </div>
+      </div>
+      <div class="tabs" role="tablist">
+        ${[["scena", "Scena"], ["sospetti", "Sospettati"], ["taccuino", "Taccuino", nb.length], ["accusa", "Accusa"]].map(([k, l, n]) =>
+          `<button class="tab" role="tab" aria-selected="${S.tab === k}" data-tab="${k}">${l}${n ? `<span class="count">${n}</span>` : ""}</button>`).join("")}
+      </div>
+    </div>
+    <div class="case-title">
+      <span class="eyebrow">Caso ${S.i + 1} · ${esc(c.place)}</span>
+      <h2>${esc(c.title)}</h2>
+    </div>
+    ${S.tab === "scena" ? scena(eyeLeft) : S.tab === "sospetti" ? sospetti(qLeft) : S.tab === "taccuino" ? taccuino(nb) : accusa(nb)}`;
+  app.querySelector("#back").onclick = home;
+  app.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { S.tab = b.dataset.tab; render(); });
+  bind();
+}
+
+function scena(eyeLeft) {
+  const c = S.c;
+  return `<section class="panel">
+    <p class="lede">${esc(c.intro)}</p>
+    <p class="hint">Tocca un dettaglio per esaminarlo. Te ne restano ${eyeLeft}.</p>
+    ${c.details.map(d => {
+      const seen = S.seen.includes(d.id), locked = !seen && eyeLeft === 0;
+      return `<button class="detail ${seen ? "seen reveal" : ""} ${locked ? "locked" : ""}" data-detail="${d.id}" ${seen || locked ? "disabled" : ""}>
+        <div class="lbl">${esc(d.label)}<span>${seen ? "Esaminato" : locked ? "Occhio esaurito" : "Esamina"}</span></div>
+        ${seen ? `<div class="txt">${esc(d.text)}</div>` : ""}
+      </button>`;
+    }).join("")}
+  </section>`;
+}
+
+function sospetti(qLeft) {
+  const c = S.c;
+  return `<section class="panel">
+    <p class="hint">Osservare è gratis. Ogni domanda consuma una delle ${BUDGET.questions}. Te ne restano ${qLeft}.</p>
+    ${c.suspects.map(s => `
+      <article class="suspect">
+        <div class="suspect-head">
+          <span class="role">${esc(s.role)}</span>
+          <h3>${esc(s.name)}</h3>
+          <p>${esc(s.look)}</p>
+        </div>
+        <div class="suspect-body">
+          ${S.read.includes(s.id)
+            ? `<div class="reading reveal"><b>Lettura</b>${esc(s.tell)}</div>`
+            : `<button class="act" data-read="${s.id}"><span class="tag">Gratis</span>Osservalo in silenzio</button>`}
+          ${s.questions.map(q => {
+            if (S.asked.includes(q.id)) return `<div class="exchange reveal"><div class="q">${esc(q.q)}</div><div class="a">«${esc(q.a)}»${q.aside ? `<i>${esc(q.aside)}</i>` : ""}</div></div>`;
+            const ok = (q.req || []).every(have);
+            if (!ok) return "";
+            return `<button class="act" data-ask="${q.id}" ${qLeft ? "" : "disabled"}>${q.req ? `<span class="tag">Nuova domanda</span>` : ""}${esc(q.q)}</button>`;
+          }).join("")}
+        </div>
+      </article>`).join("")}
+    <div class="bluff">
+      <span class="eyebrow">Il trucco · uno per caso</span>
+      <h3>Il bluff</h3>
+      <p>${esc(c.bluff.text)}</p>
+      ${S.bluff
+        ? `<div class="reactions reveal">${c.suspects.map(s => `<div><b>${esc(s.name.split(" ")[0])}:</b> ${esc(c.bluff.reactions[s.id])}</div>`).join("")}</div>`
+        : `<button class="btn" id="bluff">Fai il bluff</button>`}
+    </div>
+  </section>`;
+}
+
+function taccuino(nb) {
+  return `<section class="panel">
+    <div class="notebook">
+      <h3>Taccuino</h3>
+      ${nb.length ? nb.map(n => `<div class="note ${n.lie ? "lie" : ""}"><span class="dot"></span><div><div class="src">${esc(n.src)}${n.lie ? " · bugia o segreto" : ""}</div>${esc(n.text)}</div></div>`).join("")
+        : `<p class="empty-nb">Ancora niente. Esamina la scena e osserva i sospettati.</p>`}
+    </div>
+  </section>`;
+}
+
+function accusa(nb) {
+  const c = S.c, a = S.accuse;
+  return `<section class="panel">
+    <p class="hint">Scegli il colpevole e la prova che lo inchioda. Puoi citare solo quello che hai nel taccuino.</p>
+    <span class="eyebrow">Il colpevole è</span>
+    <div class="pick">${c.suspects.map(s => `<button class="opt" data-who="${s.id}" aria-pressed="${a.who === s.id}"><small>${esc(s.role)}</small>${esc(s.name)}</button>`).join("")}</div>
+    <span class="eyebrow">La prova decisiva</span>
+    <div class="pick">${nb.length ? nb.map(n => `<button class="opt" data-ev="${n.id}" aria-pressed="${a.ev === n.id}"><small>${esc(n.src)}</small>${esc(n.text)}</button>`).join("")
+      : `<p class="hint">Il taccuino è vuoto: senza prove puoi solo tirare a indovinare.</p>`}</div>
+    <button class="btn" id="accuse" ${a.who ? "" : "disabled"}>Accusa</button>
+  </section>`;
+}
+
+function bind() {
+  app.querySelectorAll("[data-detail]").forEach(b => b.onclick = () => {
+    if (S.seen.length < BUDGET.eye) { S.seen.push(b.dataset.detail); render(); }
+  });
+  app.querySelectorAll("[data-read]").forEach(b => b.onclick = () => { S.read.push(b.dataset.read); render(); });
+  app.querySelectorAll("[data-ask]").forEach(b => b.onclick = () => {
+    if (S.asked.length < BUDGET.questions) { S.asked.push(b.dataset.ask); render(); }
+  });
+  const bl = app.querySelector("#bluff");
+  if (bl) bl.onclick = () => { S.bluff = true; render(); };
+  app.querySelectorAll("[data-who]").forEach(b => b.onclick = () => { S.accuse.who = b.dataset.who; render(); });
+  app.querySelectorAll("[data-ev]").forEach(b => b.onclick = () => { S.accuse.ev = b.dataset.ev; render(); });
+  const ac = app.querySelector("#accuse");
+  if (ac) ac.onclick = result;
+}
+
+function result() {
+  const c = S.c, a = S.accuse;
+  const right = a.who === c.culprit;
+  const proof = right && c.key.includes(a.ev);
+  const sharp = right && S.asked.length <= BUDGET.good;
+  const stars = right ? 1 + (proof ? 1 : 0) + (sharp ? 1 : 0) : 0;
+  const best = store.get("lettore-best") || {};
+  if (stars > (best[c.id] || 0)) { best[c.id] = stars; store.set("lettore-best", best); }
+  const culprit = c.suspects.find(s => s.id === c.culprit);
+  const share = `🧠 Il Lettore · Caso ${S.i + 1}: ${c.title}\n${stars ? "⭐".repeat(stars) + "▫️".repeat(3 - stars) : "❌ Ho accusato la persona sbagliata"}\n👁 ${S.seen.length}/${BUDGET.eye} · ❓ ${S.asked.length}/${BUDGET.questions}${S.bluff ? " · 🃏" : ""}\nTu lo becchi con meno domande?`;
+  app.innerHTML = `
+    <div class="top"><div class="top-row"><button class="back" id="back">← Casi</button></div></div>
+    <div class="result">
+      <span class="eyebrow">Caso ${S.i + 1} · ${esc(c.title)}</span>
+      <div class="verdict ${right ? "" : "bad"}">${right ? "Preso." : "Innocente."}</div>
+      <div class="big-stars" aria-label="${stars} stelle su 3">${starStr(stars)}</div>
+      <div class="score-lines">
+        <div>${right ? `Colpevole giusto: ${esc(culprit.name)}` : `Hai accusato la persona sbagliata. Era ${esc(culprit.name)}.`}</div>
+        ${right ? `<div>${proof ? "Prova decisiva centrata." : "La prova che hai scelto non basta a inchiodarlo."}</div>` : ""}
+        ${right ? `<div>${sharp ? `Risolto con ${S.asked.length} domande: da vero lettore.` : `${S.asked.length} domande: con ${BUDGET.good} o meno prendi la terza stella.`}</div>` : ""}
+      </div>
+      <div class="explain"><span class="eyebrow" style="color:var(--card-ink-2)">Come è andata</span><p>${esc(c.solution)}</p></div>
+      <span class="eyebrow">Sfida un amico</span>
+      <textarea class="share-box" id="share" readonly>${esc(share)}</textarea>
+      <div class="row">
+        <button class="btn" id="copy">Copia il risultato</button>
+        <button class="btn ghost" id="retry">Rigioca il caso</button>
+        ${S.i + 1 < CASES.length ? `<button class="btn ghost" id="next">Caso successivo</button>` : ""}
+      </div>
+      <div class="toast" id="toast" aria-live="polite"></div>
+    </div>`;
+  app.querySelector("#back").onclick = home;
+  app.querySelector("#retry").onclick = () => start(S.i);
+  const nx = app.querySelector("#next");
+  if (nx) nx.onclick = () => start(S.i + 1);
+  app.querySelector("#copy").onclick = () => {
+    const t = app.querySelector("#toast"), box = app.querySelector("#share");
+    const fallback = () => { box.focus(); box.select(); t.textContent = "Testo selezionato: copialo e incollalo in chat."; };
+    try {
+      navigator.clipboard.writeText(share).then(() => { t.textContent = "Copiato. Incollalo nella chat con il link del gioco."; }, fallback);
+    } catch (e) { fallback(); }
+  };
+  window.scrollTo(0, 0);
+}
+
+home();
+</script>
