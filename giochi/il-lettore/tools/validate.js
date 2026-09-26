@@ -44,8 +44,20 @@ for (const file of process.argv.slice(2)) {
         if (!sids.includes(n.who)) err(cid, `contraddizione ${id}: who non valido`);
       }
     }
-    const culpritLies = Object.values(nodes).some(n => n.lie && (n.who === c.culprit));
-    if (!culpritLies) err(cid, "il colpevole deve avere almeno una domanda o contraddizione con lie:true");
+    sids.forEach(sid => {
+      if (!Object.values(nodes).some(n => n.lie && n.who === sid))
+        err(cid, `${sid}: ogni sospettato (anche gli innocenti) deve avere almeno una domanda o contraddizione con lie:true, cioè un segreto che lo fa sembrare colpevole`);
+    });
+    // Motivo
+    if (!c.motive || !Array.isArray(c.motive.options) || c.motive.options.length !== 4 || !(c.motive.correct >= 0 && c.motive.correct < 4))
+      err(cid, "serve motive: { options: [4 frasi], correct: 0-3 }");
+    // Il testo non deve dare il verdetto al giocatore
+    const BAN = [/\bment(e|ono|iva|ito|ire)\b/i, /colpevol/i, /innocen/i, /non colpa/i, /\bbugi[ae]\b/i, /è sincer/i, /è vero\b/i, /il (pianto|dolore) è vero/i, /mentitor/i];
+    const lint = (where, t) => { if (t) BAN.forEach(r => { if (r.test(t)) err(cid, `${where} dà il verdetto al giocatore ("${t.match(r)[0]}"): descrivi il fatto, non la conclusione`); }); };
+    c.details.forEach(d => lint(`dettaglio ${d.id}`, d.insight));
+    c.suspects.forEach(s => { lint(`tell di ${s.id}`, s.tell); s.questions.forEach(q => { lint(`insight ${q.id}`, q.insight); lint(`aside ${q.id}`, q.aside); }); });
+    (c.contradictions || []).forEach(x => { lint(`insight ${x.id}`, x.insight); lint(`aside ${x.id}`, x.aside); });
+    if (c.bluff) Object.entries(c.bluff.reactions || {}).forEach(([k, v]) => lint(`bluff ${k}`, v));
     // Chiusura dei requisiti
     const closure = (id, acc = { d: new Set(), q: new Set() }) => {
       const n = nodes[id]; if (!n) return acc;

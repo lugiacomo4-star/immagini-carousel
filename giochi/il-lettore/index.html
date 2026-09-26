@@ -203,7 +203,7 @@
 <script src="cases.js"></script>
 <script>
 const CASES = window.CASES || [];
-const BUDGET = { eye: 4, questions: 6, good: 4, hard: 2 };
+const BUDGET = { eye: 4, questions: 6, hard: 2 };
 const START = new Date(2026, 8, 25); // giorno del caso n. 1
 
 const store = {
@@ -231,7 +231,7 @@ function home() {
   S = null;
   clearInterval(tick);
   if (!CASES.length) { app.innerHTML = `<p class="lede" style="padding-top:48px">I casi non si sono caricati. Ricarica la pagina.</p>`; return; }
-  const best = store.get("lettore-best") || {};
+  const best = Object.fromEntries(Object.entries(store.get("lettore-first") || {}).map(([k, v]) => [k, v.stars]));
   const di = dayIndex(), today = di % CASES.length;
   const released = [], preview = [];
   CASES.forEach((c, i) => {
@@ -271,6 +271,7 @@ function home() {
       <div class="rule"><b>Domande ${BUDGET.questions}</b><span>Hai ${BUDGET.questions} domande in tutto. Alcune si sbloccano solo se hai visto il dettaglio giusto.</span></div>
       <div class="rule"><b>Pressione</b><span>Ogni sospettato regge ${BUDGET.hard} domande d'accusa. Alla terza chiama l'avvocato.</span></div>
       <div class="rule"><b>Confronta</b><span>Nel taccuino metti a confronto due note. Se si contraddicono, il bugiardo cede. Se sbagli, perdi una domanda.</span></div>
+      <div class="rule"><b>Accusa</b><span>Colpevole, prova e movente: una stella per ciascuno. Conta solo il primo tentativo.</span></div>
       <div class="rule"><b>Bluff</b><span>Un solo trucco per caso: dici una bugia a tutti e guardi chi si muove.</span></div>
     </div>
     ${released.length ? `<div class="list-head"><h2>Archivio</h2><span class="eyebrow">${released.length} casi</span></div><div class="case-list">${released.map(card).join("")}</div>` : ""}
@@ -284,7 +285,7 @@ function home() {
 function start(i, daily) {
   clearInterval(tick);
   S = { i, daily, num: dayIndex() + 1, c: CASES[i], tab: "scena", seen: [], read: [], asked: [], found: [], wrong: 0,
-        bluff: false, sel: [], flash: null, accuse: { who: null, ev: null } };
+        bluff: false, sel: [], flash: null, accuse: { who: null, ev: null, mo: null } };
   render();
   window.scrollTo(0, 0);
 }
@@ -297,10 +298,9 @@ function notes() {
   c.details.forEach(d => { if (S.seen.includes(d.id)) out.push({ id: d.id, src: "Scena", text: d.insight }); });
   c.suspects.forEach(s => {
     if (S.read.includes(s.id)) out.push({ id: "t_" + s.id, src: first(s) + ", osservato", text: s.tell });
-    s.questions.forEach(q => { if (S.asked.includes(q.id) && q.insight) out.push({ id: q.id, src: first(s) + ", interrogato", text: q.insight, lie: q.lie }); });
+    s.questions.forEach(q => { if (S.asked.includes(q.id) && q.insight) out.push({ id: q.id, src: first(s) + ", interrogato", text: q.insight }); });
   });
-  c.contradictions.forEach(x => { if (S.found.includes(x.id)) out.push({ id: x.id, src: "Contraddizione", text: x.insight, lie: x.lie }); });
-  if (S.bluff) out.push({ id: "bluff", src: "Bluff", text: c.bluff.insight });
+  c.contradictions.forEach(x => { if (S.found.includes(x.id)) out.push({ id: x.id, src: "Contraddizione", text: x.insight }); });
   return out;
 }
 function have(id) {
@@ -372,7 +372,7 @@ function sospetti(qLeft) {
           ${s.questions.map(q => {
             if (S.asked.includes(q.id)) return `<div class="exchange reveal"><div class="q">${esc(q.q)}</div><div class="a">«${esc(q.a)}»${q.aside ? `<i>${esc(q.aside)}</i>` : ""}</div></div>`;
             if (closed || !(q.req || []).every(have)) return "";
-            return `<button class="act" data-ask="${q.id}" ${qLeft ? "" : "disabled"}>${q.req ? `<span class="tag">Domanda d'accusa</span>` : ""}${esc(q.q)}</button>`;
+            return `<button class="act" data-ask="${q.id}" ${qLeft ? "" : "disabled"}>${q.req ? `<span class="tag">Domanda diretta · alza la pressione</span>` : ""}${esc(q.q)}</button>`;
           }).join("")}
           ${closed ? `<div class="lawyer">«Da qui in poi parlo solo con il mio avvocato.»</div>` : ""}
           ${c.contradictions.filter(x => x.who === s.id && S.found.includes(x.id)).map(x =>
@@ -399,7 +399,7 @@ function taccuino(nb, qLeft) {
       : `<div class="flash miss reveal">Queste due note non si contraddicono. Hai perso tempo: una domanda in meno.</div>`) : ""}
     <div class="notebook">
       <h3>Taccuino</h3>
-      ${nb.length ? nb.map(n => `<button class="note ${n.lie ? "lie" : ""}" data-note="${n.id}" aria-pressed="${S.sel.includes(n.id)}"><span class="dot"></span><div><div class="src">${esc(n.src)}${n.lie ? " · bugia o segreto" : ""}</div>${esc(n.text)}</div></button>`).join("")
+      ${nb.length ? nb.map(n => `<button class="note" data-note="${n.id}" aria-pressed="${S.sel.includes(n.id)}"><span class="dot"></span><div><div class="src">${esc(n.src)}</div>${esc(n.text)}</div></button>`).join("")
         : `<p class="empty-nb">Ancora niente. Esamina la scena e osserva i sospettati.</p>`}
     </div>
     ${nb.length > 1 ? `<div class="confront-bar">
@@ -412,13 +412,16 @@ function taccuino(nb, qLeft) {
 function accusa(nb) {
   const c = S.c, a = S.accuse;
   return `<section class="panel">
-    <p class="hint">Scegli il colpevole e la prova che lo inchioda. Puoi citare solo quello che hai nel taccuino.</p>
+    <p class="hint">Scegli il colpevole, la prova che lo inchioda e il movente. Come prova puoi citare solo quello che hai nel taccuino.</p>
     <span class="eyebrow">Il colpevole è</span>
     <div class="pick">${c.suspects.map(s => `<button class="opt" data-who="${s.id}" aria-pressed="${a.who === s.id}"><small>${esc(s.role)}</small>${esc(s.name)}</button>`).join("")}</div>
     <span class="eyebrow">La prova decisiva</span>
     <div class="pick">${nb.length ? nb.map(n => `<button class="opt" data-ev="${n.id}" aria-pressed="${a.ev === n.id}"><small>${esc(n.src)}</small>${esc(n.text)}</button>`).join("")
       : `<p class="hint">Il taccuino è vuoto: senza prove puoi solo tirare a indovinare.</p>`}</div>
-    <button class="btn" id="accuse" ${a.who ? "" : "disabled"}>Accusa</button>
+    <span class="eyebrow">Il movente</span>
+    <div class="pick">${c.motive.options.map((m, k) => `<button class="opt" data-mo="${k}" aria-pressed="${a.mo === k}">${esc(m)}</button>`).join("")}</div>
+    <p class="hint">Conta solo la prima accusa: le stelle non si rifanno.</p>
+    <button class="btn" id="accuse" ${a.who && a.mo !== null && (a.ev || !nb.length) ? "" : "disabled"}>Accusa</button>
   </section>`;
 }
 
@@ -459,6 +462,7 @@ function bind() {
   if (bl) bl.onclick = () => { S.bluff = true; render(); };
   app.querySelectorAll("[data-who]").forEach(b => b.onclick = () => { S.accuse.who = b.dataset.who; render(); });
   app.querySelectorAll("[data-ev]").forEach(b => b.onclick = () => { S.accuse.ev = b.dataset.ev; render(); });
+  app.querySelectorAll("[data-mo]").forEach(b => b.onclick = () => { S.accuse.mo = +b.dataset.mo; render(); });
   const ac = app.querySelector("#accuse");
   if (ac) ac.onclick = result;
 }
@@ -467,13 +471,15 @@ function result() {
   const c = S.c, a = S.accuse;
   const right = a.who === c.culprit;
   const proof = right && c.key.includes(a.ev);
-  const sharp = right && used() <= BUDGET.good;
-  const stars = right ? 1 + (proof ? 1 : 0) + (sharp ? 1 : 0) : 0;
-  const best = store.get("lettore-best") || {};
-  if (stars > (best[c.id] || 0)) { best[c.id] = stars; store.set("lettore-best", best); }
+  const why = right && a.mo === c.motive.correct;
+  const stars = right ? 1 + (proof ? 1 : 0) + (why ? 1 : 0) : 0;
+  const firsts = store.get("lettore-first") || {};
+  const firstTry = !firsts[c.id];
+  if (firstTry) { firsts[c.id] = { stars, used: used(), seen: S.seen.length, found: S.found.length, bluff: S.bluff }; store.set("lettore-first", firsts); }
+  const rec = firsts[c.id];
   const culprit = c.suspects.find(s => s.id === c.culprit);
   const head = S.daily ? `🧠 Il Lettore n. ${S.num}` : `🧠 Il Lettore · ${c.title}`;
-  const share = `${head}\n${stars ? "⭐".repeat(stars) + "▫️".repeat(3 - stars) : "❌ Ho accusato la persona sbagliata"}\n👁 ${S.seen.length}/${BUDGET.eye} · ❓ ${used()}/${BUDGET.questions}${S.found.length ? " · 💥".repeat(S.found.length) : ""}${S.bluff ? " · 🃏" : ""}\nTu lo becchi con meno domande?`;
+  const share = `${head}\n${rec.stars ? "⭐".repeat(rec.stars) + "▫️".repeat(3 - rec.stars) : "❌ Ho accusato la persona sbagliata"}\n👁 ${rec.seen}/${BUDGET.eye} · ❓ ${rec.used}/${BUDGET.questions}${rec.found ? " · 💥".repeat(rec.found) : ""}${rec.bluff ? " · 🃏" : ""}\nTu lo risolvi al primo colpo?`;
   app.innerHTML = `
     <div class="top"><div class="top-row"><button class="back" id="back">← Casi</button></div></div>
     <div class="result">
@@ -483,7 +489,9 @@ function result() {
       <div class="score-lines">
         <div>${right ? `Colpevole giusto: ${esc(culprit.name)}` : `Hai accusato la persona sbagliata. Era ${esc(culprit.name)}.`}</div>
         ${right ? `<div>${proof ? "Prova decisiva centrata." : "La prova che hai scelto non basta a inchiodarlo."}</div>` : ""}
-        ${right ? `<div>${sharp ? `Risolto con ${used()} domande: da vero lettore.` : `${used()} domande: con ${BUDGET.good} o meno prendi la terza stella.`}</div>` : ""}
+        ${right ? `<div>${why ? "Movente giusto." : `Movente sbagliato. Era: ${esc(c.motive.options[c.motive.correct])}`}</div>` : ""}
+        <div>Domande usate: ${used()} su ${BUDGET.questions}.</div>
+        ${firstTry ? "" : `<div>Fuori classifica: conta il primo tentativo (${rec.stars} ${rec.stars === 1 ? "stella" : "stelle"}).</div>`}
         ${S.found.length ? `<div>Contraddizioni scoperte: ${S.found.length} su ${c.contradictions.length}.</div>` : ""}
       </div>
       <div class="explain"><span class="eyebrow" style="color:var(--card-ink-2)">Come è andata</span><p>${esc(c.solution)}</p></div>
