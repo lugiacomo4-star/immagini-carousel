@@ -10,43 +10,43 @@
     "id": "d1",
     "label": "La finestra laterale",
     "text": "Vetro colorato in frantumi. I pezzi sono quasi tutti fuori, sul marciapiede. Dentro, solo qualche scheggia.",
-    "insight": "Il vetro è stato rotto dall'interno: l'effrazione è una messinscena."
+    "insight": "Finestra laterale rotta: i vetri sono quasi tutti fuori, sul marciapiede. Dentro, poche schegge."
    },
    {
     "id": "d2",
     "label": "La teca",
     "text": "Cristallo e bronzo, intatta. La piccola serratura è aperta, senza un graffio.",
-    "insight": "La teca è stata aperta con la sua chiave."
+    "insight": "Teca intatta. La serratura è aperta, senza un graffio."
    },
    {
     "id": "d3",
     "label": "La centralina dell'allarme",
     "text": "Registro: disinserito alle 23:10 con il codice della confraternita, reinserito alle 23:24. Nessun allarme per la finestra.",
-    "insight": "Alle 23:10 qualcuno col codice della confraternita è rimasto dentro quattordici minuti. La finestra l'ha rotta lui, ad allarme spento."
+    "insight": "Allarme disinserito alle 23:10 col codice della confraternita, reinserito alle 23:24. La finestra non ha fatto scattare niente."
    },
    {
     "id": "d4",
     "label": "La bacheca della confraternita",
     "text": "Un avviso della Curia: «Lunedì 14, inventario e perizia degli argenti sacri. Presenti il priore e un perito orafo.»",
-    "insight": "Tra tre giorni un perito avrebbe esaminato e pesato il reliquiario."
+    "insight": "Lunedì 14 la Curia fa inventario e perizia degli argenti, con il priore e un perito orafo."
    },
    {
     "id": "d5",
     "label": "La giacca del priore",
     "text": "Appesa in sagrestia, sotto l'abito della confraternita. Nella tasca interna, una lettera della banca aperta e riaperta: «Ultimo avviso prima del pignoramento dell'immobile di via Palmieri».",
-    "insight": "Il priore sta per perdere il negozio: gli servono soldi."
+    "insight": "Nella giacca del priore, in sagrestia: ultimo avviso della banca prima del pignoramento del negozio di via Palmieri."
    },
    {
     "id": "d6",
     "label": "Il mazzo del sacrestano",
     "text": "Sul chiodo accanto alla porta della sagrestia: tutte le chiavi della chiesa, compresa quella piccola della teca. Etichetta: «Rocco».",
-    "insight": "Rocco ha la chiave della teca, e la lascia appesa in vista."
+    "insight": "Il mazzo di Rocco, con la chiave della teca, sta appeso a un chiodo in sagrestia, in vista."
    },
    {
     "id": "d7",
     "label": "Le foto delle processioni",
     "text": "Due foto incorniciate in sagrestia. Tre anni fa il reliquiario è opaco, quasi nero nelle pieghe. L'anno scorso brilla come appena uscito dal negozio.",
-    "insight": "L'argento annerisce da solo. Dall'anno scorso il reliquiario non annerisce più."
+    "insight": "Nelle foto: tre anni fa il reliquiario era scuro nelle pieghe. L'anno scorso brillava come nuovo."
    }
   ],
   "suspects": [
@@ -55,13 +55,14 @@
     "name": "Rocco Negro",
     "role": "Sacrestano, 60 anni",
     "look": "Mani da muratore, giacca della banda sulla spalla. È il primo che tutti guardano.",
-    "tell": "Ti guarda negli occhi e risponde a tutto, anche a quello che non chiedi. Quando qualcuno bisbiglia alle sue spalle si irrigidisce: è abituato a essere il primo sospettato. Le mani sono ferme. Ha paura del paese, non di te.",
+    "tell": "Risponde a tutto, anche a quello che non chiedi. Quando qualcuno bisbiglia alle sue spalle si gira di scatto. Due volte si tocca la tasca della giacca della banda, dove tintinnano delle monete.",
     "questions": [
      {
       "id": "r1",
       "q": "In giro dicono che lei ha già rubato.",
       "a": "Vent'anni fa. Rame dai tetti, a Galatina. Ho fatto il mio e ho pagato. Don Pietro mi ha preso lo stesso, e da allora qui dentro non è sparito nemmeno un cero.",
-      "insight": "Rocco ha un precedente per furto, vecchio di vent'anni."
+      "insight": "Rocco ha un precedente per furto di vent'anni fa. Dice che da allora in chiesa non è sparito niente.",
+      "lie": true
      },
      {
       "id": "r2",
@@ -70,13 +71,19 @@
        "d6"
       ],
       "a": "Da trent'anni, su quel chiodo. Ma stanotte ero in piazza con la banda, prova generale, dalle dieci a mezzanotte e mezza. Suono il bombardino. Il maestro fa l'appello e c'erano trecento persone a guardare.",
-      "insight": "Rocco era alla prova della banda dalle 22 alle 00:30, davanti a trecento persone."
+      "insight": "Rocco dice di essere stato alla prova della banda dalle 22 alle 00:30, davanti a trecento persone."
      },
      {
       "id": "r3",
       "q": "Chi conosce il codice dell'allarme?",
       "a": "Io ho quello della parrocchia. Quello della confraternita ce l'hanno il priore e la restauratrice, che la sera lavorava nel laboratorio dietro l'altare. La chiave della teca, invece: io e il priore. Basta.",
       "insight": "Il codice della confraternita: il priore e Chiara. La chiave della teca: Rocco e il priore."
+     },
+     {
+      "id": "r4",
+      "q": "Alla prova, ha visto qualcuno della chiesa?",
+      "a": "La restauratrice. Verso le undici meno un quarto, dietro il palco, a parlare col maestro. Vicini vicini. Poi non l'ho più vista.",
+      "insight": "Rocco dice di aver visto Chiara in piazza verso le 22:45, dietro il palco, col maestro della banda. Poi più niente."
      }
     ]
    },
@@ -85,7 +92,7 @@
     "name": "Ennio Carlà",
     "role": "Priore della confraternita, 63 anni",
     "look": "Abito scuro, medaglione della confraternita al collo, capelli pettinati con cura. Gira il cappello tra le mani.",
-    "tell": "Parla del furto con parole da comunicato: «gesto sacrilego», «comunità ferita». Gira il cappello senza sosta, tranne quando nomini la Curia: lì si ferma di colpo. Due volte si passa un dito nel colletto, che non gli stringe.",
+    "tell": "Parla del furto con parole da comunicato: «gesto sacrilego», «comunità ferita». Gira il cappello senza sosta, tranne quando nomini la Curia: lì si ferma. Due volte si passa un dito nel colletto.",
     "questions": [
      {
       "id": "e1",
@@ -97,7 +104,7 @@
       "id": "e2",
       "q": "Mi parli del reliquiario.",
       "a": "Argento massiccio, Seicento napoletano. Due chili e cento. Un tesoro. L'ho fatto periziare io, tre anni fa.",
-      "insight": "Il priore giura che il reliquiario era d'argento vero."
+      "insight": "Il priore dice che il reliquiario è d'argento massiccio, periziato tre anni fa."
      },
      {
       "id": "e3",
@@ -106,8 +113,8 @@
        "d5"
       ],
       "a": "Il negozio è chiuso da due anni. Lo sanno tutti. Che c'entra con il santo?",
-      "aside": "Lo sanno tutti, dice. Ma la lettera la tiene in chiesa, piegata in tasca, dove la moglie non la trova.",
-      "insight": "Il priore è sommerso dai debiti e lo nasconde anche in casa.",
+      "aside": "Rimette la lettera nella giacca, piegata in quattro.",
+      "insight": "Il priore dice che dei suoi debiti «lo sanno tutti». La lettera la tiene in sagrestia, non a casa.",
       "lie": true
      },
      {
@@ -117,8 +124,8 @@
        "d7"
       ],
       "a": "L'avranno lucidato meglio. Chieda alla restauratrice, l'ha avuto lei in laboratorio.",
-      "aside": "Chiara l'ha avuto in mano due settimane fa. Non un anno fa.",
-      "insight": "Sul reliquiario che non annerisce, il priore ha scaricato subito su Chiara."
+      "aside": "Risponde senza alzare gli occhi dal cappello.",
+      "insight": "Sul reliquiario che non annerisce, il priore rimanda a Chiara e al suo laboratorio."
      }
     ]
    },
@@ -127,29 +134,36 @@
     "name": "Chiara Montinaro",
     "role": "Restauratrice, 36 anni",
     "look": "Mani macchiate di pasta per argento, occhiali sulla testa. Seduta sul gradino dell'altare, fissa la teca vuota.",
-    "tell": "Si strofina il pollice sui polpastrelli, lo stesso gesto di quando lucida. Guarda la teca vuota, ma non come gli altri: le spalle le si abbassano, come a chi si toglie un peso. Quando parla il priore, lei trattiene il fiato.",
+    "tell": "Si strofina il pollice sui polpastrelli, il gesto di chi lucida. Guarda a lungo la teca vuota, poi espira forte e abbassa le spalle. Quando parla il priore trattiene il fiato. Quando si nomina la banda, controlla il telefono.",
     "questions": [
      {
       "id": "c1",
       "q": "Dov'era stanotte?",
       "a": "Al cinema all'aperto con mia sorella, fino a mezzanotte. Ho ancora il biglietto, lei ha le foto.",
-      "insight": "Chiara era al cinema con la sorella fino a mezzanotte."
+      "insight": "Chiara dice di essere stata al cinema all'aperto con la sorella fino a mezzanotte.",
+      "lie": true
      },
      {
       "id": "c2",
       "q": "Lei ha il codice della confraternita.",
-      "a": "Sì, per il laboratorio. Ma la teca non l'ho mai aperta: la chiave non ce l'ho. Il reliquiario me lo portava il priore, e se lo riportava lui.",
-      "insight": "Chiara ha il codice dell'allarme, ma non la chiave della teca."
+      "a": "Sì, per il laboratorio. Ma la teca non l'ho mai aperta: la chiave non ce l'ho. Il reliquiario me l'hanno portato una volta sola, due settimane fa. Me l'ha portato il priore, e se l'è riportato lui.",
+      "insight": "Chiara ha il codice dell'allarme, non la chiave della teca. Dice di aver avuto il reliquiario in laboratorio una volta sola, due settimane fa."
      },
      {
       "id": "c3",
-      "q": "Lei sembra sollevata. Perché?",
+      "q": "Perché ha sospirato guardando la teca vuota?",
       "req": [
        "t_chiara"
       ],
-      "a": "(Abbassa la voce.) Perché adesso nessuno lo pesa. Quando l'ho pulito, sotto la base, dove l'argento era consumato, c'era ottone. Placcato. È una copia. L'ho detto al priore dieci giorni fa. Mi ha risposto: ci penso io, dopo la festa. E io sono stata zitta, perché era nel mio laboratorio e avrebbero pensato a me.",
-      "insight": "Il reliquiario era una copia placcata. Chiara l'aveva detto al priore dieci giorni fa.",
+      "a": "(Abbassa la voce.) Perché adesso nessuno lo pesa. Quando l'ho pulito, sotto la base, dove l'argento era consumato, c'era ottone. Placcato. È una copia. L'ho detto al priore dieci giorni fa. Mi ha risposto: ci penso io, dopo la festa. E io sono stata zitta, perché era passato dal mio laboratorio e avrebbero pensato a me.",
+      "insight": "Chiara dice che sotto la base il reliquiario è ottone placcato. L'ha detto al priore dieci giorni fa e poi ha taciuto.",
       "lie": true
+     },
+     {
+      "id": "c4",
+      "q": "Chi apre la cassetta delle offerte?",
+      "a": "Rocco, ogni sera, prima di chiudere. Il sabato don Pietro conta e dice sempre che i fedeli sono diventati tirchi.",
+      "insight": "La cassetta delle offerte la apre Rocco ogni sera. Il sabato il parroco trova sempre meno soldi."
      }
     ]
    }
@@ -161,19 +175,48 @@
     "b": "c3",
     "who": "ennio",
     "reply": "Me l'ha detto, sì. Non ci ho creduto. È giovane, si sarà sbagliata.",
-    "aside": "Non ci ha creduto, ma non ha chiesto a nessuno di controllare. Ha solo aspettato che il reliquiario sparisse prima di lunedì.",
-    "insight": "Il priore sapeva che il reliquiario era falso e l'ha taciuto: sparita la copia, il perito della Curia non avrebbe trovato niente.",
+    "aside": "Il cappello gli si ferma tra le mani.",
+    "insight": "Il priore ammette che dieci giorni fa Chiara gli ha detto che il reliquiario era ottone placcato. Non l'ha riferito a nessuno.",
+    "lie": true
+   },
+   {
+    "id": "x2",
+    "a": "r1",
+    "b": "c4",
+    "who": "rocco",
+    "reply": "(Si svuota la tasca sul banco: monete.) Venti euro a settimana. Per le medicine di mia nipote. Don Pietro non lo sa. Il braccio del santo però no. Quello no.",
+    "aside": "Rimette le monete in fila, una per una.",
+    "insight": "Rocco ammette di prendere venti euro a settimana dalla cassetta delle offerte.",
+    "lie": true
+   },
+   {
+    "id": "x3",
+    "a": "c1",
+    "b": "r4",
+    "who": "chiara",
+    "reply": "Va bene. Al cinema non ci sono andata. Ero col maestro della banda, in piazza e poi nella sua macchina. È sposato. Mia sorella mi copre.",
+    "aside": "Si toglie gli occhiali dalla testa e li stringe.",
+    "insight": "Chiara ammette di non essere stata al cinema: era col maestro della banda, sposato, in piazza e poi in auto. La sorella la copre.",
     "lie": true
    }
   ],
   "bluff": {
    "text": "Annunci che i carabinieri hanno ritrovato il reliquiario in un cassonetto e che il perito della Curia lo pesa oggi stesso, prima della processione.",
    "reactions": {
-    "rocco": "«Grazie, San Fortunato.» Si fa il segno della croce e corre fuori a chiamare la banda.",
-    "ennio": "«Pesarlo? E perché pesarlo? L'importante è che sia tornato.» Il cappello gli scivola di mano.",
-    "chiara": "Si alza di scatto e guarda il priore. Non dice niente."
+    "rocco": "«Grazie, San Fortunato.» Corre verso la porta per chiamare la banda, poi si ferma e si tocca la tasca.",
+    "ennio": "«Grazie a Dio.» Si china a raccogliere il cappello, che gli è scivolato di mano.",
+    "chiara": "Si alza di scatto: «Pesarlo? Oggi?» Guarda il priore."
    },
-   "insight": "Alla notizia del ritrovamento il priore non si è rallegrato: si è spaventato per la bilancia."
+   "insight": "Al bluff del ritrovamento: Chiara chiede della pesata e guarda il priore, al priore cade il cappello, Rocco si ferma sulla porta."
+  },
+  "motive": {
+   "options": [
+    "Far sparire la copia prima che il perito la pesasse.",
+    "Pagare le medicine della nipote.",
+    "Coprire un danno fatto durante il restauro.",
+    "Vendicarsi della Curia che voleva sciogliere la confraternita."
+   ],
+   "correct": 0
   },
   "culprit": "ennio",
   "key": [
@@ -181,7 +224,7 @@
    "e3",
    "r3"
   ],
-  "solution": "Il braccio d'argento era sparito un anno fa: sommerso dai debiti, Ennio l'aveva sostituito con una copia placcata e aveva venduto l'originale. Per un anno nessuno se n'è accorto, tranne l'argento, che ha smesso di annerire. Poi Chiara, pulendolo, ha visto l'ottone, e la Curia ha fissato la perizia per lunedì. Alle 23:10 Ennio è rientrato col codice della confraternita, ha aperto la teca con la sua chiave e ha rotto la finestra dall'interno per simulare un furto. Rocco era in piazza con la banda, Chiara al cinema: solo il priore aveva codice e chiave."
+  "solution": "Il braccio d'argento era sparito un anno fa: sommerso dai debiti, Ennio l'aveva sostituito con una copia placcata e aveva venduto l'originale. Per un anno nessuno se n'è accorto, tranne l'argento, che ha smesso di annerire. Poi Chiara, pulendolo, ha visto l'ottone, e la Curia ha fissato la perizia per lunedì. Alle 23:10 Ennio è rientrato col codice della confraternita, ha aperto la teca con la sua chiave e ha rotto la finestra dall'interno per simulare un furto. Rocco era in piazza con la banda, ma da anni prendeva qualche moneta dalla cassetta delle offerte. Chiara non era al cinema: era col maestro della banda, sposato, e per questo aveva un alibi falso."
  },
  {
   "id": "pittule",
@@ -194,43 +237,43 @@
     "id": "d1",
     "label": "La tazza di Gigi",
     "text": "Tazza di smalto con la scritta PRESIDENTE. Sul fondo, un dito d'infuso freddo e due foglie lunghe, strette, dure come cuoio, con una nervatura bianca al centro.",
-    "insight": "Nella tazza di Gigi c'erano foglie d'oleandro, non d'alloro."
+    "insight": "Nella tazza PRESIDENTE: due foglie lunghe, strette, dure, con una nervatura bianca al centro."
    },
    {
     "id": "d2",
     "label": "Il pentolone dell'infuso",
     "text": "In cucina, il pentolone dell'infuso di fine serata. Foglie larghe e ovali, bucce di limone. L'hanno bevuto in dodici, volontari compresi. Nessuno sta male.",
-    "insight": "L'infuso della pentola era innocuo: l'oleandro è finito solo nella tazza di Gigi."
+    "insight": "Nel pentolone: foglie larghe e ovali e bucce di limone. L'hanno bevuto in dodici, nessuno sta male."
    },
    {
     "id": "d3",
     "label": "La siepe dietro la cassa",
     "text": "Oleandri fioriti, a un passo dal bancone della cassa. Due rametti spezzati di fresco: sul taglio, lattice bianco ancora appiccicoso.",
-    "insight": "Ieri sera qualcuno ha strappato foglie d'oleandro proprio dietro la cassa."
+    "insight": "Nella siepe d'oleandro dietro la cassa, due rametti spezzati di fresco."
    },
    {
     "id": "d4",
     "label": "L'agenda di Gigi",
     "text": "Nella borsa del comitato. Alla data di ieri, a matita: «Dopo la chiusura: conti con Ada. 2019-2024, mancano 11.000?»",
-    "insight": "Gigi aveva trovato un ammanco e voleva fare i conti con Ada subito dopo la sagra."
+    "insight": "Agenda di Gigi, ieri: «Dopo la chiusura: conti con Ada. 2019-2024, mancano 11.000?»"
    },
    {
     "id": "d5",
-    "label": "Il video di Tonino",
-    "text": "Sul telefono di un volontario, ore 20:20: Tonino Russo urla davanti allo stand delle pittule. «Te ne pentirai, Gigi! Te ne pentirai!»",
-    "insight": "Tonino ha minacciato Gigi davanti a mezza piazza."
+    "label": "I video del volontario",
+    "text": "Sul telefono di un volontario, due video. Ore 20:20: Tonino Russo urla davanti allo stand delle pittule: «Te ne pentirai, Gigi! Te ne pentirai!» Ore 22:14, durante la lotteria: sullo sfondo, dietro gli stand, passa una camicia a fiori.",
+    "insight": "Video delle 20:20: Tonino urla a Gigi «Te ne pentirai!». Video delle 22:14: una camicia a fiori passa dietro gli stand."
    },
    {
     "id": "d6",
     "label": "Il cestino della cassa",
     "text": "Tra gli scontrini, un paio di guanti in lattice, di quelli per contare le monete. Sulle dita, macchie verdi e un velo di lattice bianco rappreso.",
-    "insight": "Con i guanti della cassa qualcuno ha maneggiato foglie fresche."
+    "insight": "Nel cestino della cassa, guanti da monete con macchie verdi e lattice bianco rappreso sulle dita."
    },
    {
     "id": "d7",
     "label": "Il messaggio del cardiologo",
     "text": "Il figlio di Gigi ti mostra il telefono: «Glicosidi dell'oleandro. Ingestione probabile tra le 21:30 e le 22:30.»",
-    "insight": "Gigi ha ingerito il veleno tra le 21:30 e le 22:30."
+    "insight": "Secondo il cardiologo, Gigi ha ingerito il veleno tra le 21:30 e le 22:30."
    }
   ],
   "suspects": [
@@ -239,19 +282,19 @@
     "name": "Ada Mele",
     "role": "Tesoriera del comitato, 54 anni",
     "look": "Cardigan abbottonato fino al collo nonostante il caldo. La borsa della cassa stretta sulle ginocchia.",
-    "tell": "Tiene le mani chiuse a pugno sopra la borsa. Quando le apre per gesticolare, i polpastrelli sono arrossati, come di chi se li è strofinati a lungo. Chiede due volte come sta Gigi, e tutte e due le volte non aspetta la risposta.",
+    "tell": "Tiene le mani chiuse a pugno sopra la borsa. Quando le apre per gesticolare, i polpastrelli sono arrossati. Chiede due volte come sta Gigi, e tutte e due le volte non aspetta la risposta.",
     "questions": [
      {
       "id": "a1",
       "q": "Dov'era ieri sera?",
       "a": "Alla cassa, dalle sette a mezzanotte. Non mi sono mossa un minuto. Chi lascia la cassa di una sagra è un pazzo.",
-      "insight": "Ada dice di non essersi mai mossa dalla cassa."
+      "insight": "Ada dice di non essersi mai mossa dalla cassa, dalle 19 a mezzanotte."
      },
      {
       "id": "a2",
       "q": "Ha visto la tazza di Gigi, ieri sera?",
       "a": "No. L'infuso Gigi se lo beveva in cucina, con le cuoche. Alla cassa non l'ho mai vista.",
-      "insight": "Ada giura che la tazza di Gigi non è mai passata dalla cassa."
+      "insight": "Ada dice che la tazza di Gigi alla cassa non l'ha mai vista."
      },
      {
       "id": "a3",
@@ -260,8 +303,8 @@
        "d4"
       ],
       "a": "Gigi i conti li sbaglia dal 2019. Sono conti suoi, non miei. Glielo dimostro con i quaderni.",
-      "aside": "Dice «quaderni». Il comitato tiene i conti al computer da tre anni.",
-      "insight": "Ada sapeva dell'ammanco, e sapeva che Gigi voleva parlarne stanotte.",
+      "aside": "Stringe la borsa della cassa.",
+      "insight": "Ada sapeva che Gigi voleva fare i conti con lei. Dice che gli errori sono di Gigi, e parla di «quaderni».",
       "lie": true
      },
      {
@@ -271,8 +314,8 @@
        "d6"
       ],
       "a": "Sono i miei, per le monete. Il verde? Avrò toccato la siepe. Ci si appoggiano tutti.",
-      "aside": "È una siepe d'oleandro. Non ci si appoggia nessuno.",
-      "insight": "Ada ammette di aver toccato la siepe d'oleandro con i guanti della cassa.",
+      "aside": "Chiude la mano destra.",
+      "insight": "Ada dice che i guanti macchiati sono i suoi e che il verde viene dalla siepe dietro la cassa.",
       "lie": true
      }
     ]
@@ -282,19 +325,19 @@
     "name": "Pamela Stifani",
     "role": "Cuoca volontaria, 31 anni",
     "look": "Grembiule infarinato, occhi gonfi. Ha ancora la retina nei capelli.",
-    "tell": "Si torce le mani nel grembiule e guarda il pentolone come si guarda una colpa. Ogni volta che qualcuno dice «veleno» trattiene il fiato. È il senso di colpa di chi crede di aver sbagliato, non di chi l'ha fatto apposta.",
+    "tell": "Si torce le mani nel grembiule e guarda il pentolone. Ogni volta che qualcuno dice «veleno» trattiene il fiato. Porta al collo una catenina d'oro che infila sotto il grembiule quando la guardi.",
     "questions": [
      {
       "id": "p1",
       "q": "Chi prepara l'infuso di Gigi?",
       "a": "Io. Ogni sera: alloro del mio orto e bucce di limone. L'abbiamo bevuto tutti, dalla stessa pentola. Io due tazze.",
-      "insight": "Tutti hanno bevuto l'infuso dalla stessa pentola di Pamela."
+      "insight": "L'infuso lo prepara Pamela, alloro del suo orto. Tutti hanno bevuto dalla stessa pentola."
      },
      {
       "id": "p2",
       "q": "Chi ha portato la tazza a Gigi?",
       "a": "Io, alle dieci meno cinque, alla cassa. Era lì con Ada a contare. Poi l'hanno chiamato sul palco per la lotteria e la tazza è rimasta sul bancone, accanto a lei. Venti minuti, più o meno.",
-      "insight": "Dalle 22 la tazza di Gigi è rimasta venti minuti sul bancone della cassa, accanto ad Ada, mentre lui era sul palco."
+      "insight": "Pamela dice di aver portato la tazza a Gigi alla cassa alle 21:55. Poi, per circa venti minuti di lotteria, è rimasta sul bancone accanto ad Ada."
      },
      {
       "id": "p3",
@@ -303,8 +346,16 @@
        "d1"
       ],
       "a": "(Ne prende una e la gira.) Questa non è alloro. L'alloro è largo e profuma. Questa è dura, lunga... è oleandro. Come la siepe dietro la cassa. Io l'oleandro non lo tocco nemmeno per i fiori.",
-      "aside": "Si siede. Per la prima volta da stamattina respira.",
-      "insight": "Pamela riconosce le foglie: oleandro, come la siepe dietro la cassa."
+      "aside": "Si siede e si passa una mano sulla fronte.",
+      "insight": "Pamela riconosce le foglie della tazza: oleandro, come la siepe dietro la cassa."
+     },
+     {
+      "id": "p4",
+      "q": "Che rapporto aveva con Gigi?",
+      "a": "È il presidente. Io friggo le pittule. Basta.",
+      "aside": "Infila la catenina sotto il grembiule.",
+      "insight": "Pamela dice che tra lei e Gigi c'è solo il lavoro della sagra.",
+      "lie": true
      }
     ]
    },
@@ -313,7 +364,7 @@
     "name": "Tonino Russo",
     "role": "Friggitore, 58 anni",
     "look": "Camicia a fiori aperta sul petto, voce che si sente dall'altra parte della piazza. È venuto da solo, «per chiarire».",
-    "tell": "Urla, ma ti guarda in faccia mentre urla e aspetta la tua risposta. Chi ha colpa urla guardando altrove. Quando nomini Gigi in ospedale gli trema il mento per un attimo: si conoscono da quarant'anni.",
+    "tell": "Urla, ma ti guarda in faccia mentre urla. Quando nomini Gigi in ospedale gli trema il mento. Ha un taglio fresco sul dorso della mano, fasciato con un tovagliolo di carta.",
     "questions": [
      {
       "id": "t1",
@@ -322,19 +373,26 @@
        "d5"
       ],
       "a": "Mi ha tolto lo stand dopo vent'anni! Gli ho detto di tutto, sì. Alle otto e venti. Poi sono tornato al mio locale a Calimera: trenta coperti, due camerieri, fino all'una. Chieda a chiunque.",
-      "insight": "Dalle 20:30 all'una Tonino era nel suo locale a Calimera, con trenta clienti."
+      "insight": "Tonino dice di essere tornato nel suo locale a Calimera dopo le 20:20 e di esserci rimasto fino all'una.",
+      "lie": true
      },
      {
       "id": "t2",
       "q": "Perché Gigi l'ha cacciata?",
       "a": "Dice per l'igiene. Io dico perché a novembre gli ho detto che la cassa della sagra non tornava. «Gigi, guarda chi conta i soldi.» Ecco la ricompensa.",
-      "insight": "Tonino aveva avvertito Gigi che i soldi della sagra non tornavano."
+      "insight": "Tonino dice di aver avvertito Gigi, a novembre, che i soldi della sagra non tornavano."
      },
      {
       "id": "t3",
       "q": "Chi sta alla cassa, di solito?",
       "a": "Sempre lei, la Mele. Da dieci anni. Non dà il cambio a nessuno, nemmeno per andare in bagno. Uno se lo chiede, perché.",
-      "insight": "Da dieci anni Ada non lascia la cassa a nessuno."
+      "insight": "Da dieci anni alla cassa c'è solo Ada, senza cambi."
+     },
+     {
+      "id": "t4",
+      "q": "Chi è vicino a Gigi, nel comitato?",
+      "a": "Vicino? La cuoca, Pamela. Da un anno, di nascosto, che Gigi è sposato. Lo sa tutta Martano tranne sua moglie.",
+      "insight": "Tonino dice che Pamela e Gigi hanno una relazione nascosta da un anno."
      }
     ]
    }
@@ -346,19 +404,48 @@
     "b": "p2",
     "who": "ada",
     "reply": "Ah, quella tazza. Può darsi. C'era tanta gente, chi se la ricorda una tazza.",
-    "aside": "Una tazza con scritto PRESIDENTE, a un palmo dalle sue mani, per venti minuti.",
-    "insight": "Ada ha mentito: la tazza di Gigi è rimasta venti minuti sola accanto a lei, alla cassa.",
+    "aside": "Chiude le mani a pugno sulla borsa.",
+    "insight": "Ada ammette che la tazza di Gigi può essere rimasta sul bancone della cassa, accanto a lei.",
+    "lie": true
+   },
+   {
+    "id": "x2",
+    "a": "p4",
+    "b": "t4",
+    "who": "pamela",
+    "reply": "(Tira fuori la catenina.) Me l'ha regalata lui. Da un anno. Ieri pomeriggio mi ha detto che era finita, che torna da sua moglie. Ma l'infuso gliel'ho fatto come sempre. Come sempre.",
+    "aside": "Stringe la catenina nel pugno.",
+    "insight": "Pamela ammette la relazione con Gigi. Dice che ieri pomeriggio lui l'aveva lasciata.",
+    "lie": true
+   },
+   {
+    "id": "x3",
+    "a": "t1",
+    "b": "d5",
+    "who": "tonino",
+    "reply": "Va bene, sono tornato! Dieci minuti. La friggitrice nello stand era mia, vent'anni di olio. Me la sono ripresa senza chiedere, e mi sono pure tagliato. Alla cassa non ci sono nemmeno passato.",
+    "aside": "Si guarda il tovagliolo sulla mano.",
+    "insight": "Tonino ammette di essere tornato alla sagra verso le 22:14 per riprendersi la friggitrice.",
     "lie": true
    }
   ],
   "bluff": {
    "text": "Annunci che Gigi si è svegliato e che nel pomeriggio parlerà con i carabinieri.",
    "reactions": {
-    "ada": "«Poverino. Con tutti quei farmaci sarà confuso, dirà cose senza senso.» Lo dice prima che qualcuno le chieda cosa ne pensa.",
-    "pamela": "Scoppia a piangere e si fa il segno della croce due volte.",
-    "tonino": "«Allora ditegli che Tonino non c'entra.» Ride, poi si asciuga gli occhi col dorso della mano."
+    "ada": "«Poverino. Con tutti quei farmaci sarà confuso, dirà cose senza senso.»",
+    "pamela": "Scoppia a piangere e stringe la catenina nel pugno.",
+    "tonino": "«Allora ditegli che Tonino non c'entra.» Poi guarda verso il suo vecchio stand, vuoto."
    },
-   "insight": "Alla notizia del risveglio di Gigi, Ada si è preoccupata di screditare quello che avrebbe detto."
+   "insight": "Al bluff del risveglio: Ada dice che Gigi sarà confuso, Pamela stringe la catenina, Tonino guarda il suo vecchio stand."
+  },
+  "motive": {
+   "options": [
+    "Gelosia: Gigi aveva chiuso la loro storia.",
+    "Vendetta per lo stand tolto dopo vent'anni.",
+    "Impedire a Gigi di scoprire l'ammanco nella cassa.",
+    "Prendersi la presidenza del comitato."
+   ],
+   "correct": 2
   },
   "culprit": "ada",
   "key": [
@@ -366,7 +453,7 @@
    "a4",
    "a3"
   ],
-  "solution": "Da anni Ada si teneva una parte dell'incasso della sagra, e Tonino l'aveva capito prima di tutti. Gigi aveva rifatto i conti e voleva chiuderli con lei la sera stessa. Alle dieci, quando è salito sul palco per la lotteria, la sua tazza è rimasta sul bancone accanto ad Ada: lei ha strappato due foglie dalla siepe alle sue spalle, con i guanti della cassa, e le ha lasciate nell'infuso. Il pentolone era innocuo e Pamela non c'entrava. Tonino, a quell'ora, friggeva a Calimera davanti a trenta clienti."
+  "solution": "Da anni Ada si teneva una parte dell'incasso della sagra, e Tonino l'aveva capito prima di tutti. Gigi aveva rifatto i conti e voleva chiuderli con lei la sera stessa. Alle dieci, quando è salito sul palco per la lotteria, la sua tazza è rimasta sul bancone accanto ad Ada: lei ha strappato due foglie dalla siepe alle sue spalle, con i guanti della cassa, e le ha lasciate nell'infuso. Il pentolone era innocuo. Pamela nascondeva la sua storia con Gigi, finita il giorno prima. Tonino nascondeva di essere tornato alle 22:14 a riprendersi la friggitrice, ma alla cassa non si è avvicinato."
  },
  {
   "id": "barca-vuota",
@@ -379,43 +466,43 @@
     "id": "d1",
     "label": "Il motore",
     "text": "Spento. La chiave è girata su OFF e il serbatoio è quasi pieno.",
-    "insight": "Il motore l'ha spento una mano: chi cade in mare non gira la chiave."
+    "insight": "Motore spento con la chiave su OFF. Serbatoio quasi pieno."
    },
    {
     "id": "d2",
     "label": "Le reti",
     "text": "Piegate a poppa, asciutte. Nemmeno un'alga.",
-    "insight": "Stanotte Cosimo non ha calato le reti: non è uscito a pescare."
+    "insight": "Reti piegate a poppa, asciutte, senza un'alga."
    },
    {
     "id": "d3",
     "label": "La cima di poppa",
     "text": "A poppa Cosimo teneva legato un canotto gonfiabile. Il canotto non c'è. La cima è stata sciolta, non tagliata né strappata.",
-    "insight": "Qualcuno ha lasciato la barca col canotto, con calma."
+    "insight": "Il canotto di poppa non c'è. La cima è stata sciolta, non tagliata né strappata."
    },
    {
     "id": "d4",
     "label": "La Panda di Dora",
     "text": "Parcheggiata sotto casa. Sul tappetino del guidatore, sabbia bagnata e un filo d'alga. Sul cruscotto, lo scontrino di un distributore self-service di Lido Pizzo: ore 4:21.",
-    "insight": "Alle 4:21 la Panda di Dora era sulla costa, a Lido Pizzo."
+    "insight": "Panda di Dora: sabbia bagnata sul tappetino, scontrino di un distributore di Lido Pizzo delle 4:21."
    },
    {
     "id": "d5",
     "label": "Il telefono di Cosimo",
     "text": "Trovato nella cabina, carico. Ultimo messaggio inviato a Dora alle 3:12: «Mare calmo. Ti voglio bene.»",
-    "insight": "Cosimo ha lasciato il telefono a bordo dopo un ultimo messaggio a Dora."
+    "insight": "Telefono di Cosimo in cabina. Ultimo messaggio a Dora, 3:12: «Mare calmo. Ti voglio bene.»"
    },
    {
     "id": "d6",
     "label": "La cucina di casa",
     "text": "Sul frigo, il portapillole settimanale di Cosimo, per la pressione. Vuoto. Anche la scatola nuova, comprata venerdì, è sparita.",
-    "insight": "Qualcuno ha portato via le pillole di Cosimo, una scorta di un mese. A un annegato non servono."
+    "insight": "Il portapillole della pressione di Cosimo è vuoto. Sparita anche la scatola nuova di venerdì."
    },
    {
     "id": "d7",
     "label": "La polizza",
     "text": "Nella credenza: polizza infortuni, morte accidentale in mare, 300.000 euro. Beneficiaria Addolorata Tarantino. Il massimale è stato triplicato a marzo.",
-    "insight": "Se Cosimo risulta morto in mare, Dora incassa 300.000 euro. La polizza è stata triplicata a marzo."
+    "insight": "Polizza per morte accidentale in mare: 300.000 € a Dora. Massimale triplicato a marzo."
    }
   ],
   "suspects": [
@@ -424,25 +511,32 @@
     "name": "Nando Scorrano",
     "role": "Grossista di pesce, 60 anni",
     "look": "Stivali di gomma, catena d'oro, un telefono che squilla ogni due minuti. Al porto lo chiamano «la banca».",
-    "tell": "Parla di Cosimo sempre al presente: «mi deve», «è uno che». Non per speranza: per contabilità. Quando parli di mare sbuffa, quando parli di soldi si avvicina. Cosimo lo vuole vivo, e si vede.",
+    "tell": "Parla di Cosimo sempre al presente: «mi deve», «è uno che». Rifiuta tutte le chiamate tranne una, a cui risponde a monosillabi allontanandosi di qualche passo.",
     "questions": [
      {
       "id": "n1",
       "q": "Cosimo le doveva dei soldi.",
       "a": "Quarantamila. Cambiali, scadenza venerdì. E un morto non paga, lo sa? Se lo volevo morto, ero scemo.",
-      "insight": "Cosimo doveva 40.000 euro a Nando, con scadenza venerdì."
+      "insight": "Cosimo doveva 40.000 € in cambiali a Nando, con scadenza venerdì."
      },
      {
       "id": "n2",
       "q": "Dov'era stanotte?",
       "a": "All'asta del mercato ittico, dalle tre e mezza alle sei. Ho comprato sei lotti. C'è il registro, ci sono le telecamere, ci sono cinquanta pescatori.",
-      "insight": "Nando era all'asta del pesce dalle 3:30 alle 6, davanti a cinquanta persone."
+      "insight": "Nando dice di essere stato all'asta del pesce dalle 3:30 alle 6, con registro e telecamere."
      },
      {
       "id": "n3",
       "q": "Cosimo le ha detto qualcosa, ultimamente?",
-      "a": "Lunedì, al bar. «Venerdì ti pago, Nando. In un modo o nell'altro.» Ho pensato che vendeva la barca. Adesso quella barca non vale niente.",
-      "insight": "Cosimo aveva promesso di pagare venerdì, «in un modo o nell'altro»."
+      "a": "Lunedì, al bar, tranquilli. «Venerdì ti pago, Nando. In un modo o nell'altro.» Io non l'ho mai minacciato, eh. Sono un commerciante.",
+      "insight": "Nando dice che lunedì Cosimo gli ha promesso di pagare venerdì «in un modo o nell'altro». Dice di non averlo mai minacciato.",
+      "lie": true
+     },
+     {
+      "id": "n4",
+      "q": "Ha visto il mozzo, ieri?",
+      "a": "Ieri sera al bar. Cosimo gli ha passato dei soldi sotto il tavolo, pensavano che non guardassi. Io guardo sempre, quando ci sono soldi.",
+      "insight": "Nando dice di aver visto Cosimo passare dei soldi a Samuele sotto il tavolo, ieri sera al bar."
      }
     ]
    },
@@ -451,29 +545,36 @@
     "name": "Samuele Nuzzo",
     "role": "Mozzo, 19 anni",
     "look": "Felpa col cappuccio, mani screpolate dal sale. Seduto su una bitta da ore, non se ne va.",
-    "tell": "Ogni tanto la mano va alla tasca dei jeans e controlla che qualcosa sia ancora lì. Guarda il mare aperto, non la barca: aspetta qualcuno, non un corpo. Quando parla di Cosimo la voce gli si rompe, ma non piange.",
+    "tell": "Ogni tanto la mano va alla tasca dei jeans e ci resta. Guarda il mare aperto, non la barca. Quando parla di Cosimo la voce gli si rompe, ma non piange.",
     "questions": [
      {
       "id": "s1",
       "q": "Perché stanotte non era in barca?",
       "a": "Mi ha scritto a mezzanotte: «Stanotte non venire, esco da solo.» In tre anni non era mai successo.",
-      "insight": "Stanotte, per la prima volta in tre anni, Cosimo ha voluto uscire da solo."
+      "insight": "A mezzanotte Cosimo ha scritto a Samuele di non venire: usciva da solo. In tre anni mai successo."
      },
      {
       "id": "s2",
-      "q": "Cosa controlla in quella tasca?",
+      "q": "Cosa tiene in quella tasca?",
       "req": [
        "t_samuele"
       ],
-      "a": "(Tira fuori le banconote.) Duecento euro. Me li ha dati ieri sera, al porto. «Per la settimana che non lavori.» Come se sapesse che non avrei lavorato. Non l'ho detto a nessuno, sembrava che l'avessi venduto.",
-      "insight": "Ieri sera Cosimo ha pagato in anticipo il mozzo: sapeva che non sarebbe tornato.",
+      "a": "(Tira fuori le banconote e le rimette via.) Soldi miei. Me li sono guadagnati.",
+      "aside": "Si tira il cappuccio sulla testa.",
+      "insight": "Samuele ha in tasca 200 € in contanti. Dice che sono soldi suoi.",
       "lie": true
      },
      {
       "id": "s3",
       "q": "Com'era Cosimo in barca?",
       "a": "Un maniaco. Il canotto lo legava con tre nodi. E il telefono non se lo portava mai, lo lasciava a casa. Diceva che in mare si sta zitti.",
-      "insight": "Cosimo non portava mai il telefono in barca: stanotte l'ha lasciato a bordo apposta."
+      "insight": "Secondo Samuele, Cosimo legava il canotto con tre nodi e in mare il telefono non se lo portava mai."
+     },
+     {
+      "id": "s4",
+      "q": "Cosimo aveva paura di qualcuno?",
+      "a": "Lunedì sera due uomini di Nando sono saliti in barca. L'hanno preso per il collo. «Venerdì, o la barca va a fuoco.» Io ero in cabina, zitto.",
+      "insight": "Samuele dice che lunedì due uomini di Nando hanno preso Cosimo per il collo: «Venerdì, o la barca va a fuoco.»"
      }
     ]
    },
@@ -482,13 +583,13 @@
     "name": "Addolorata «Dora» Tarantino",
     "role": "Moglie di Cosimo, 49 anni",
     "look": "Scialle nero, il telefono stretto in mano. Le amiche le fanno cerchio intorno.",
-    "tell": "Ha pianto, ma il trucco è fresco: se l'è rifatto stamattina, dopo la notizia. Quando il telefono vibra guarda lo schermo e lo gira in giù, senza rispondere. All'orlo dei jeans, sotto lo scialle, c'è sabbia umida.",
+    "tell": "Ha gli occhi gonfi e il trucco rifatto. Quando il telefono vibra guarda lo schermo e lo gira in giù, senza rispondere. All'orlo dei jeans, sotto lo scialle, c'è sabbia umida.",
     "questions": [
      {
       "id": "o1",
       "q": "Quando ha sentito suo marito l'ultima volta?",
       "a": "Alle tre e dodici mi ha scritto: «Mare calmo, ti voglio bene.» Io dormivo. L'ho letto alle sei e ho chiamato la capitaneria. Stanotte non sono uscita di casa.",
-      "insight": "Dora dice di aver dormito tutta la notte, senza uscire di casa."
+      "insight": "Dora dice di aver dormito tutta la notte, senza uscire di casa. Il messaggio delle 3:12 l'ha letto alle 6."
      },
      {
       "id": "o2",
@@ -497,8 +598,8 @@
        "d6"
       ],
       "a": "Le avrò buttate io. Non lo so. Che importanza hanno delle pillole, adesso?",
-      "aside": "Gli occhi le vanno alla borsa. Non al mare.",
-      "insight": "Dora non sa spiegare le pillole sparite, e guarda la sua borsa.",
+      "aside": "Gli occhi le vanno alla borsa.",
+      "insight": "Sulle pillole sparite Dora dice «le avrò buttate io» e guarda la sua borsa.",
       "lie": true
      },
      {
@@ -508,7 +609,7 @@
        "d7"
       ],
       "a": "L'ha voluta lui. Il mare è traditore, diceva sempre. Io non volevo nemmeno firmare.",
-      "insight": "Con la polizza triplicata a marzo, Dora incassa 300.000 euro se Cosimo è morto."
+      "insight": "Dora dice che la polizza triplicata a marzo l'ha voluta Cosimo."
      }
     ]
    }
@@ -520,19 +621,48 @@
     "b": "d4",
     "who": "dora",
     "reply": "Non riuscivo a dormire. Sono andata a guardare il mare, dove va lui. Che c'è di strano?",
-    "aside": "Alle quattro di notte, a dodici chilometri da casa. E Cosimo pesca a sud di Sant'Andrea, non davanti alla spiaggia di Lido Pizzo.",
-    "insight": "Alle 4:21 Dora era sulla spiaggia di Lido Pizzo, e aveva giurato di non essere uscita.",
+    "aside": "Stringe il telefono. Lido Pizzo è a dodici chilometri da casa.",
+    "insight": "Dora ammette di essere stata a Lido Pizzo alle 4:21, «a guardare il mare».",
+    "lie": true
+   },
+   {
+    "id": "x2",
+    "a": "n3",
+    "b": "s4",
+    "who": "nando",
+    "reply": "Gli ho mandato due ragazzi a ricordargli la scadenza. Ricordargli. La barca non l'ha toccata nessuno.",
+    "aside": "Il telefono squilla. Lo lascia squillare.",
+    "insight": "Nando ammette di aver mandato lunedì due uomini da Cosimo per la scadenza.",
+    "lie": true
+   },
+   {
+    "id": "x3",
+    "a": "s2",
+    "b": "n4",
+    "who": "samuele",
+    "reply": "Me li ha dati lui, ieri sera. Duecento euro. «Per la settimana che non lavori.» Non l'ho detto a nessuno, sembrava che l'avessi venduto.",
+    "aside": "Guarda il mare aperto.",
+    "insight": "Samuele ammette che ieri sera Cosimo gli ha dato 200 € «per la settimana che non lavori».",
     "lie": true
    }
   ],
   "bluff": {
    "text": "Annunci che un peschereccio ha ripescato un corpo vicino a Sant'Andrea e che serve qualcuno della famiglia per il riconoscimento.",
    "reactions": {
-    "nando": "«Porca miseria.» Si siede su una cassetta del pesce. Sta facendo i conti, e si vede.",
-    "samuele": "Diventa bianco, corre in fondo al molo e vomita in acqua.",
-    "dora": "«Non è lui.» Lo dice subito, sicura. Solo un secondo dopo scoppia a piangere."
+    "nando": "«Porca miseria.» Si siede su una cassetta del pesce e tira fuori un taccuino.",
+    "samuele": "Diventa bianco. «Non può essere», ripete. «Non può essere.»",
+    "dora": "«Vengo io.» Prende la borsa, poi si ferma a guardare il telefono prima di muoversi."
    },
-   "insight": "Al bluff del corpo ripescato Dora ha detto «non è lui» prima ancora di vederlo."
+   "insight": "Al bluff del corpo: Nando tira fuori un taccuino, Samuele ripete «non può essere», Dora guarda il telefono prima di muoversi."
+  },
+  "motive": {
+   "options": [
+    "Far pagare a Cosimo le cambiali scadute, con le cattive.",
+    "Incassare la polizza con un finto annegamento e sparire dai debiti.",
+    "Prendersi la barca per lavorare in proprio.",
+    "Liberarsi di un marito per rifarsi una vita."
+   ],
+   "correct": 1
   },
   "culprit": "dora",
   "key": [
@@ -540,7 +670,7 @@
    "o2",
    "o3"
   ],
-  "solution": "Cosimo non è annegato: è scappato, e Dora l'ha aiutato. Con le cambiali di Nando in scadenza, hanno deciso di farlo sparire in mare e incassare la polizza triplicata a marzo. Stanotte Cosimo è uscito da solo, dopo aver pagato in anticipo il mozzo; non ha calato le reti, ha lasciato a bordo il telefono con un messaggio d'addio, ha spento il motore ed è sceso a riva col canotto. Alle 4:21 Dora lo aspettava a Lido Pizzo con la Panda e le sue pillole per la pressione. Il corpo che cerca la capitaneria sta bene, ed è nascosto a mezz'ora da qui."
+  "solution": "Cosimo non è annegato: è scappato, e Dora l'ha aiutato. Con le cambiali di Nando in scadenza, hanno deciso di farlo sparire in mare e incassare la polizza triplicata a marzo. Stanotte Cosimo è uscito da solo, dopo aver pagato in anticipo il mozzo; non ha calato le reti, ha lasciato a bordo il telefono con un messaggio d'addio, ha spento il motore ed è sceso a riva col canotto. Alle 4:21 Dora lo aspettava a Lido Pizzo con la Panda e le sue pillole per la pressione. Nando nascondeva di averlo fatto minacciare lunedì, Samuele i 200 € che Cosimo gli aveva dato «per la settimana che non lavori». Il corpo che cerca la capitaneria sta bene, ed è nascosto a mezz'ora da qui."
  },
  {
   "id": "pizzica-palco",
@@ -553,43 +683,43 @@
     "id": "d1",
     "label": "Il cavo tagliato",
     "text": "Il cavo di potenza è tagliato netto dietro le roulotte degli artisti, in piena vista. Accanto, nell'erba, delle cesoie da giardino nuove, col cartellino di una ferramenta di Maglie ancora attaccato.",
-    "insight": "Il sabotatore ha comprato le cesoie apposta: un dilettante, ma con un piano."
+    "insight": "Cavo tagliato dietro le roulotte degli artisti. Nell'erba, cesoie da giardino nuove col cartellino di una ferramenta di Maglie."
    },
    {
     "id": "d2",
     "label": "Il generatore",
     "text": "Spento con il pulsante d'emergenza, un grosso fungo rosso con la scritta STOP. Sulla plastica rossa, qualche brillantino dorato.",
-    "insight": "Chi ha spento il generatore aveva le dita piene di brillantini dorati."
+    "insight": "Generatore spento col fungo rosso d'emergenza. Sulla plastica, brillantini dorati."
    },
    {
     "id": "d3",
     "label": "I bagni chimici",
     "text": "In fila accanto al generatore, dalla parte opposta del palco rispetto alle roulotte.",
-    "insight": "I bagni chimici sono a due passi dal generatore."
+    "insight": "I bagni chimici sono accanto al generatore, dalla parte opposta alle roulotte."
    },
    {
     "id": "d4",
     "label": "Il contratto di Assunta",
     "text": "Cachet: 18.000 euro. Clausola 9: se il concerto è annullato per cause tecniche imputabili all'organizzazione, il cachet è dovuto per intero. Clausola 10: se è l'artista a rinunciare, penale di 30.000 euro.",
-    "insight": "Se il concerto salta per un guasto, Assunta incassa 18.000 euro. Se rinuncia lei, ne paga 30.000."
+    "insight": "Contratto di Assunta: con un guasto dell'organizzazione incassa 18.000 € (clausola 9). Se rinuncia lei, paga 30.000 € (clausola 10)."
    },
    {
     "id": "d5",
     "label": "Il foglio delle prevendite",
     "text": "4.800 biglietti venduti su 5.000. Tutti da rimborsare.",
-    "insight": "Il festival era quasi esaurito: annullarlo è una rovina per chi lo organizza."
+    "insight": "4.800 biglietti venduti su 5.000, tutti da rimborsare."
    },
    {
     "id": "d6",
     "label": "La polizza del festival",
     "text": "Nel furgone della produzione: polizza annullamento evento, scaduta il 30 giugno. Mai rinnovata.",
-    "insight": "Il festival non era assicurato: l'annullamento lo paga tutto l'organizzatore."
+    "insight": "La polizza annullamento del festival è scaduta il 30 giugno e non è stata rinnovata."
    },
    {
     "id": "d7",
     "label": "La roulotte di Assunta",
     "text": "Spray per la gola, miele, tre thermos d'acqua calda. Sul tavolino, un certificato di un foniatra di Bari, datato martedì: «Noduli alle corde vocali. Riposo vocale assoluto per 15 giorni.»",
-    "insight": "Da martedì Assunta aveva l'ordine di non cantare per quindici giorni."
+    "insight": "Certificato del foniatra, martedì: noduli alle corde vocali, riposo vocale assoluto per 15 giorni."
    }
   ],
   "suspects": [
@@ -598,13 +728,14 @@
     "name": "Rino Calò",
     "role": "Tecnico luci, licenziato due giorni fa",
     "look": "Maglietta nera della crew, tronchese alla cintura per abitudine. Sa di birra.",
-    "tell": "Beve, sì: le mani gli tremano un po' e parla troppo forte. Ma parla del palco come un falegname parla della sua sedia. Davanti al cavo tagliato fa una smorfia di disgusto professionale, non di paura.",
+    "tell": "Le mani gli tremano un po' e parla troppo forte. Davanti al cavo tagliato fa una smorfia. Ogni tanto guarda verso il furgone della produzione, poi distoglie gli occhi.",
     "questions": [
      {
       "id": "r1",
       "q": "Lei ha detto che senza di lei il palco non si accende.",
-      "a": "Ho detto che non si accende bene. Mica che lo spegnevo io. Alle nove meno venti ero al bar della piazza, e c'è il video di un amico che lo prova: guardi, 20:41, io con la birra in mano.",
-      "insight": "Alle 20:41 Rino era al bar della piazza, ripreso in un video."
+      "a": "Ho detto che non si accende bene. Mica che lo spegnevo io. Alle nove meno venti ero al bar della piazza, e c'è il video di un amico che lo prova: guardi, 20:41, io con la birra in mano. Da lì non mi sono mosso.",
+      "insight": "Rino è in un video al bar della piazza alle 20:41. Dice di non essersi più mosso da lì.",
+      "lie": true
      },
      {
       "id": "r2",
@@ -613,13 +744,13 @@
        "d1"
       ],
       "a": "Cesoie da giardino? Io ho questa. (Batte sulla tronchese.) E se lo tagliavo io, lo facevo sotto il palco, dove ci mettevano due ore a trovarlo. Questo l'ha fatto un dilettante, in piena vista, dietro le roulotte degli artisti.",
-      "insight": "Il cavo l'ha tagliato un dilettante, vicino alle roulotte degli artisti."
+      "insight": "Rino dice che lui avrebbe usato la tronchese e tagliato sotto il palco, dove non si trova."
      },
      {
       "id": "r3",
       "q": "Perché l'hanno licenziata?",
       "a": "Perché bevo, dice Walter. E perché gli ho detto davanti a tutti che la polizza era scaduta, e lui non voleva sentirselo dire.",
-      "insight": "Rino sapeva che la polizza del festival era scaduta."
+      "insight": "Rino sapeva che la polizza del festival era scaduta, e l'ha detto davanti a tutti."
      }
     ]
    },
@@ -627,8 +758,8 @@
     "id": "assunta",
     "name": "Assunta Rizzo",
     "role": "Cantante, 41 anni",
-    "look": "Abito bianco di scena, fazzoletto rosso al collo, brillantini dorati sugli zigomi e sul dorso delle mani. Una tazza fumante sempre in mano.",
-    "tell": "Parla sottovoce, e non per timidezza: risparmia la voce, conta le parole, quando può annuisce. Quando nomini il concerto annullato non guarda il palco. Si tocca la gola.",
+    "look": "Abito bianco di scena, fazzoletto rosso al collo, trucco di scena dorato. Una tazza fumante sempre in mano.",
+    "tell": "Parla sottovoce, conta le parole, quando può annuisce. Quando nomini il concerto annullato non guarda il palco e si tocca la gola.",
     "questions": [
      {
       "id": "a1",
@@ -643,8 +774,8 @@
        "d7"
       ],
       "a": "(Sussurra.) I medici esagerano. Ho cantato con quaranta di febbre, io. Stasera avrei cantato.",
-      "aside": "Lo dice senza voce, pesando ogni sillaba.",
-      "insight": "Assunta non poteva cantare: aveva i noduli e l'ordine del medico di stare zitta.",
+      "aside": "Lo dice in un soffio, pesando ogni sillaba.",
+      "insight": "Assunta dice che, noduli o no, stasera avrebbe cantato.",
       "lie": true
      },
      {
@@ -654,8 +785,7 @@
        "d4"
       ],
       "a": "La clausola nove? Le scrive il mio agente, io non le leggo.",
-      "aside": "Non le legge, ma sa il numero.",
-      "insight": "Assunta conosce bene la clausola che le paga il cachet in caso di guasto."
+      "insight": "Assunta dice di non leggere i contratti. Il numero della clausola l'ha detto lei."
      }
     ]
    },
@@ -664,13 +794,13 @@
     "name": "Walter Monaco",
     "role": "Organizzatore del festival, 50 anni",
     "look": "Camicia sudata, due telefoni, un auricolare. Non si è ancora seduto.",
-    "tell": "Ti risponde e intanto scrive messaggi. Gli aloni sotto le ascelle crescono ogni volta che qualcuno dice «rimborsi». Ha paura, tanta: ma del dopo, non di essere scoperto stasera.",
+    "tell": "Ti risponde e intanto scrive messaggi. Gli aloni sotto le ascelle crescono. Quando qualcuno dice «rimborsi» o «assicurazione» smette di scrivere per un attimo.",
     "questions": [
      {
       "id": "w1",
       "q": "Chi ci guadagna, se il concerto salta?",
       "a": "Nessuno! Io ci perdo tutto: quattromilaottocento biglietti da rimborsare, gli sponsor, i service. È stato Rino, ve lo dico io.",
-      "insight": "Walter perde tutto con l'annullamento, e accusa Rino."
+      "insight": "Walter dice che con l'annullamento perde tutto, e accusa Rino."
      },
      {
       "id": "w2",
@@ -679,14 +809,20 @@
        "d6"
       ],
       "a": "(Abbassa la voce.) Non avevo i soldi per rinnovarla. Se lo sanno gli sponsor, in Puglia non lavoro più. Ma le pare che mi sabotavo da solo, senza assicurazione?",
-      "insight": "Walter nascondeva di non essere assicurato: l'annullamento lo rovina, non lo arricchisce.",
+      "insight": "Walter ammette di non aver rinnovato la polizza e di averlo nascosto agli sponsor.",
       "lie": true
      },
      {
       "id": "w3",
       "q": "Ha visto qualcuno dietro il palco prima del blackout?",
       "a": "Alle nove meno un quarto ho bussato alla roulotte di Assunta per il cambio d'abito. Porta aperta, luce accesa, dentro nessuno. Ho pensato che fosse andata in bagno.",
-      "insight": "Alle 20:45 la roulotte di Assunta era vuota."
+      "insight": "Walter dice che alle 20:45 la roulotte di Assunta era aperta, con la luce accesa, e vuota."
+     },
+     {
+      "id": "w4",
+      "q": "Rino è ripassato di qua, stasera?",
+      "a": "Verso le nove meno tredici usciva dal retropalco con un flight case in spalla. L'ho detto ai carabinieri: eccolo, il vostro uomo.",
+      "insight": "Walter dice di aver visto Rino uscire dal retropalco con un flight case verso le 20:47."
      }
     ]
    }
@@ -698,19 +834,38 @@
     "b": "w3",
     "who": "assunta",
     "reply": "Ero... ai bagni chimici. Due minuti.",
-    "aside": "I bagni chimici sono accanto al generatore. E ha ancora i brillantini sulle dita.",
-    "insight": "Alle 20:45 Assunta non era in roulotte ma dalla parte del generatore, e l'aveva negato.",
+    "aside": "Si guarda le mani.",
+    "insight": "Assunta ammette di essere andata ai bagni chimici verso le 20:45.",
+    "lie": true
+   },
+   {
+    "id": "x2",
+    "a": "r1",
+    "b": "w4",
+    "who": "rino",
+    "reply": "Va bene, sono tornato dietro. Cinque minuti. I radiomicrofoni li ho comprati io, tre anni fa, e Walter non me li ha mai pagati. Me li sono ripresi. Il cavo non l'ho nemmeno visto.",
+    "aside": "Guarda il furgone della produzione.",
+    "insight": "Rino ammette di essere passato dal retropalco verso le 20:47 e di aver portato via i radiomicrofoni.",
     "lie": true
    }
   ],
   "bluff": {
    "text": "Annunci che da Lecce sta arrivando un generatore di riserva: il cavo si ripara in mezz'ora e il concerto si fa alle dieci.",
    "reactions": {
-    "rino": "«E chi lo monta, voi?» Però sorride, e si alza per andare a vedere.",
-    "assunta": "Si porta la mano alla gola. «Alle dieci? Stasera?» Cerca con gli occhi il suo agente.",
-    "walter": "«Grazie a Dio!» Comincia a telefonare a tutti, con tutti e due i telefoni."
+    "rino": "«E chi lo monta, voi?» Poi guarda il furgone della produzione.",
+    "assunta": "Si porta la mano alla gola. Cerca con gli occhi il suo agente.",
+    "walter": "Chiude una telefonata a metà frase. «E il generatore chi lo paga?»"
    },
-   "insight": "Alla notizia che il concerto si sarebbe fatto, l'unica spaventata è stata Assunta."
+   "insight": "Al bluff del generatore: Rino guarda il furgone, Assunta si tocca la gola e cerca l'agente, Walter chiede chi paga."
+  },
+  "motive": {
+   "options": [
+    "Vendicarsi del licenziamento di due giorni fa.",
+    "Incassare l'assicurazione sull'annullamento.",
+    "Coprire il furto dei radiomicrofoni.",
+    "Evitare la penale senza dire di non poter cantare."
+   ],
+   "correct": 3
   },
   "culprit": "assunta",
   "key": [
@@ -718,7 +873,7 @@
    "d2",
    "a2"
   ],
-  "solution": "Assunta non poteva cantare: da martedì aveva i noduli e l'ordine di stare zitta per quindici giorni. Rinunciare le sarebbe costato 30.000 euro di penale, mentre un guasto dell'organizzazione gliene faceva incassare 18.000. Ha comprato le cesoie a Maglie, alle 20:45 è uscita dalla roulotte, ha premuto il fungo rosso del generatore lasciandoci i brillantini del trucco di scena e ha tagliato il cavo dietro le roulotte. Rino in quel momento era al bar, in un video. Walter, senza assicurazione, era l'ultimo ad avere interesse a spegnere il suo palco."
+  "solution": "Assunta non poteva cantare: da martedì aveva i noduli e l'ordine di stare zitta per quindici giorni. Rinunciare le sarebbe costato 30.000 euro di penale, mentre un guasto dell'organizzazione gliene faceva incassare 18.000. Ha comprato le cesoie a Maglie, alle 20:45 è uscita dalla roulotte, ha premuto il fungo rosso del generatore lasciandoci i brillantini del trucco di scena e ha tagliato il cavo dietro le roulotte. Rino nascondeva di essere tornato alle 20:47 a prendersi i radiomicrofoni, ma aveva le mani pulite dal trucco. Walter nascondeva agli sponsor la polizza scaduta: senza assicurazione, era l'ultimo ad avere interesse a spegnere il suo palco."
  },
  {
   "id": "guaritore-nardo",
@@ -731,43 +886,43 @@
     "id": "d1",
     "label": "La penna d'insulina",
     "text": "Sul comodino. Il selettore è fermo su 40 unità. Sul foglio della terapia attaccato all'armadio, il medico ha scritto: «8 unità la sera».",
-    "insight": "A Donato hanno iniettato cinque volte la sua dose."
+    "insight": "Penna d'insulina ferma su 40 unità. La terapia prescrive 8 unità la sera."
    },
    {
     "id": "d2",
     "label": "L'acqua di luce",
     "text": "Una bottiglietta con l'etichetta dorata: «Acqua di luce – 90 €». Dentro: acqua, sale e un rametto di rosmarino.",
-    "insight": "Il rimedio del Maestro è acqua salata: una truffa, ma innocua."
+    "insight": "L'«acqua di luce» da 90 €: acqua, sale e un rametto di rosmarino."
    },
    {
     "id": "d3",
     "label": "Il volantino del Maestro",
     "text": "In fondo, in piccolo: «Non sospendete né modificate le terapie del vostro medico. Il Maestro affianca, non sostituisce.»",
-    "insight": "Il Maestro si tiene alla larga dalle medicine, e lo mette per iscritto."
+    "insight": "Volantino del Maestro: «Non sospendete né modificate le terapie del vostro medico.»"
    },
    {
     "id": "d4",
     "label": "Il glucometro",
     "text": "In memoria, due misurazioni di ieri: 20:52, glicemia 190. 22:48, glicemia 176.",
-    "insight": "Alle 22:48 qualcuno ha misurato la glicemia di Donato. Di solito si fa prima dell'insulina."
+    "insight": "Glucometro, ieri: misurazioni alle 20:52 (190) e alle 22:48 (176)."
    },
    {
     "id": "d5",
     "label": "Il testamento",
     "text": "Nello studio, la bozza di un nuovo testamento, non firmata: la villa e gli uliveti a Rosaria Mazzotta, «per l'affetto e la cura». Un post-it: «Notaio, giovedì ore 10».",
-    "insight": "Giovedì Donato avrebbe lasciato la villa alla badante."
+    "insight": "Bozza di testamento non firmata: villa e uliveti a Rosaria. Post-it: «Notaio, giovedì ore 10»."
    },
    {
     "id": "d6",
     "label": "La serratura elettronica",
     "text": "Registro degli ingressi di ieri: 21:02 uscita badge 2. 22:41 ingresso badge 2. 22:58 uscita badge 2.",
-    "insight": "Chi ha il badge 2 è uscito alle 21:02 ed è rientrato alle 22:41, per diciassette minuti."
+    "insight": "Serratura, ieri: badge 2 esce alle 21:02, rientra alle 22:41, esce alle 22:58."
    },
    {
     "id": "d7",
     "label": "Le ricevute",
     "text": "Sei ricevute del Maestro, 250 euro a seduta. Pagate tutte con la carta di Loredana Perrone.",
-    "insight": "Era Loredana a pagare il guaritore."
+    "insight": "Sei sedute del Maestro, 250 € l'una, pagate con la carta di Loredana."
    }
   ],
   "suspects": [
@@ -776,13 +931,13 @@
     "name": "Elio Fanizza, «il Maestro»",
     "role": "Guaritore, 58 anni",
     "look": "Camicia di lino bianca, tre braccialetti di legno, voce da radio notturna. Ti ha già toccato il braccio due volte.",
-    "tell": "Mentre lo osservi, lui osserva te: frasi aperte, pause, aspetta di vedere dove annuisci. Lettura a freddo da manuale. Ma quando si parla della penna d'insulina fa un passo indietro e mette le mani in tasca: quella roba non la tocca, e ci tiene che tu lo veda.",
+    "tell": "Frasi aperte, pause: aspetta di vedere dove annuisci. Quando si parla della penna d'insulina fa un passo indietro e mette le mani in tasca. Controlla spesso l'orologio.",
     "questions": [
      {
       "id": "e1",
       "q": "Cosa ha fatto ieri sera a Donato?",
       "a": "Imposizione delle mani, venti minuti. L'acqua di luce. Alle otto e mezza me ne sono andato, e dalle dieci ero in diretta sulla mia pagina: novanta persone collegate a pregare con me, fino a mezzanotte.",
-      "insight": "Il Maestro è andato via alle 20:30. Dalle 22 a mezzanotte era in diretta con novanta persone."
+      "insight": "Il Maestro dice di essere andato via alle 20:30 e di essere stato in diretta dalle 22 a mezzanotte, con novanta persone."
      },
      {
       "id": "e2",
@@ -791,15 +946,15 @@
        "d2"
       ],
       "a": "Acqua, sale, rosmarino. E fede. La fede ce la mette il cliente.",
-      "aside": "Non si scompone. È la cosa più sincera che ha detto finora.",
-      "insight": "Il Maestro ammette che la sua acqua è un trucco.",
+      "aside": "Non si scompone.",
+      "insight": "Il Maestro ammette che la sua acqua è acqua, sale e rosmarino.",
       "lie": true
      },
      {
       "id": "e3",
       "q": "Chi l'ha chiamata in questa casa?",
-      "a": "La figlia. Mi ha cercato lei, a maggio: «Papà non crede ai medici, crede a lei.» Strano. Il vecchio a me non credeva per niente. Mi guardava come si guarda uno che vende pentole.",
-      "insight": "È stata Loredana a portare il guaritore in casa. Donato non ci credeva."
+      "a": "La figlia. Mi ha cercato lei, a maggio: «Papà non crede ai medici, crede a lei.» Strano. Il vecchio a me non credeva per niente. Credeva solo alla badante. A Pasqua le ha comprato un anello, ho visto l'astuccio sul comò.",
+      "insight": "Loredana ha portato il Maestro in casa. Donato, dice lui, non gli credeva. A Pasqua Donato ha comprato un anello per Rosaria."
      }
     ]
    },
@@ -814,7 +969,7 @@
       "id": "b1",
       "q": "Dov'era ieri sera?",
       "a": "Era la mia sera libera. La signora Loredana ha detto che l'insulina delle nove gliela faceva lei, e di andare pure. Ero a Galatone da mia sorella, a cena. Eravamo in dieci.",
-      "insight": "Rosaria era a cena a Galatone con dieci persone. L'insulina delle 21 doveva farla Loredana."
+      "insight": "Rosaria dice di essere stata a cena a Galatone con dieci persone. L'insulina delle 21 doveva farla Loredana."
      },
      {
       "id": "b2",
@@ -823,7 +978,7 @@
        "d6"
       ],
       "a": "Il badge 1 è il mio, ed era nella mia borsa a Galatone. Il 2 è della signora Loredana. Il 3 era di lui, ma non usciva più di casa.",
-      "insight": "Il badge 2 è quello di Loredana."
+      "insight": "Secondo Rosaria il badge 2 è di Loredana. Il suo, il badge 1, era con lei a Galatone."
      },
      {
       "id": "b3",
@@ -831,9 +986,16 @@
       "req": [
        "t_rosaria"
       ],
-      "a": "(La guarda.) Me l'ha data lui, a Pasqua. Ci volevamo sposare a settembre, in comune, senza feste. Lo sapeva solo il notaio. E forse lei.",
-      "insight": "Donato voleva sposare Rosaria. Forse Loredana lo sapeva.",
+      "a": "Un regalo. Di famiglia.",
+      "aside": "Copre l'anello con l'altra mano.",
+      "insight": "Rosaria dice che la fede nuova è un regalo di famiglia.",
       "lie": true
+     },
+     {
+      "id": "b4",
+      "q": "Ha visto la diretta del Maestro, ieri sera?",
+      "a": "Mia sorella la guarda sempre, l'avevamo accesa dopo cena. Strano, però: dietro di lui, dalla finestra, entrava il sole. Alle dieci di sera.",
+      "insight": "Rosaria dice che nella diretta del Maestro delle 22, dalla finestra dietro di lui entrava il sole."
      }
     ]
    },
@@ -842,13 +1004,13 @@
     "name": "Loredana Perrone",
     "role": "Figlia di Donato, 47 anni",
     "look": "Tailleur grigio, occhiali da sole in casa. Il telefono sempre in mano: risponde ai giornalisti.",
-    "tell": "Parla del padre al passato con naturalezza, come se ci fosse abituata da tempo. Qualunque sia la domanda, la risposta finisce sul Maestro. Quando nomini Rosaria stringe la mascella e il telefono.",
+    "tell": "Occhiali da sole in casa. Parla del padre al passato, senza esitare. Qualunque sia la domanda, la risposta finisce sul Maestro. Quando nomini Rosaria stringe il telefono.",
     "questions": [
      {
       "id": "l1",
       "q": "A che ora è andata via ieri sera?",
       "a": "Alle nove, dopo avergli fatto l'insulina. Otto unità, come sempre. Poi a casa mia, a Lecce. Non sono più tornata.",
-      "insight": "Loredana giura di essere andata via alle 21 e di non essere più tornata."
+      "insight": "Loredana dice di essere andata via alle 21, dopo l'insulina, e di non essere più tornata."
      },
      {
       "id": "l2",
@@ -857,8 +1019,8 @@
        "d7"
       ],
       "a": "Papà ci credeva, io volevo solo farlo contento. E adesso guardate cosa ha combinato quel ciarlatano.",
-      "aside": "Le hai chiesto chi pagava. Lei ti ha risposto su chi è il colpevole.",
-      "insight": "Loredana ha portato e pagato il guaritore, e ora lo accusa.",
+      "aside": "Mentre risponde, scrive un messaggio sul telefono.",
+      "insight": "Loredana dice di aver pagato il guaritore per far contento il padre.",
       "lie": true
      },
      {
@@ -868,7 +1030,7 @@
        "d5"
       ],
       "a": "La villa di mio nonno a una badante? Papà non era più lucido. Quello gli aveva confuso la testa con le sue acque.",
-      "insight": "Loredana sapeva del nuovo testamento: giovedì avrebbe perso la villa."
+      "insight": "Loredana sapeva del nuovo testamento a favore di Rosaria."
      }
     ]
    }
@@ -880,19 +1042,48 @@
     "b": "b2",
     "who": "loredana",
     "reply": "Va bene, sono tornata. Avevo dimenticato il caricabatterie. Dieci minuti, papà dormiva.",
-    "aside": "Diciassette minuti. E un uomo che dorme non si misura la glicemia da solo.",
-    "insight": "Loredana è rientrata di nascosto alle 22:41, per diciassette minuti, mentre il padre dormiva.",
+    "aside": "Si toglie gli occhiali da sole, poi li rimette.",
+    "insight": "Loredana ammette di essere rientrata in villa col badge 2 alle 22:41, «per il caricabatterie».",
+    "lie": true
+   },
+   {
+    "id": "x2",
+    "a": "e1",
+    "b": "b4",
+    "who": "elio",
+    "reply": "(Sorride.) La diretta la registro il pomeriggio. La gente prega lo stesso. Ieri sera ero a Gallipoli, a cena con una signora. Sposata. Il nome non glielo do.",
+    "aside": "Controlla l'orologio.",
+    "insight": "Il Maestro ammette che la diretta era registrata. Dice che ieri sera era a cena a Gallipoli con una donna sposata, senza fare il nome.",
+    "lie": true
+   },
+   {
+    "id": "x3",
+    "a": "b3",
+    "b": "e3",
+    "who": "rosaria",
+    "reply": "Me l'ha data lui, a Pasqua. Ci sposavamo a settembre, in comune, senza feste. Lo sapeva solo il notaio. E forse lei.",
+    "aside": "Guarda la porta.",
+    "insight": "Rosaria ammette che lei e Donato dovevano sposarsi a settembre.",
     "lie": true
    }
   ],
   "bluff": {
    "text": "Annunci che la penna d'insulina di Donato è di quelle nuove: registra ora e dose di ogni iniezione.",
    "reactions": {
-    "elio": "«Visto? Adesso lo vedete che io non c'entro.» È già tranquillo.",
+    "elio": "«Visto? Adesso si vede che io non c'entro.» Poi controlla l'orologio.",
     "rosaria": "Stringe la fede e chiude gli occhi. «Allora sapremo chi.»",
     "loredana": "«La seconda se l'è fatta lui, papà. Si confondeva sempre con le dosi.»"
    },
-   "insight": "Al bluff della penna, Loredana ha detto che il padre si faceva le iniezioni da solo. Prima aveva detto che gliele faceva lei."
+   "insight": "Al bluff della penna: Elio controlla l'orologio, Rosaria stringe la fede, Loredana dice che «la seconda» il padre se l'è fatta da solo."
+  },
+  "motive": {
+   "options": [
+    "Tenersi la villa prima che il padre cambiasse il testamento.",
+    "Evitare che la famiglia lo denunciasse per truffa.",
+    "Incassare prima l'eredità promessa.",
+    "Liberarsi di un cliente che voleva smettere di pagare."
+   ],
+   "correct": 0
   },
   "culprit": "loredana",
   "key": [
@@ -900,7 +1091,7 @@
    "l3",
    "l2"
   ],
-  "solution": "Il ciarlatano era un parafulmine. Loredana ha cercato il Maestro a maggio, quando ha capito che il padre voleva sposare Rosaria e lasciarle la villa, e l'ha pagato lei perché in casa ci fosse un colpevole pronto. Ieri sera ha mandato via Rosaria, è uscita alle 21:02 ed è rientrata alle 22:41 col suo badge. Ha misurato la glicemia al padre addormentato e gli ha iniettato 40 unità; alle 22:58 era già fuori. Il Maestro, a quell'ora, pregava in diretta con novanta persone: truffatore sì, assassino no."
+  "solution": "Il ciarlatano era un parafulmine. Loredana ha cercato il Maestro a maggio, quando ha capito che il padre voleva sposare Rosaria e lasciarle la villa, e l'ha pagato lei perché in casa ci fosse un colpevole pronto. Ieri sera ha mandato via Rosaria, è uscita alle 21:02 ed è rientrata alle 22:41 col suo badge. Ha misurato la glicemia al padre addormentato e gli ha iniettato 40 unità; alle 22:58 era già fuori. Il Maestro nascondeva che la sua diretta era registrata, perché ieri sera cenava con una donna sposata: truffatore sì, assassino no. Rosaria nascondeva il matrimonio con Donato, previsto per settembre."
  },
  {
   "id": "otranto-recensione",
@@ -913,58 +1104,58 @@
     "id": "d1",
     "label": "La giacca di Landi",
     "text": "Sulla sedia della suite. Il taschino interno è deformato dalla sagoma di una penna d'adrenalina. È vuoto.",
-    "insight": "Landi portava sempre l'adrenalina addosso. Stanotte qualcuno gliel'ha tolta."
+    "insight": "Giacca di Landi nella suite: il taschino interno ha la sagoma di una penna d'adrenalina ed è vuoto."
    },
    {
     "id": "d2",
     "label": "I bicchierini sul terrazzo",
     "text": "Due bicchierini da amaro sul tavolino d'angolo. In uno, un fondo scuro e denso che sa di mallo di noce.",
-    "insight": "Landi ha bevuto nocino: per un allergico alla frutta a guscio, veleno."
+    "insight": "Due bicchierini sul terrazzo. In uno, un fondo scuro che sa di mallo di noce."
    },
    {
     "id": "d3",
     "label": "Il carrello del bar",
     "text": "Amari della casa, tutti con l'etichetta della Dimora. Nessun nocino. Sotto il carrello, il tappo a vite di una mignon: «Nocino della Nonna – Vignola (MO)».",
-    "insight": "Il nocino non viene dal bar: qualcuno l'ha portato da fuori, dall'Emilia."
+    "insight": "Sul carrello del bar nessun nocino. Sotto, il tappo di una mignon: «Nocino della Nonna – Vignola (MO)»."
    },
    {
     "id": "d4",
     "label": "La cartella di Landi",
     "text": "Fascicoli con nomi e cifre. «Carluccio – 15.000 – entro sabato.» Più sotto: «L.O. – foto 2019 – pagato tre volte. La quarta a Otranto.»",
-    "insight": "Landi ricattava Ottavia, e una certa «L.O.» che paga dal 2019. La quarta rata doveva arrivare qui."
+    "insight": "Cartella di Landi: «Carluccio – 15.000 – entro sabato.» «L.O. – foto 2019 – pagato tre volte. La quarta a Otranto.»"
    },
    {
     "id": "d5",
     "label": "La telecamera della reception",
     "text": "Registrazione dalle 23 all'1:10: Ottavia al bancone, sempre inquadrata. Un check-in tardivo, poi i conti.",
-    "insight": "Tra le 23 e l'1:10 Ottavia non si è mai mossa dalla reception."
+    "insight": "Telecamera della reception: Ottavia è inquadrata al bancone dalle 23 all'1:10."
    },
    {
     "id": "d6",
-    "label": "Il menu di Landi",
-    "text": "In cucina, scritto a mano dallo chef: «Tavolo 4 – ALLERGIA GRAVE FRUTTA A GUSCIO». Ogni piatto spuntato due volte.",
-    "insight": "In cucina l'allergia di Landi era nota e controllata."
+    "label": "La cucina",
+    "text": "Appeso sopra i fuochi, il menu scritto a mano dallo chef: «Tavolo 4 – ALLERGIA GRAVE FRUTTA A GUSCIO». Ogni piatto spuntato due volte. In fondo al frigo, una vaschetta di pasta di mandorle aperta ieri.",
+    "insight": "In cucina: menu del tavolo 4 con l'allergia, ogni piatto spuntato due volte. Nel frigo, pasta di mandorle aperta ieri."
    },
    {
     "id": "d7",
     "label": "La vasca delle ninfee",
-    "text": "Nel cortile, sotto le finestre delle camere al piano terra. Sul fondo, tra le radici, una penna d'adrenalina ancora sigillata.",
-    "insight": "L'adrenalina di Landi è finita nella vasca sotto le camere del piano terra, senza essere usata."
+    "text": "Nel cortile. Ci danno tre finestre del piano terra: la camera 2, la camera 3 e lo spogliatoio della cucina. Sul fondo, tra le radici, una penna d'adrenalina ancora sigillata.",
+    "insight": "Nella vasca del cortile, una penna d'adrenalina sigillata. Sulla vasca danno la camera 2, la camera 3 e lo spogliatoio della cucina."
    }
   ],
   "suspects": [
    {
     "id": "livia",
     "name": "Livia Orsini",
-    "role": "Ospite della camera 2, al piano terra, 42 anni",
+    "role": "Ospite della Dimora, 42 anni",
     "look": "Camicetta stirata di fresco, capelli raccolti, accento emiliano. Ha chiesto un caffè e non l'ha toccato.",
-    "tell": "Lo chiama «Fabrizio». Solo per nome, con naturalezza. Nessun altro, qui dentro, lo chiama così. Ha le unghie mangiate fino alla carne e chiude le mani per non fartele vedere.",
+    "tell": "Parlando del morto lo chiama «Fabrizio». Ha le unghie mangiate fino alla carne e chiude le mani quando la guardi. Il caffè davanti a lei si raffredda.",
     "questions": [
      {
       "id": "v1",
       "q": "Conosceva Landi?",
       "a": "No. L'ho visto ieri a cena per la prima volta. Un amaro in terrazza, due chiacchiere, e alle dodici meno un quarto ero a letto.",
-      "insight": "Livia dice di aver conosciuto Landi solo ieri sera."
+      "insight": "Livia dice di aver conosciuto Landi ieri a cena, e di essere andata a letto alle 23:45."
      },
      {
       "id": "v2",
@@ -973,8 +1164,8 @@
        "d4"
       ],
       "a": "Ci saranno mille persone con quelle iniziali, in Italia.",
-      "aside": "Non le hai chiesto se fosse lei. Ci è arrivata da sola.",
-      "insight": "Livia si è riconosciuta nella «L.O.» ricattata da Landi.",
+      "aside": "Risponde prima che tu finisca la frase.",
+      "insight": "Sulla sigla «L.O.» della cartella, Livia dice che ci sono mille persone con quelle iniziali.",
       "lie": true
      },
      {
@@ -984,7 +1175,7 @@
        "d2"
       ],
       "a": "Un amaro della casa. L'ha versato lui, dal carrello.",
-      "insight": "Livia dice che il digestivo l'ha versato Landi, dal bar della casa."
+      "insight": "Livia dice che in terrazza hanno bevuto un amaro della casa, versato da Landi dal carrello."
      }
     ]
    },
@@ -993,25 +1184,26 @@
     "name": "Ottavia Carluccio",
     "role": "Titolare della Dimora, 55 anni",
     "look": "Lino bianco, voce ferma, occhi rossi di rabbia più che di pianto.",
-    "tell": "Non nasconde niente: lo detestava e te lo dice guardandoti. Quando parla del litigio alza il mento. Abbassa la voce solo quando parla della reputazione della Dimora: è quella che ha paura di perdere.",
+    "tell": "Guarda dritto, alza il mento quando parla del litigio. Abbassa la voce solo sulla reputazione della Dimora. Porta un mazzo di chiavi alla cintura e lo tocca quando si parla delle suite.",
     "questions": [
      {
       "id": "o1",
       "q": "Ieri sera ha litigato con Landi.",
       "a": "Mi ha chiesto quindicimila euro per una recensione buona. Gli ho detto di andare al diavolo, davanti a tutta la sala. Ne vado fiera.",
-      "insight": "Landi ricattava Ottavia, che ha rifiutato davanti a tutti."
+      "insight": "Landi ha chiesto 15.000 € a Ottavia per una recensione buona. Lei ha rifiutato davanti alla sala."
      },
      {
       "id": "o2",
-      "q": "Dov'era tra le 23 e l'una?",
-      "a": "Alla reception. Una coppia arrivata tardi da Monaco, poi la cassa. La telecamera mi inquadra tutta la notte, se vuole guardarla.",
-      "insight": "Ottavia dice di essere rimasta alla reception tutta la notte, sotto la telecamera."
+      "q": "Dov'era ieri sera, dopo cena?",
+      "a": "Alla reception, dalla fine della cena in poi. Una coppia arrivata tardi da Monaco, poi la cassa. La telecamera mi inquadra tutta la notte, se vuole guardarla.",
+      "insight": "Ottavia dice di essere stata alla reception dalla fine della cena in poi, sotto la telecamera.",
+      "lie": true
      },
      {
       "id": "o3",
       "q": "Come ha prenotato la signora Orsini?",
-      "a": "Per telefono, tre settimane fa. Una cosa strana: voleva le stesse notti del signor Landi. Mi ha chiesto se lui aveva già confermato. Ho pensato che fossero amici.",
-      "insight": "Livia sapeva che Landi sarebbe stato qui e ha prenotato apposta le stesse notti."
+      "a": "Per telefono, tre settimane fa. Una cosa strana: voleva le stesse notti del signor Landi. Mi ha chiesto se lui aveva già confermato. E ha voluto la camera 2, sul cortile.",
+      "insight": "Secondo Ottavia, Livia ha chiesto le stesse notti di Landi, se lui aveva confermato, e la camera 2 sul cortile."
      }
     ]
    },
@@ -1020,19 +1212,20 @@
     "name": "Matteo Sticchi",
     "role": "Chef, 34 anni",
     "look": "Giacca da cuoco sbottonata, dita gialle di nicotina. Mastica una gomma alla menta con accanimento.",
-    "tell": "Mastica la gomma come se ne andasse della vita, e ogni tanto si annusa le dita: copre un odore. Quando nomini il cortile guarda altrove. Ha visto qualcosa, e non vuole spiegare perché era lì.",
+    "tell": "Mastica la gomma con forza e ogni tanto si annusa le dita. Quando nomini il cortile guarda altrove. Ha un cerotto fresco sul pollice.",
     "questions": [
      {
       "id": "m1",
       "q": "Cosa ha cucinato per Landi?",
       "a": "Un menu a parte, controllato due volte. Io con le allergie non scherzo: ieri in cucina non è entrata una noce.",
-      "insight": "Dalla cucina di Matteo non è uscita frutta a guscio."
+      "insight": "Matteo dice che ieri in cucina non è entrata frutta a guscio.",
+      "lie": true
      },
      {
       "id": "m2",
       "q": "Landi parlava della sua allergia?",
       "a": "Con tutti. Ieri ha rimandato indietro il pane per due semi, urlando «volete ammazzarmi?». L'ha sentito tutta la sala. Anche la signora emiliana al tavolo accanto.",
-      "insight": "Tutta la sala, Livia compresa, sapeva dell'allergia di Landi."
+      "insight": "A cena Landi ha urlato della sua allergia davanti alla sala. Livia era al tavolo accanto."
      },
      {
       "id": "m3",
@@ -1041,8 +1234,14 @@
        "t_matteo"
       ],
       "a": "(Sputa la gomma.) Ero lì a fumare, verso mezzanotte. Se Ottavia lo sa mi caccia: in servizio non si fuma. Ho visto aprirsi una finestra del piano terra e qualcosa cadere nella vasca. Ho pensato a una sigaretta.",
-      "insight": "Verso mezzanotte qualcuno ha buttato qualcosa nella vasca da una finestra del piano terra.",
+      "insight": "Matteo fumava in cortile verso mezzanotte, di nascosto. Dice di aver visto qualcosa cadere nella vasca da una finestra del piano terra.",
       "lie": true
+     },
+     {
+      "id": "m4",
+      "q": "Ha visto Ottavia, dopo cena?",
+      "a": "Verso le undici meno un quarto saliva le scale delle suite, col passe-partout in mano. Di fretta. Ho pensato a un cliente.",
+      "insight": "Matteo dice di aver visto Ottavia salire alle suite col passe-partout verso le 22:45."
      }
     ]
    }
@@ -1054,8 +1253,8 @@
     "b": "o3",
     "who": "livia",
     "reply": "Va bene. Lo conoscevo. Sono venuta per dirgli in faccia che non avrei più pagato. Tutto qui.",
-    "aside": "Per dirglielo in faccia ha fatto novecento chilometri. E poi ci ha bevuto un amaro insieme.",
-    "insight": "Livia conosceva Landi, era una delle sue vittime e ha prenotato apposta le sue stesse notti.",
+    "aside": "Stringe i pugni sul tavolo.",
+    "insight": "Livia ammette di conoscere Landi e di essere venuta per dirgli che non avrebbe più pagato.",
     "lie": true
    },
    {
@@ -1064,19 +1263,48 @@
     "b": "d3",
     "who": "livia",
     "reply": "Il nocino... è di mia nonna, lo porto sempre in viaggio. Gliel'ho offerto io. Non sapevo niente della sua allergia.",
-    "aside": "L'allergia Landi l'ha urlata a tutta la sala, a un metro dal suo tavolo.",
-    "insight": "Il nocino l'ha portato e versato Livia, non il bar. E finge di non sapere dell'allergia.",
+    "aside": "Si guarda le unghie.",
+    "insight": "Livia ammette che il nocino l'ha portato lei da casa e l'ha offerto a Landi. Dice di non sapere dell'allergia.",
+    "lie": true
+   },
+   {
+    "id": "x3",
+    "a": "o2",
+    "b": "m4",
+    "who": "ottavia",
+    "reply": "Va bene. Sono salita nella sua suite, lui era in terrazza. Cercavo i suoi appunti su di me. Non li ho trovati. Alle undici ero giù.",
+    "aside": "Tocca il mazzo di chiavi alla cintura.",
+    "insight": "Ottavia ammette di essere entrata nella suite di Landi col passe-partout verso le 22:45, mentre lui era in terrazza.",
+    "lie": true
+   },
+   {
+    "id": "x4",
+    "a": "m1",
+    "b": "d6",
+    "who": "matteo",
+    "reply": "La pasta di mandorle era per il dolce degli altri tavoli. Lavorata a parte, guanti cambiati. Ottavia non lo sa: quando c'è un allergico vuole la cucina pulita.",
+    "aside": "Si mette in bocca un'altra gomma.",
+    "insight": "Matteo ammette che ieri in cucina ha usato pasta di mandorle, senza dirlo a Ottavia.",
     "lie": true
    }
   ],
   "bluff": {
    "text": "Annunci che la penna d'adrenalina di Landi è stata ritrovata e che la scientifica ci ha trovato un'impronta.",
    "reactions": {
-    "livia": "«Dopo una notte in acqua?» Poi si ferma. Nessuno ha parlato di acqua.",
-    "ottavia": "«Bene. Così la smettete di guardare me.»",
-    "matteo": "Diventa pallido e guarda verso il cortile. Poi si mette in bocca un'altra gomma."
+    "livia": "Si alza per prendere il caffè che non ha toccato. Lo lascia di nuovo lì e si risiede.",
+    "ottavia": "«Bene.» Poi tocca il mazzo di chiavi alla cintura.",
+    "matteo": "Diventa pallido, guarda verso il cortile e si mette in bocca un'altra gomma."
    },
-   "insight": "Livia sapeva che la penna era stata in acqua. Nessuno gliel'aveva detto."
+   "insight": "Al bluff della penna: Livia si alza e si risiede, Ottavia tocca il mazzo di chiavi, Matteo guarda il cortile."
+  },
+  "motive": {
+   "options": [
+    "Evitare la stroncatura e il ricatto da 15.000 €.",
+    "Salvare il posto prima di una recensione sulla cucina.",
+    "Chiudere per sempre il ricatto sulle foto del 2019.",
+    "Vendicare un'amica rovinata da una sua recensione."
+   ],
+   "correct": 2
   },
   "culprit": "livia",
   "key": [
@@ -1084,7 +1312,7 @@
    "x1",
    "d7"
   ],
-  "solution": "Landi ricattava Livia dal 2019 con delle foto, e lei aveva già pagato tre volte. Ha prenotato apposta le sue stesse notti e si è portata da casa un nocino, sapendo, come tutta la sala, che Landi era allergico alla frutta a guscio. In terrazza gli ha offerto il «suo amaro» e intanto gli ha sfilato l'adrenalina dal taschino. Tornata in camera, al piano terra, l'ha gettata dalla finestra nella vasca delle ninfee, dove Matteo l'ha vista cadere. Ottavia lo odiava apertamente, ma tutta la notte è rimasta sotto la telecamera della reception."
+  "solution": "Landi ricattava Livia dal 2019 con delle foto, e lei aveva già pagato tre volte. Ha prenotato apposta le sue stesse notti, nella camera 2 sul cortile, e si è portata da casa un nocino, sapendo, come tutta la sala, che Landi era allergico alla frutta a guscio. In terrazza gli ha offerto il «suo amaro» e intanto gli ha sfilato l'adrenalina dal taschino. Tornata in camera l'ha gettata dalla finestra nella vasca delle ninfee, dove Matteo l'ha vista cadere. Ottavia era entrata nella suite alle 22:45 a cercare gli appunti di Landi su di lei, ma dalle 23 è rimasta sotto la telecamera. Matteo nascondeva la sigaretta in servizio e la pasta di mandorle in cucina: niente a che vedere con il nocino emiliano."
  },
  {
   "id": "cesareo-villette",
@@ -1097,43 +1325,43 @@
     "id": "d1",
     "label": "Il permesso di costruire",
     "text": "Appeso nella baracca del cantiere, con timbro e firma di Aldo Miglietta. Il numero di protocollo, sul sito del Comune, corrisponde a una tettoia autorizzata nel 2016.",
-    "insight": "Il permesso è falso: il numero è preso da un'altra pratica."
+    "insight": "Il numero di protocollo del permesso, sul sito del Comune, è quello di una tettoia del 2016."
    },
    {
     "id": "d2",
     "label": "I preliminari",
     "text": "Quattordici contratti di vendita. La firma di Aldo è identica in tutti, al millimetro, compresa una piccola sbavatura sulla M.",
-    "insight": "Aldo non ha firmato i preliminari: la sua firma è stata copiata e stampata."
+    "insight": "Nei quattordici preliminari la firma di Aldo è identica al millimetro, sbavatura sulla M compresa."
    },
    {
     "id": "d3",
     "label": "L'estratto conto",
-    "text": "Conto «caparre Dune Bianche», intestato all'agenzia Leo Immobiliare. Lunedì mattina: bonifico di 380.000 euro a «Salina Holding Ltd», La Valletta.",
-    "insight": "Le caparre sono uscite dal conto dell'agenzia di Sabrina verso Malta, il lunedì dopo la sparizione."
+    "text": "Conto «caparre Dune Bianche», intestato all'agenzia Leo Immobiliare. A maggio: prelievo in contanti di 60.000 euro, causale «anticipo Sud Costruzioni». Lunedì mattina: bonifico di 380.000 euro a «Salina Holding Ltd», La Valletta.",
+    "insight": "Conto caparre dell'agenzia Leo: a maggio 60.000 € in contanti, causale «anticipo Sud Costruzioni». Lunedì 380.000 € a una società di Malta."
    },
    {
     "id": "d4",
     "label": "L'agenda di Aldo",
     "text": "Nella baracca. Ultima pagina scritta, venerdì: «Firme false?? Parlare con S. prima di andare in Procura.»",
-    "insight": "Aldo aveva scoperto le firme false e voleva parlarne con «S.» prima di andare in Procura."
+    "insight": "Agenda di Aldo, venerdì: «Firme false?? Parlare con S. prima di andare in Procura.»"
    },
    {
     "id": "d5",
     "label": "L'ipoteca",
     "text": "Sulla scrivania di Gianni Quarta: ipoteca sulla sua casa di Leverano, a garanzia del mutuo per il terreno.",
-    "insight": "Gianni ha messo in garanzia la sua casa: da questa truffa ci perde tutto."
+    "insight": "Gianni ha ipotecato la sua casa di Leverano per il mutuo sul terreno."
    },
    {
     "id": "d6",
     "label": "Le telecamere del cantiere",
-    "text": "Registro dell'impianto: spente venerdì alle 19:02 dall'app, utente «agenzia». Riaccese lunedì mattina.",
-    "insight": "Venerdì alle 19:02 l'utenza dell'agenzia ha spento le telecamere del cantiere."
+    "text": "Registro dell'impianto: spente venerdì alle 19:02 dall'app, utente «agenzia». Riaccese lunedì mattina. Sul cancello, un cartello: «Cantiere chiuso sabato e domenica».",
+    "insight": "Telecamere del cantiere spente venerdì alle 19:02 dall'utente «agenzia», riaccese lunedì. Il cantiere è chiuso nel weekend."
    },
    {
     "id": "d7",
     "label": "L'auto di Aldo",
     "text": "Una vecchia Punto al parcheggio di Torre Lapillo, chiusa a chiave. Sul sedile, la borsa da lavoro con il suo timbro. Nessuna valigia.",
-    "insight": "Aldo non è partito per una fuga organizzata: niente valigia, e il timbro lasciato in macchina."
+    "insight": "Auto di Aldo a Torre Lapillo: sul sedile la borsa col suo timbro. Nessuna valigia."
    }
   ],
   "suspects": [
@@ -1142,13 +1370,14 @@
     "name": "Gianni Quarta",
     "role": "Costruttore, Sud Costruzioni, 61 anni",
     "look": "Faccia bruciata dal sole, voce che copre le betoniere. Agita una cartellina di documenti mentre parla.",
-    "tell": "Urla, ma ti guarda negli occhi e ti porge i documenti prima che tu li chieda. Quando dice «la mia casa» gli si spezza la voce. È la rabbia di chi è stato fregato, non di chi ha fregato.",
+    "tell": "Urla, e ti porge i documenti prima che tu li chieda. Quando dice «la mia casa» la voce gli si spezza. Si asciuga il sudore e tiene una mano sulla tasca interna della giacca.",
     "questions": [
      {
       "id": "g1",
       "q": "Lei ha incassato le caparre?",
-      "a": "Io non ho visto un euro! Le caparre andavano all'agenzia, sul conto vincolato. Io per quel terreno ho messo in ipoteca pure casa mia!",
-      "insight": "Le caparre le gestiva l'agenzia di Sabrina, non Gianni."
+      "a": "Io non ho visto un euro! Caparre e preliminari li gestiva l'agenzia, sul conto vincolato. Io per quel terreno ho messo in ipoteca pure casa mia!",
+      "insight": "Gianni dice di non aver visto un euro: caparre e preliminari li gestiva l'agenzia di Sabrina.",
+      "lie": true
      },
      {
       "id": "g2",
@@ -1157,13 +1386,19 @@
        "d4"
       ],
       "a": "Aldo aveva il mio numero, mi chiamava pure per un sacco di cemento. E venerdì sera ero alla cresima di mio nipote a Leverano: duecento invitati e un fotografo.",
-      "insight": "Venerdì sera Gianni era a una cresima con duecento invitati."
+      "insight": "Gianni dice di essere stato venerdì sera a una cresima a Leverano, con duecento invitati."
      },
      {
       "id": "g3",
       "q": "Chi le ha presentato Aldo?",
       "a": "Sabrina, a maggio. «Un ragazzo bravo, uno che non fa domande.» Così me l'ha venduto.",
-      "insight": "È stata Sabrina a scegliere Aldo: «uno che non fa domande»."
+      "insight": "Aldo l'ha presentato Sabrina, a maggio: «uno che non fa domande»."
+     },
+     {
+      "id": "g4",
+      "q": "Ha visto la moglie di Aldo, in questi giorni?",
+      "a": "Martedì, in banca a Porto Cesareo. Usciva con una busta gialla gonfia così. Una moglie disperata che ritira contanti: mi è parso strano.",
+      "insight": "Gianni dice di aver visto Teresa martedì uscire dalla banca con una busta gonfia di contanti."
      }
     ]
    },
@@ -1172,19 +1407,19 @@
     "name": "Sabrina Leo",
     "role": "Agente immobiliare, 44 anni",
     "look": "Blazer color sabbia, sorriso da vetrina, un portachiavi pieno di chiavi di case altrui.",
-    "tell": "Sorride sempre, anche quando parla dei soldi spariti: il sorriso arriva un attimo prima delle parole. Dice «povero Aldo», ma non chiede mai se l'hanno trovato. Quando le mostri un foglio lo gira per leggerlo: vuole sapere cosa sai tu.",
+    "tell": "Sorride anche quando parla dei soldi spariti. Dice «povero Aldo» e non chiede se l'hanno trovato. Quando le mostri un foglio lo gira verso di sé per leggerlo.",
     "questions": [
      {
       "id": "s1",
       "q": "Chi curava le pratiche?",
       "a": "Aldo. Tutto Aldo: permessi, firme, carte. Io vendo, non timbro. Povero Aldo. Si vede che aveva debiti.",
-      "insight": "Sabrina dice che firme e carte erano tutte di Aldo."
+      "insight": "Sabrina dice che permessi, firme e carte erano tutti di Aldo."
      },
      {
       "id": "s2",
       "q": "Quando ha visto Aldo l'ultima volta?",
       "a": "Giovedì, in agenzia. Venerdì mi ha solo telefonato, agitatissimo. Poi più niente.",
-      "insight": "Sabrina giura di non aver visto Aldo venerdì."
+      "insight": "Sabrina dice di aver visto Aldo l'ultima volta giovedì. Venerdì solo una telefonata."
      },
      {
       "id": "s3",
@@ -1193,8 +1428,8 @@
        "d3"
       ],
       "a": "Una disposizione di Aldo. Il conto è dell'agenzia, ma i pagamenti ai fornitori li decideva lui, come direttore dei lavori.",
-      "aside": "Un direttore dei lavori non dà ordini sul conto di un'agenzia immobiliare. E lei lo sa benissimo.",
-      "insight": "Dal conto dell'agenzia di Sabrina sono partiti 380.000 euro per Malta, e lei ne dà la colpa ad Aldo.",
+      "aside": "Sorride.",
+      "insight": "Sabrina dice che il bonifico a Malta l'ha disposto Aldo, come direttore dei lavori, sul conto della sua agenzia.",
       "lie": true
      },
      {
@@ -1204,8 +1439,8 @@
        "d6"
       ],
       "a": "Le spegniamo sempre il venerdì sera. Per la privacy dei clienti che vengono a vedere il cantiere nel weekend.",
-      "aside": "Nel weekend il cantiere è chiuso con la catena.",
-      "insight": "Venerdì sera Sabrina ha spento le telecamere del cantiere, con una scusa.",
+      "aside": "Gira il foglio verso di sé.",
+      "insight": "Sabrina dice che le telecamere le spengono il venerdì «per i clienti che visitano il cantiere nel weekend».",
       "lie": true
      }
     ]
@@ -1215,13 +1450,13 @@
     "name": "Teresa Miglietta",
     "role": "Moglie di Aldo, 39 anni",
     "look": "Una felpa del marito, troppo grande. Due telefoni in mano, uno vecchio con la cover rotta.",
-    "tell": "Guarda sempre il telefono vecchio, mai il suo. Non ha l'aria di una moglie in lutto: ha l'aria di chi aspetta un messaggio. Quando le dici che il marito è un ladro non si arrabbia. Stringe le labbra e sta zitta.",
+    "tell": "Guarda sempre il telefono vecchio, mai il suo. Quando qualcuno dice che il marito è un ladro stringe le labbra e sta zitta. Non ha chiesto nemmeno una volta dove lo stanno cercando.",
     "questions": [
      {
       "id": "t1",
       "q": "Quando ha visto suo marito l'ultima volta?",
       "a": "Venerdì, alle sette e mezza. È uscito dicendo: «Vado al cantiere, Sabrina mi aspetta là, dobbiamo chiarire una cosa.» Non è più tornato.",
-      "insight": "Venerdì sera Aldo è andato al cantiere per incontrare Sabrina."
+      "insight": "Secondo Teresa, venerdì alle 19:30 Aldo è uscito per incontrare Sabrina al cantiere."
      },
      {
       "id": "t2",
@@ -1229,15 +1464,16 @@
       "req": [
        "t_teresa"
       ],
-      "a": "(Te lo porge.) Martedì mi ha scritto da un numero nuovo. «Sto bene. Non dire niente. Lei dice che le firme sono mie e che se parlo la galera me la faccio io.» Lei. Non so chi è, lei. Ma lui ha paura.",
-      "insight": "Aldo è vivo e nascosto. Ha paura di una donna che minaccia di addossargli le firme.",
+      "a": "È il telefono di Aldo. Quello vecchio. Lo tengo carico, se mai chiamasse.",
+      "aside": "Lo gira a faccia in giù.",
+      "insight": "Teresa dice che tiene carico il vecchio telefono di Aldo, nel caso chiamasse.",
       "lie": true
      },
      {
       "id": "t3",
       "q": "Aldo aveva debiti?",
       "a": "Aldo? Porta la stessa giacca da dieci anni. Se avesse avuto quattrocentomila euro, prima di scappare se ne sarebbe comprata una nuova.",
-      "insight": "Aldo non aveva debiti, né soldi da parte."
+      "insight": "Secondo Teresa, Aldo non aveva debiti né soldi da parte."
      }
     ]
    }
@@ -1249,8 +1485,8 @@
     "b": "t1",
     "who": "sabrina",
     "reply": "Va bene, ci siamo visti al cantiere. Cinque minuti. Era fuori di sé, farneticava di firme. L'ho calmato e se n'è andato.",
-    "aside": "«L'ho calmato.» Da quel momento nessuno l'ha più visto.",
-    "insight": "Venerdì sera Sabrina ha incontrato Aldo al cantiere, l'ultima prima che sparisse, e l'aveva negato.",
+    "aside": "Mentre lo dice, sorride.",
+    "insight": "Sabrina ammette di aver incontrato Aldo al cantiere venerdì sera.",
     "lie": true
    },
    {
@@ -1259,19 +1495,48 @@
     "b": "d2",
     "who": "sabrina",
     "reply": "Tanti geometri hanno la firma su un timbro. Sarà così.",
-    "aside": "Nessun geometra ha la firma su un timbro. E i preliminari li prepara l'agenzia, non il geometra.",
-    "insight": "I preliminari li preparava l'agenzia di Sabrina, e la firma di Aldo ci è stata stampata sopra.",
+    "aside": "Gira il foglio verso di sé e lo guarda a lungo.",
+    "insight": "Sulla firma identica in tutti i preliminari, Sabrina dice che Aldo avrà usato un timbro.",
+    "lie": true
+   },
+   {
+    "id": "x3",
+    "a": "g1",
+    "b": "d3",
+    "who": "gianni",
+    "reply": "Sessantamila, in contanti. Anticipo per i materiali. In nero, sì. Ma il cemento l'ho comprato davvero, venga a vedere il piazzale.",
+    "aside": "Toglie la mano dalla tasca della giacca.",
+    "insight": "Gianni ammette di aver preso a maggio 60.000 € in contanti e in nero dal conto delle caparre, come anticipo per i materiali.",
+    "lie": true
+   },
+   {
+    "id": "x4",
+    "a": "t2",
+    "b": "g4",
+    "who": "teresa",
+    "reply": "(Ti porge il telefono vecchio.) Martedì mi ha scritto da un numero nuovo. «Sto bene. Non dire niente. Lei dice che le firme sono mie e che se parlo la galera me la faccio io.» Gli ho mandato cinquemila euro. Lei, dice. Non so chi è, lei.",
+    "aside": "Stringe le labbra.",
+    "insight": "Teresa ammette che Aldo le scrive da un numero nuovo e che gli ha mandato 5.000 €. Aldo scrive di temere una donna che gli addossa le firme.",
     "lie": true
    }
   ],
   "bluff": {
    "text": "Annunci che Aldo è stato trovato vivo in un B&B di Veglie e che sta parlando con i carabinieri.",
    "reactions": {
-    "gianni": "«Finalmente! Adesso ci ridà i soldi.» Si siede, sfinito.",
-    "sabrina": "«Qualunque cosa dica, le firme sono sue. Ci sono i documenti.» Nessuno le aveva chiesto delle firme.",
-    "teresa": "Chiude gli occhi e sorride. Non chiede dov'è, né come sta."
+    "gianni": "«Finalmente! Adesso ci ridà i soldi.» Poi si tocca la tasca interna della giacca.",
+    "sabrina": "«Qualunque cosa dica, ci sono i documenti.» Sorride.",
+    "teresa": "Chiude gli occhi. Non chiede dov'è, né come sta."
    },
-   "insight": "Alla notizia che Aldo parlava, Sabrina si è difesa subito sulle firme, prima che qualcuno la accusasse."
+   "insight": "Al bluff: Gianni si tocca la giacca, Sabrina parla dei documenti, Teresa non chiede come sta Aldo."
+  },
+  "motive": {
+   "options": [
+    "Salvare la casa ipotecata incassando le caparre.",
+    "Tenersi le caparre e far ricadere la truffa sul geometra.",
+    "Far sparire un marito e cominciare da capo.",
+    "Coprire i pagamenti in nero del cantiere."
+   ],
+   "correct": 1
   },
   "culprit": "sabrina",
   "key": [
@@ -1279,6 +1544,6 @@
    "x2",
    "s3"
   ],
-  "solution": "La truffa l'ha costruita Sabrina: permesso falso, preliminari preparati dalla sua agenzia con la firma di Aldo stampata sopra, caparre sul conto dell'agenzia. Aldo, scelto perché «non faceva domande», si è accorto delle firme e venerdì è andato al cantiere a chiarire con lei. Sabrina aveva già spento le telecamere alle 19:02: lo ha minacciato di fargli pagare tutto, e Aldo è scappato così com'era, lasciando l'auto a Torre Lapillo senza nemmeno una valigia. Lunedì, con il geometra «in fuga» come colpevole perfetto, Sabrina ha spostato 380.000 euro a Malta. Aldo è vivo, e ha paura di lei."
+  "solution": "La truffa l'ha costruita Sabrina: permesso falso, preliminari preparati dalla sua agenzia con la firma di Aldo stampata sopra, caparre sul conto dell'agenzia. Aldo, scelto perché «non faceva domande», si è accorto delle firme e venerdì è andato al cantiere a chiarire con lei. Sabrina aveva già spento le telecamere alle 19:02: lo ha minacciato di fargli pagare tutto, e Aldo è scappato così com'era, lasciando l'auto a Torre Lapillo senza nemmeno una valigia. Lunedì, con il geometra «in fuga» come colpevole perfetto, Sabrina ha spostato 380.000 euro a Malta. Gianni nascondeva i 60.000 € in nero presi come anticipo per i materiali. Teresa nascondeva che Aldo è vivo e che gli manda soldi. Aldo ha paura di Sabrina."
  }
 ]
