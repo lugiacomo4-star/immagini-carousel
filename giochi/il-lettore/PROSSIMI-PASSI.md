@@ -2,8 +2,8 @@
 
 Da fare in una sessione nuova, dopo aver configurato l'ambiente:
 
-1. Variabili d'ambiente: `HF_API_KEY_ID` e `HF_API_KEY_SECRET` (dal pannello API di Higgsfield).
-2. Accesso di rete: `api.higgsfield.ai` tra i domini consentiti (servono anche i domini da cui si scaricano le immagini; lo script dice quale host viene bloccato).
+1. Nell'ambiente cloud, sezione "API credentials": credenziale su `api.higgsfield.ai`, header `Authorization`, prefisso `Key`, valore `KEY_ID:KEY_SECRET`. Il proxy la aggiunge alle richieste: nessuna variabile d'ambiente serve.
+2. Se il download delle immagini viene bloccato, lo script stampa l'host: va aggiunto ai domini consentiti (Network access → Custom).
 
 Poi, dalla cartella `giochi/il-lettore`:
 

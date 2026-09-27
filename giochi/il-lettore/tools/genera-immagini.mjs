@@ -4,7 +4,8 @@
 //   node tools/genera-immagini.mjs prova        → 6 immagini di prova dello stile (un caso)
 //   node tools/genera-immagini.mjs tutto        → genera solo le immagini che mancano
 //
-// Credenziali (variabili d'ambiente): HF_API_KEY_ID e HF_API_KEY_SECRET.
+// Credenziali: di norma le aggiunge il proxy dell'ambiente cloud (API credential su api.higgsfield.ai,
+// header Authorization con prefisso "Key"). In alternativa: HF_API_KEY_ID e HF_API_KEY_SECRET.
 // Le immagini finiscono in img/<caso>/cover.<ext> e img/<caso>/<sospettato>.<ext>;
 // img/manifest.json tiene l'elenco, e tools/build.js lo incolla in cases.js.
 import fs from "node:fs";
@@ -49,7 +50,7 @@ function jobs(cases, manifest) {
 
 function auth() {
   const id = process.env.HF_API_KEY_ID, secret = process.env.HF_API_KEY_SECRET;
-  if (!id || !secret) { console.error("Mancano HF_API_KEY_ID e HF_API_KEY_SECRET nell'ambiente."); process.exit(1); }
+  if (!id || !secret) return { "Content-Type": "application/json" }; // la chiave la aggiunge il proxy
   return { Authorization: `Key ${id}:${secret}`, "Content-Type": "application/json" };
 }
 
