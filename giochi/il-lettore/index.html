@@ -196,6 +196,16 @@
   .flash.hit .a { font-family: var(--display); font-size: 21px; line-height: 1.3; }
   .flash.hit i { font-style: normal; color: var(--ink-3); font-size: 14px; }
   .flash.miss { color: var(--ink-2); border: 1px dashed var(--line); }
+
+  /* Immagini (compaiono solo se generate) */
+  .cover { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; display: block; max-width: 100%; }
+  .case-title .cover { margin-bottom: 6px; filter: saturate(.9); }
+  .thumb { width: 72px; height: 72px; object-fit: cover; border-radius: 4px; }
+  .case-btn.has-thumb { grid-template-columns: 72px 1fr auto; }
+  .daily .cover { margin-bottom: 4px; }
+  .suspect-head.has-portrait { grid-template-columns: 84px 1fr; column-gap: 14px; }
+  .suspect-head.has-portrait > :not(.portrait) { grid-column: 2; }
+  .portrait { grid-row: 1 / span 4; width: 84px; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 4px; max-width: 100%; }
 </style>
 
 <div class="wrap" id="app"></div>
@@ -216,6 +226,7 @@ let tick = null;
 
 function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
 function starStr(n) { return "★".repeat(n) + '<span class="off">' + "★".repeat(3 - n) + "</span>"; }
+function pic(c, sid) { return c.img && c.img.suspects && c.img.suspects[sid]; }
 function first(s) { return s.name.split(" ")[0]; }
 function dayIndex() {
   const now = new Date(), today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -241,7 +252,8 @@ function home() {
   released.reverse();
   const card = i => {
     const c = CASES[i];
-    return `<button class="case-btn" data-case="${i}">
+    return `<button class="case-btn ${c.img && c.img.cover ? "has-thumb" : ""}" data-case="${i}">
+      ${c.img && c.img.cover ? `<img class="thumb" src="${c.img.cover}" alt="">` : ""}
       <div>
         <div class="n">${esc(c.place.toUpperCase())}</div>
         <h3>${esc(c.title)}</h3>
@@ -258,6 +270,7 @@ function home() {
       <p>Non ho poteri. Guardo le persone finché non mi dicono la verità, anche quando parlano d'altro.</p>
     </header>
     <button class="daily" data-case="${today}" data-daily="1">
+      ${t.img && t.img.cover ? `<img class="cover" src="${t.img.cover}" alt="">` : ""}
       <span class="n">CASO DEL GIORNO · N. ${di + 1}</span>
       <h3>${esc(t.title)}</h3>
       <p>${esc(t.teaser)}</p>
@@ -327,6 +340,7 @@ function render() {
       </div>
     </div>
     <div class="case-title">
+      ${c.img && c.img.cover ? `<img class="cover" src="${c.img.cover}" alt="">` : ""}
       <span class="eyebrow">${S.daily ? `Caso del giorno n. ${S.num}` : "Archivio"} · ${esc(c.place)}</span>
       <h2>${esc(c.title)}</h2>
     </div>
@@ -359,7 +373,8 @@ function sospetti(qLeft) {
       const h = hardCount(s.id), closed = h >= BUDGET.hard;
       return `
       <article class="suspect">
-        <div class="suspect-head">
+        <div class="suspect-head ${pic(c, s.id) ? "has-portrait" : ""}">
+          ${pic(c, s.id) ? `<img class="portrait" src="${pic(c, s.id)}" alt="Ritratto di ${esc(s.name)}">` : ""}
           <span class="role">${esc(s.role)}</span>
           <h3>${esc(s.name)}</h3>
           <p>${esc(s.look)}</p>

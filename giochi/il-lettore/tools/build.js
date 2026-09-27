@@ -6,6 +6,9 @@ const lists = fs.readdirSync(dir).filter(f => f.endsWith(".json")).sort()
   .map(f => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")));
 const out = [];
 for (let i = 0; lists.some(l => i < l.length); i++) lists.forEach(l => { if (l[i]) out.push(l[i]); });
+let manifest = {};
+try { manifest = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "img", "manifest.json"), "utf8")); } catch (e) {}
+out.forEach(c => { if (manifest[c.id]) c.img = manifest[c.id]; });
 const ids = new Set();
 out.forEach(c => { if (ids.has(c.id)) throw new Error("id caso duplicato: " + c.id); ids.add(c.id); });
 fs.writeFileSync(path.join(__dirname, "..", "cases.js"), "window.CASES = " + JSON.stringify(out) + ";\n");
