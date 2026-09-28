@@ -12,6 +12,14 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+// Nell'ambiente cloud le richieste devono passare dal proxy: Node lo usa solo con NODE_USE_ENV_PROXY.
+if (process.env.HTTPS_PROXY && !process.env.NODE_USE_ENV_PROXY) {
+  const { spawnSync } = await import("node:child_process");
+  const env = { ...process.env, NODE_USE_ENV_PROXY: "1", NODE_NO_WARNINGS: "1" };
+  if (fs.existsSync("/root/.ccr/ca-bundle.crt")) env.NODE_EXTRA_CA_CERTS = "/root/.ccr/ca-bundle.crt";
+  process.exit(spawnSync(process.execPath, process.argv.slice(1), { stdio: "inherit", env }).status ?? 1);
+}
+
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const API = "https://api.higgsfield.ai";
 
@@ -37,6 +45,10 @@ function loadCases() {
 const manifestPath = path.join(ROOT, "img", "manifest.json");
 const loadManifest = () => { try { return JSON.parse(fs.readFileSync(manifestPath, "utf8")); } catch { return {}; } };
 const saveManifest = m => { fs.mkdirSync(path.dirname(manifestPath), { recursive: true }); fs.writeFileSync(manifestPath, JSON.stringify(m, null, 1)); };
+
+const pendingPath = path.join(ROOT, "img", "pending.json");
+const loadPending = () => { try { return JSON.parse(fs.readFileSync(pendingPath, "utf8")); } catch { return {}; } };
+const savePending = p => { fs.mkdirSync(path.dirname(pendingPath), { recursive: true }); fs.writeFileSync(pendingPath, JSON.stringify(p, null, 1)); };
 
 function jobs(cases, manifest) {
   const out = [];
@@ -67,10 +79,17 @@ function findImageUrl(o) {
 
 async function run(job, headers) {
   const m = MODELS[job.kind];
-  const res = await fetch(API + m.endpoint, { method: "POST", headers, body: JSON.stringify(m.body(job.prompt)) });
-  if (!res.ok) throw new Error(`${m.endpoint} → ${res.status} ${await res.text()}`);
-  let st = await res.json();
-  const statusUrl = st.status_url || `${API}/requests/${st.request_id}/status`;
+  const known = loadPending()[`${job.caseId}/${job.key}`];
+  let st;
+  if (known) st = { request_id: known, status: "queued" }; // già pagata: la riprendo, non la rigenero
+  else {
+    const res = await fetch(API + m.endpoint, { method: "POST", headers, body: JSON.stringify(m.body(job.prompt)) });
+    if (!res.ok) throw new Error(`${m.endpoint} → ${res.status} ${await res.text()}`);
+    st = await res.json();
+  }
+  // Salva subito l'id: se il resto fallisce, l'immagine pagata si recupera con "recupera".
+  const pend = loadPending(); pend[`${job.caseId}/${job.key}`] = st.request_id; savePending(pend);
+  const statusUrl = `${API}/requests/${st.request_id}/status`; // lo status_url punta a un altro host
   for (let i = 0; i < 120 && !["completed", "failed", "nsfw", "canceled"].includes(st.status); i++) {
     await new Promise(r => setTimeout(r, 3000));
     st = await (await fetch(statusUrl, { headers })).json();
@@ -78,7 +97,7 @@ async function run(job, headers) {
   if (st.status !== "completed") throw new Error(`stato finale: ${st.status}`);
   const url = findImageUrl(st);
   if (!url) throw new Error("nessun URL immagine nella risposta: " + JSON.stringify(st).slice(0, 300));
-  const img = await fetch(url);
+  const img = await fetch(url).catch(e => { throw new Error(`download bloccato da ${new URL(url).host}: ${e.cause?.message || e.message}`); });
   const type = img.headers.get("content-type") || "";
   const ext = type.includes("png") ? "png" : type.includes("webp") ? "webp" : "jpg";
   const rel = `img/${job.caseId}/${job.key}.${ext}`;
@@ -109,7 +128,7 @@ for (const job of list) {
     spent += MODELS[job.kind].price; ok++;
     console.log(`✓ ${rel}`);
   } catch (e) {
-    console.log(`✗ ${job.caseId}/${job.key}: ${e.message}`);
+    console.log(`✗ ${job.caseId}/${job.key}: ${e.message}${e.cause ? " (" + e.cause.message + ")" : ""}`);
     if (/40[13]/.test(e.message)) { console.log("Credenziali rifiutate: mi fermo."); break; }
   }
 }
