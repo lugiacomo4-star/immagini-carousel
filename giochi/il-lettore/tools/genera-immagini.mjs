@@ -33,7 +33,7 @@ const MODELS = {
 // Uno stile unico per tutto il gioco: noir mediterraneo, pellicola, luce di taglio.
 const STYLE = "cinematic still, Italian noir, Apulia, warm tungsten key light from one side, deep teal shadows, 35mm film grain, muted palette of teal, ink black and amber, shallow depth of field, no text, no watermark";
 const portraitPrompt = (c, s) =>
-  `Portrait of ${s.name}, ${s.role}. ${s.look} Chest-up, looking slightly off camera, interrogation room in a small southern Italian police station at night, plain dark background. ${STYLE}`;
+  `Character portrait of ${s.name}, ${s.role}, a civilian suspect in a mystery. ${s.look} Wearing their everyday civilian clothes, not a uniform. Sitting alone at a bare table in a dim empty room, hands on the table, chest-up framing, looking slightly off camera. No phone, no badges, no name tags. ${STYLE}`;
 const coverPrompt = c =>
   `Establishing shot for a mystery: ${c.place}. ${c.teaser} Empty scene, no people in focus, a single telling object in the foreground, dusk. ${STYLE}`;
 
@@ -100,9 +100,15 @@ async function run(job, headers) {
   const img = await fetch(url).catch(e => { throw new Error(`download bloccato da ${new URL(url).host}: ${e.cause?.message || e.message}`); });
   const type = img.headers.get("content-type") || "";
   const ext = type.includes("png") ? "png" : type.includes("webp") ? "webp" : "jpg";
-  const rel = `img/${job.caseId}/${job.key}.${ext}`;
+  const orig = path.join(ROOT, "img-originali", job.caseId, `${job.key}.${ext}`);
+  fs.mkdirSync(path.dirname(orig), { recursive: true });
+  fs.writeFileSync(orig, Buffer.from(await img.arrayBuffer()));
+  const rel = `img/${job.caseId}/${job.key}.webp`;
   fs.mkdirSync(path.join(ROOT, "img", job.caseId), { recursive: true });
-  fs.writeFileSync(path.join(ROOT, rel), Buffer.from(await img.arrayBuffer()));
+  const box = job.kind === "cover" ? "960,540" : "480,640";
+  const { spawnSync } = await import("node:child_process");
+  const r = spawnSync("python3", ["-c", `from PIL import Image\nim=Image.open(${JSON.stringify(orig)}).convert("RGB")\nim.thumbnail((${box}))\nim.save(${JSON.stringify(path.join(ROOT, rel))},"WEBP",quality=78)`]);
+  if (r.status !== 0) throw new Error("conversione webp fallita (serve: pip install pillow): " + r.stderr);
   return rel;
 }
 
