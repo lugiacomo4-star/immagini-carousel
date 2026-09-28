@@ -1,8 +1,194 @@
 {
  "rolex": {
   "suspects": {
-   "davide": "img/rolex/davide.webp"
+   "davide": "img/rolex/davide.webp",
+   "ilenia": "img/rolex/ilenia.webp",
+   "franco": "img/rolex/franco.webp"
   },
   "cover": "img/rolex/cover.webp"
+ },
+ "reliquiario": {
+  "suspects": {
+   "rocco": "img/reliquiario/rocco.webp",
+   "ennio": "img/reliquiario/ennio.webp",
+   "chiara": "img/reliquiario/chiara.webp"
+  },
+  "cover": "img/reliquiario/cover.webp"
+ },
+ "stangadavanti": {
+  "suspects": {
+   "lino": "img/stangadavanti/lino.webp",
+   "nicola": "img/stangadavanti/nicola.webp",
+   "dora": "img/stangadavanti/dora.webp"
+  },
+  "cover": "img/stangadavanti/cover.webp"
+ },
+ "faroscialara": {
+  "suspects": {
+   "michele": "img/faroscialara/michele.webp",
+   "ilaria": "img/faroscialara/ilaria.webp",
+   "tonino": "img/faroscialara/tonino.webp"
+  },
+  "cover": "img/faroscialara/cover.webp"
+ },
+ "frantoio": {
+  "suspects": {
+   "antonio": "img/frantoio/antonio.webp",
+   "sandro": "img/frantoio/sandro.webp",
+   "marta": "img/frantoio/marta.webp"
+  },
+  "cover": "img/frantoio/cover.webp"
+ },
+ "pittule": {
+  "suspects": {
+   "ada": "img/pittule/ada.webp",
+   "pamela": "img/pittule/pamela.webp",
+   "tonino": "img/pittule/tonino.webp"
+  },
+  "cover": "img/pittule/cover.webp"
+ },
+ "spartitomonteleone": {
+  "suspects": {
+   "aldo": "img/spartitomonteleone/aldo.webp",
+   "samuele": "img/spartitomonteleone/samuele.webp",
+   "tonino": "img/spartitomonteleone/tonino.webp"
+  },
+  "cover": "img/spartitomonteleone/cover.webp"
+ },
+ "trullostella": {
+  "suspects": {
+   "gianni": "img/trullostella/gianni.webp",
+   "sabrina": "img/trullostella/sabrina.webp",
+   "rocco": "img/trullostella/rocco.webp"
+  },
+  "cover": "img/trullostella/cover.webp"
+ },
+ "veggente": {
+  "suspects": {
+   "serena": "img/veggente/serena.webp",
+   "giulia": "img/veggente/giulia.webp",
+   "marco": "img/veggente/marco.webp"
+  },
+  "cover": "img/veggente/cover.webp"
+ },
+ "barca-vuota": {
+  "suspects": {
+   "nando": "img/barca-vuota/nando.webp",
+   "samuele": "img/barca-vuota/samuele.webp",
+   "dora": "img/barca-vuota/dora.webp"
+  },
+  "cover": "img/barca-vuota/cover.webp"
+ },
+ "fornocolonna": {
+  "suspects": {
+   "karim": "img/fornocolonna/karim.webp",
+   "donato": "img/fornocolonna/donato.webp",
+   "tommaso": "img/fornocolonna/tommaso.webp"
+  },
+  "cover": "img/fornocolonna/cover.webp"
+ },
+ "marpiccolo": {
+  "suspects": {
+   "nunzio": "img/marpiccolo/nunzio.webp",
+   "carmela": "img/marpiccolo/carmela.webp",
+   "rino": "img/marpiccolo/rino.webp"
+  },
+  "cover": "img/marpiccolo/cover.webp"
+ },
+ "pizzica-palco": {
+  "suspects": {
+   "rino": "img/pizzica-palco/rino.webp",
+   "assunta": "img/pizzica-palco/assunta.webp",
+   "walter": "img/pizzica-palco/walter.webp"
+  },
+  "cover": "img/pizzica-palco/cover.webp"
+ },
+ "scoglimonopoli": {
+  "suspects": {
+   "mattia": "img/scoglimonopoli/mattia.webp",
+   "martina": "img/scoglimonopoli/martina.webp",
+   "noemi": "img/scoglimonopoli/noemi.webp"
+  },
+  "cover": "img/scoglimonopoli/cover.webp"
+ },
+ "rinascita": {
+  "suspects": {
+   "viola": "img/rinascita/viola.webp",
+   "anael": "img/rinascita/anael.webp",
+   "gabriele": "img/rinascita/gabriele.webp"
+  },
+  "cover": "img/rinascita/cover.webp"
+ },
+ "guaritore-nardo": {
+  "suspects": {
+   "elio": "img/guaritore-nardo/elio.webp",
+   "rosaria": "img/guaritore-nardo/rosaria.webp",
+   "loredana": "img/guaritore-nardo/loredana.webp"
+  },
+  "cover": "img/guaritore-nardo/cover.webp"
+ },
+ "paliomurgia": {
+  "suspects": {
+   "enzo": "img/paliomurgia/enzo.webp",
+   "gino": "img/paliomurgia/gino.webp",
+   "anna": "img/paliomurgia/anna.webp"
+  },
+  "cover": "img/paliomurgia/cover.webp"
+ },
+ "ulivetolisi": {
+  "suspects": {
+   "tommaso": "img/ulivetolisi/tommaso.webp",
+   "vito": "img/ulivetolisi/vito.webp",
+   "sgobba": "img/ulivetolisi/sgobba.webp"
+  },
+  "cover": "img/ulivetolisi/cover.webp"
+ },
+ "otranto-recensione": {
+  "suspects": {
+   "livia": "img/otranto-recensione/livia.webp",
+   "ottavia": "img/otranto-recensione/ottavia.webp",
+   "matteo": "img/otranto-recensione/matteo.webp"
+  },
+  "cover": "img/otranto-recensione/cover.webp"
+ },
+ "sedutacastellana": {
+  "suspects": {
+   "orfeo": "img/sedutacastellana/orfeo.webp",
+   "livia": "img/sedutacastellana/livia.webp",
+   "filippo": "img/sedutacastellana/filippo.webp"
+  },
+  "cover": "img/sedutacastellana/cover.webp"
+ },
+ "calici": {
+  "suspects": {
+   "sergio": "img/calici/sergio.webp",
+   "nives": "img/calici/nives.webp",
+   "lucio": "img/calici/lucio.webp"
+  },
+  "cover": "img/calici/cover.webp"
+ },
+ "cesareo-villette": {
+  "suspects": {
+   "gianni": "img/cesareo-villette/gianni.webp",
+   "sabrina": "img/cesareo-villette/sabrina.webp",
+   "teresa": "img/cesareo-villette/teresa.webp"
+  },
+  "cover": "img/cesareo-villette/cover.webp"
+ },
+ "studiodentistico": {
+  "suspects": {
+   "elisa": "img/studiodentistico/elisa.webp",
+   "irene": "img/studiodentistico/irene.webp",
+   "tina": "img/studiodentistico/tina.webp"
+  },
+  "cover": "img/studiodentistico/cover.webp"
+ },
+ "zaffiri": {
+  "suspects": {
+   "cristian": "img/zaffiri/cristian.webp",
+   "alessia": "img/zaffiri/alessia.webp",
+   "beatrice": "img/zaffiri/beatrice.webp"
+  },
+  "cover": "img/zaffiri/cover.webp"
  }
 }
