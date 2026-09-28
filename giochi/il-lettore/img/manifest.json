@@ -1,1 +1,8 @@
-{}
+{
+ "rolex": {
+  "suspects": {
+   "davide": "img/rolex/davide.webp"
+  },
+  "cover": "img/rolex/cover.webp"
+ }
+}
