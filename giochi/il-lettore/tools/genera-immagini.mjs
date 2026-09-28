@@ -32,8 +32,21 @@ const MODELS = {
 
 // Uno stile unico per tutto il gioco: noir mediterraneo, pellicola, luce di taglio.
 const STYLE = "cinematic still, Italian noir, Apulia, warm tungsten key light from one side, deep teal shadows, 35mm film grain, muted palette of teal, ink black and amber, shallow depth of field, no text, no watermark";
-const portraitPrompt = (c, s) =>
-  `Character portrait of exactly one person: ${s.name}, ${s.role}, a civilian suspect in a mystery. ${s.look} Wearing ordinary civilian clothes that suit their job or daily life. Not a police officer, not military: no uniform, no badge, no insignia, no epaulettes, no headset, no hat unless described. Nobody else in the frame. Sitting alone at a bare table in a dim empty room, medium close-up, chest-up framing filling the frame, hands on the table, looking slightly off camera. No phone unless described, no name tags. ${STYLE}`;
+// Il modello non capisce le negazioni ("niente divisa" → divisa): descrizioni solo in positivo.
+// Per i personaggi venuti male, una descrizione scritta a mano.
+const PORTRAIT_OVERRIDES = {
+  "veggente/serena": "a theatrical Italian fortune teller woman in her fifties, dark flowing shawl, many silver rings on every finger, heavy eye makeup, tarot cards on the table",
+  "marpiccolo/carmela": "a 29-year-old Italian woman from a fishing family, wearing her father's oversized dark fisherman's wool jacket, dry eyes, clenched jaw, tangled dark hair",
+  "pizzica-palco/walter": "a stressed 50-year-old Italian festival organizer, sweaty wrinkled white linen shirt, two smartphones on the table, standing and leaning on the table",
+  "studiodentistico/tina": "a 47-year-old Italian office receptionist woman, reading glasses on a beaded chain, cardigan over a blouse, open paper diary, pen behind her ear",
+  "sedutacastellana/orfeo": "a flamboyant Italian stage medium in his sixties, long dark velvet robe, silver ring on his thumb, dramatic gaze, candle on the table",
+  "ulivetolisi/tommaso": "a rugged Italian shepherd in his fifties, unkempt beard, worn wool sweater and old farm jacket, olive-wood walking stick, weathered hands",
+  "barca-vuota/dora": "a 49-year-old Italian fisherman's wife, a woman in a black shawl, alone, clutching a mobile phone, red tired eyes",
+  "zaffiri/beatrice": "a 40-year-old Italian wedding planner woman, elegant black skirt suit, small earpiece, rigid white case on the table, close-up"
+};
+const portraitPrompt = (c, s) => PORTRAIT_OVERRIDES[`${c.id}/${s.id}`]
+  ? `Close-up portrait, ${PORTRAIT_OVERRIDES[`${c.id}/${s.id}`]}. Sitting alone at a wooden table in a dim old stone room, chest-up framing, looking slightly off camera. ${STYLE}`
+  : `Character portrait of ${s.name}, ${s.role}. ${s.look} Everyday clothes that suit their life. Sitting alone at a wooden table in a dim old stone room, chest-up framing, hands on the table, looking slightly off camera. ${STYLE}`;
 const coverPrompt = c =>
   `Establishing shot for a mystery: ${c.place}. ${c.teaser} Empty scene, no people in focus, a single telling object in the foreground, dusk. ${STYLE}`;
 
