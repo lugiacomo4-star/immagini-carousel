@@ -65,9 +65,9 @@
  },
  "veggente": {
   "suspects": {
-   "serena": "img/veggente/serena.webp",
    "giulia": "img/veggente/giulia.webp",
-   "marco": "img/veggente/marco.webp"
+   "marco": "img/veggente/marco.webp",
+   "serena": "img/veggente/serena.webp"
   },
   "cover": "img/veggente/cover.webp"
  },
@@ -81,17 +81,17 @@
  },
  "fornocolonna": {
   "suspects": {
-   "karim": "img/fornocolonna/karim.webp",
    "donato": "img/fornocolonna/donato.webp",
-   "tommaso": "img/fornocolonna/tommaso.webp"
+   "tommaso": "img/fornocolonna/tommaso.webp",
+   "karim": "img/fornocolonna/karim.webp"
   },
   "cover": "img/fornocolonna/cover.webp"
  },
  "marpiccolo": {
   "suspects": {
    "nunzio": "img/marpiccolo/nunzio.webp",
-   "carmela": "img/marpiccolo/carmela.webp",
-   "rino": "img/marpiccolo/rino.webp"
+   "rino": "img/marpiccolo/rino.webp",
+   "carmela": "img/marpiccolo/carmela.webp"
   },
   "cover": "img/marpiccolo/cover.webp"
  },
@@ -137,7 +137,6 @@
  },
  "ulivetolisi": {
   "suspects": {
-   "tommaso": "img/ulivetolisi/tommaso.webp",
    "vito": "img/ulivetolisi/vito.webp",
    "sgobba": "img/ulivetolisi/sgobba.webp"
   },
@@ -153,7 +152,6 @@
  },
  "sedutacastellana": {
   "suspects": {
-   "orfeo": "img/sedutacastellana/orfeo.webp",
    "livia": "img/sedutacastellana/livia.webp",
    "filippo": "img/sedutacastellana/filippo.webp"
   },
@@ -178,16 +176,14 @@
  "studiodentistico": {
   "suspects": {
    "elisa": "img/studiodentistico/elisa.webp",
-   "irene": "img/studiodentistico/irene.webp",
-   "tina": "img/studiodentistico/tina.webp"
+   "irene": "img/studiodentistico/irene.webp"
   },
   "cover": "img/studiodentistico/cover.webp"
  },
  "zaffiri": {
   "suspects": {
    "cristian": "img/zaffiri/cristian.webp",
-   "alessia": "img/zaffiri/alessia.webp",
-   "beatrice": "img/zaffiri/beatrice.webp"
+   "alessia": "img/zaffiri/alessia.webp"
   },
   "cover": "img/zaffiri/cover.webp"
  }

@@ -33,7 +33,7 @@ const MODELS = {
 // Uno stile unico per tutto il gioco: noir mediterraneo, pellicola, luce di taglio.
 const STYLE = "cinematic still, Italian noir, Apulia, warm tungsten key light from one side, deep teal shadows, 35mm film grain, muted palette of teal, ink black and amber, shallow depth of field, no text, no watermark";
 const portraitPrompt = (c, s) =>
-  `Character portrait of ${s.name}, ${s.role}, a civilian suspect in a mystery. ${s.look} Wearing their everyday civilian clothes, not a uniform. Sitting alone at a bare table in a dim empty room, hands on the table, chest-up framing, looking slightly off camera. No phone, no badges, no name tags. ${STYLE}`;
+  `Character portrait of exactly one person: ${s.name}, ${s.role}, a civilian suspect in a mystery. ${s.look} Wearing ordinary civilian clothes that suit their job or daily life. Not a police officer, not military: no uniform, no badge, no insignia, no epaulettes, no headset, no hat unless described. Nobody else in the frame. Sitting alone at a bare table in a dim empty room, medium close-up, chest-up framing filling the frame, hands on the table, looking slightly off camera. No phone unless described, no name tags. ${STYLE}`;
 const coverPrompt = c =>
   `Establishing shot for a mystery: ${c.place}. ${c.teaser} Empty scene, no people in focus, a single telling object in the foreground, dusk. ${STYLE}`;
 

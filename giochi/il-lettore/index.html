@@ -18,8 +18,8 @@
     --card-ink-2: #56605c;
     --lie: #e07a5f;
     --ok: #7fb89a;
-    --display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
-    --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --display: "Instrument Serif", "Iowan Old Style", Georgia, "Songti SC", "Noto Serif SC", "Source Han Serif SC", serif;
+    --body: "Figtree", system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", sans-serif;
     --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
   }
   * { box-sizing: border-box; }
@@ -197,6 +197,11 @@
   .flash.hit i { font-style: normal; color: var(--ink-3); font-size: 14px; }
   .flash.miss { color: var(--ink-2); border: 1px dashed var(--line); }
 
+  .hero-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .lang { background: none; border: 1px solid var(--line); border-radius: 99px; color: var(--ink-2); padding: 6px 12px; cursor: pointer; font-size: 13px; }
+  .lang:hover { border-color: var(--tea); color: var(--ink); }
+  :lang(zh-CN) body { line-height: 1.7; }
+
   /* Immagini (compaiono solo se generate) */
   .cover { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; display: block; max-width: 100%; }
   .case-title .cover { margin-bottom: 6px; filter: saturate(.9); }
@@ -211,8 +216,89 @@
 <div class="wrap" id="app"></div>
 
 <script src="cases.js"></script>
+<script src="cases.zh.js"></script>
 <script>
-const CASES = window.CASES || [];
+let LANG = (() => {
+  if (location.hash === "#zh") return "zh";
+  if (location.hash === "#it") return "it";
+  try { return localStorage.getItem("lettore-lang") || "it"; } catch (e) { return "it"; }
+})();
+if (LANG === "zh" && !window.CASES_ZH) LANG = "it";
+let CASES = LANG === "zh" ? window.CASES_ZH : (window.CASES || []);
+document.documentElement.lang = LANG === "zh" ? "zh-CN" : "it";
+const I18N = {
+  it: {
+    load: "I casi non si sono caricati. Ricarica la pagina.", stars: n => `${n} stelle su 3`, eyebrow: "Un gioco di osservazione",
+    h1: "Il <em>Lettore</em>", tagline: "Non ho poteri. Guardo le persone finché non mi dicono la verità, anche quando parlano d'altro.",
+    daily: n => `CASO DEL GIORNO · N. ${n}`, next: t => `Nuovo caso tra ${t}`,
+    rEye: n => `Occhio ${n}`, rEyeT: n => `Sulla scena puoi esaminare solo ${n} dettagli su 7. Scegli bene.`,
+    rQ: n => `Domande ${n}`, rQT: n => `Hai ${n} domande in tutto. Alcune si sbloccano solo se hai visto il dettaglio giusto.`,
+    rP: "Pressione", rPT: n => `Ogni sospettato regge ${n} domande d'accusa. Alla terza chiama l'avvocato.`,
+    rC: "Confronta", rCT: "Nel taccuino metti a confronto due note. Se si contraddicono, il bugiardo cede. Se sbagli, perdi una domanda.",
+    rA: "Accusa", rAT: "Colpevole, prova e movente: una stella per ciascuno. Conta solo il primo tentativo.",
+    rB: "Bluff", rBT: "Un solo trucco per caso: dici una bugia a tutti e guardi chi si muove.",
+    archive: "Archivio", nCases: n => `${n} casi`, coming: "In arrivo", preview: "Anteprima della bozza",
+    draft: n => `Bozza di prova: ${n} casi.`, back: "← Casi", eye: "Occhio", questions: "Domande",
+    tabs: ["Scena", "Sospettati", "Taccuino", "Accusa"], dailyN: n => `Caso del giorno n. ${n}`, arch: "Archivio",
+    sceneHint: n => `Tocca un dettaglio per esaminarlo. Te ne restano ${n}.`, seen: "Esaminato", eyeOut: "Occhio esaurito", examine: "Esamina",
+    susHint: (a, b) => `Osservare è gratis. Ogni domanda consuma una delle ${a}. Te ne restano ${b}.`,
+    portrait: n => `Ritratto di ${n}`, pressure: "Pressione", reading: "Lettura", free: "Gratis", observe: "Osservalo in silenzio",
+    direct: "Domanda diretta · alza la pressione", lawyer: "«Da qui in poi parlo solo con il mio avvocato.»",
+    faced: "Messo di fronte alla contraddizione", trick: "Il trucco · uno per caso", bluff: "Il bluff", doBluff: "Fai il bluff",
+    gives: w => `${w} cede`, miss: "Queste due note non si contraddicono. Hai perso tempo: una domanda in meno.",
+    notebook: "Taccuino", emptyNb: "Ancora niente. Esamina la scena e osserva i sospettati.",
+    select: n => `Seleziona due note che non tornano (${n}/2)`, ready: "Pronto a confrontarle", confront: "Confronta",
+    accHint: "Scegli il colpevole, la prova che lo inchioda e il movente. Come prova puoi citare solo quello che hai nel taccuino.",
+    culprit: "Il colpevole è", proof: "La prova decisiva", emptyProof: "Il taccuino è vuoto: senza prove puoi solo tirare a indovinare.",
+    motive: "Il movente", firstOnly: "Conta solo la prima accusa: le stelle non si rifanno.", accuse: "Accusa",
+    srcScene: "Scena", srcRead: n => `${n}, osservato`, srcAsk: n => `${n}, interrogato`, srcX: "Contraddizione",
+    shareHead: (d, n, t) => d ? `🧠 Il Lettore n. ${n}` : `🧠 Il Lettore · ${t}`, wrongShare: T.wrongShare,
+    challenge: "Tu lo risolvi al primo colpo?", caught: "Preso.", innocent: "Innocente.",
+    rightC: n => `Colpevole giusto: ${n}`, wrongC: n => `Hai accusato la persona sbagliata. Era ${n}.`,
+    proofOk: "Prova decisiva centrata.", proofNo: "La prova che hai scelto non basta a inchiodarlo.",
+    whyOk: "Movente giusto.", whyNo: m => `Movente sbagliato. Era: ${m}`, used: (a, b) => `Domande usate: ${a} su ${b}.`,
+    offRank: n => `Fuori classifica: conta il primo tentativo (${n} ${n === 1 ? "stella" : "stelle"}).`,
+    xFound: (a, b) => `Contraddizioni scoperte: ${a} su ${b}.`, how: "Come è andata", dare: "Sfida un amico",
+    copy: "Copia il risultato", retry: "Rigioca il caso", selected: "Testo selezionato: copialo e incollalo in chat.",
+    copied: "Copiato. Incollalo nella chat con il link del gioco.", other: "中文"
+  },
+  zh: {
+    load: "案件没有加载成功，请刷新页面。", stars: n => `${n} / 3 星`, eyebrow: "一款观察推理游戏",
+    h1: "读<em>心</em>者", tagline: "我没有超能力。我只是盯着人看，直到他们说出真相——哪怕他们嘴上在说别的事。",
+    daily: n => `每日案件 · 第 ${n} 号`, next: t => `距离新案件还有 ${t}`,
+    rEye: n => `观察 ${n}`, rEyeT: n => `现场有 7 处细节，你只能查看其中 ${n} 处。想清楚再选。`,
+    rQ: n => `提问 ${n}`, rQT: n => `你一共只能问 ${n} 个问题。有些问题只有在看到关键细节后才会出现。`,
+    rP: "压力", rPT: n => `每个嫌疑人最多承受 ${n} 个质问性问题，再多他就要找律师了。`,
+    rC: "对质", rCT: "在笔记本里选两条笔记进行对质。如果它们互相矛盾，说谎的人就会松口；选错则浪费一个问题。",
+    rA: "指控", rAT: "凶手、证据、动机，各得一颗星。只有第一次指控算数。",
+    rB: "诈术", rBT: "每个案件只能用一次：对所有人撒一个谎，看谁先坐不住。",
+    archive: "往期案件", nCases: n => `${n} 个案件`, coming: "即将推出", preview: "测试版预览",
+    draft: n => `测试版：共 ${n} 个案件。`, back: "← 案件", eye: "观察", questions: "提问",
+    tabs: ["现场", "嫌疑人", "笔记本", "指控"], dailyN: n => `每日案件 第 ${n} 号`, arch: "往期",
+    sceneHint: n => `点击细节进行查看。还剩 ${n} 次。`, seen: "已查看", eyeOut: "观察次数用完", examine: "查看",
+    susHint: (a, b) => `观察不消耗次数。每个问题会用掉 ${a} 次提问中的一次，还剩 ${b} 次。`,
+    portrait: n => `${n} 的肖像`, pressure: "压力", reading: "解读", free: "免费", observe: "静静观察他",
+    direct: "直接质问 · 压力上升", lawyer: "「从现在起，我只跟我的律师说话。」",
+    faced: "被指出矛盾之后", trick: "诈术 · 每案一次", bluff: "诈术", doBluff: "使出诈术",
+    gives: w => `${w} 松口了`, miss: "这两条笔记并不矛盾。你浪费了时间：少了一次提问。",
+    notebook: "笔记本", emptyNb: "还没有记录。先查看现场、观察嫌疑人。",
+    select: n => `选出两条对不上的笔记（${n}/2）`, ready: "可以对质了", confront: "对质",
+    accHint: "选出凶手、能钉死他的证据，以及动机。证据只能从你的笔记本里选。",
+    culprit: "凶手是", proof: "关键证据", emptyProof: "笔记本是空的：没有证据，你只能瞎猜。",
+    motive: "动机", firstOnly: "只有第一次指控算数，星星不能重来。", accuse: "指控",
+    srcScene: "现场", srcRead: n => `${n}，观察`, srcAsk: n => `${n}，问询`, srcX: "矛盾",
+    shareHead: (d, n, t) => d ? `🧠 读心者 第 ${n} 号` : `🧠 读心者 · ${t}`, wrongShare: "❌ 我指控错了人",
+    challenge: "你能一次就破案吗？", caught: "抓到了。", innocent: "抓错人了。",
+    rightC: n => `凶手正确：${n}`, wrongC: n => `你指控错了人。真凶是 ${n}。`,
+    proofOk: "关键证据选对了。", proofNo: "你选的证据还不足以定罪。",
+    whyOk: "动机正确。", whyNo: m => `动机错了。真正的动机是：${m}`, used: (a, b) => `用掉的提问：${a} / ${b}。`,
+    offRank: n => `不计入成绩：只算第一次（${n} 星）。`,
+    xFound: (a, b) => `发现的矛盾：${a} / ${b}。`, how: "真相", dare: "挑战朋友",
+    copy: "复制结果", retry: "重玩本案", selected: "文字已选中：复制后粘贴到聊天里。",
+    copied: "已复制。连同游戏链接一起发到聊天里吧。", other: "Italiano"
+  }
+};
+const T = I18N[LANG];
 const BUDGET = { eye: 4, questions: 6, hard: 2 };
 const START = new Date(2026, 8, 25); // giorno del caso n. 1
 
@@ -238,10 +324,16 @@ function untilMidnight() {
   return `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, "0")} min`;
 }
 
+function setLang(l) {
+  try { localStorage.setItem("lettore-lang", l); } catch (e) {}
+  location.hash = l;
+  location.reload();
+}
+
 function home() {
   S = null;
   clearInterval(tick);
-  if (!CASES.length) { app.innerHTML = `<p class="lede" style="padding-top:48px">I casi non si sono caricati. Ricarica la pagina.</p>`; return; }
+  if (!CASES.length) { app.innerHTML = `<p class="lede" style="padding-top:48px">${T.load}</p>`; return; }
   const best = Object.fromEntries(Object.entries(store.get("lettore-first") || {}).map(([k, v]) => [k, v.stars]));
   const di = dayIndex(), today = di % CASES.length;
   const released = [], preview = [];
@@ -259,39 +351,41 @@ function home() {
         <h3>${esc(c.title)}</h3>
         <p>${esc(c.teaser)}</p>
       </div>
-      <div class="stars" aria-label="${best[c.id] || 0} stelle su 3">${starStr(best[c.id] || 0)}</div>
+      <div class="stars" aria-label="${T.stars(best[c.id] || 0)}">${starStr(best[c.id] || 0)}</div>
     </button>`;
   };
   const t = CASES[today];
   app.innerHTML = `
     <header class="home-hero">
-      <span class="eyebrow">Un gioco di osservazione</span>
-      <h1>Il <em>Lettore</em></h1>
-      <p>Non ho poteri. Guardo le persone finché non mi dicono la verità, anche quando parlano d'altro.</p>
+      <div class="hero-top"><span class="eyebrow">${T.eyebrow}</span>${window.CASES_ZH ? `<button class="lang" id="lang">${T.other}</button>` : ""}</div>
+      <h1>${T.h1}</h1>
+      <p>${T.tagline}</p>
     </header>
     <button class="daily" data-case="${today}" data-daily="1">
       ${t.img && t.img.cover ? `<img class="cover" src="${t.img.cover}" alt="">` : ""}
-      <span class="n">CASO DEL GIORNO · N. ${di + 1}</span>
+      <span class="n">${T.daily(di + 1)}</span>
       <h3>${esc(t.title)}</h3>
       <p>${esc(t.teaser)}</p>
       <div class="daily-foot">
         <span class="stars">${starStr(best[t.id] || 0)}</span>
-        <span class="countdown" id="cd">Nuovo caso tra ${untilMidnight()}</span>
+        <span class="countdown" id="cd">${T.next(untilMidnight())}</span>
       </div>
     </button>
     <div class="rules">
-      <div class="rule"><b>Occhio ${BUDGET.eye}</b><span>Sulla scena puoi esaminare solo ${BUDGET.eye} dettagli su 7. Scegli bene.</span></div>
-      <div class="rule"><b>Domande ${BUDGET.questions}</b><span>Hai ${BUDGET.questions} domande in tutto. Alcune si sbloccano solo se hai visto il dettaglio giusto.</span></div>
-      <div class="rule"><b>Pressione</b><span>Ogni sospettato regge ${BUDGET.hard} domande d'accusa. Alla terza chiama l'avvocato.</span></div>
-      <div class="rule"><b>Confronta</b><span>Nel taccuino metti a confronto due note. Se si contraddicono, il bugiardo cede. Se sbagli, perdi una domanda.</span></div>
-      <div class="rule"><b>Accusa</b><span>Colpevole, prova e movente: una stella per ciascuno. Conta solo il primo tentativo.</span></div>
-      <div class="rule"><b>Bluff</b><span>Un solo trucco per caso: dici una bugia a tutti e guardi chi si muove.</span></div>
+      <div class="rule"><b>${T.rEye(BUDGET.eye)}</b><span>${T.rEyeT(BUDGET.eye)}</span></div>
+      <div class="rule"><b>${T.rQ(BUDGET.questions)}</b><span>${T.rQT(BUDGET.questions)}</span></div>
+      <div class="rule"><b>${T.rP}</b><span>${T.rPT(BUDGET.hard)}</span></div>
+      <div class="rule"><b>${T.rC}</b><span>${T.rCT}</span></div>
+      <div class="rule"><b>${T.rA}</b><span>${T.rAT}</span></div>
+      <div class="rule"><b>${T.rB}</b><span>${T.rBT}</span></div>
     </div>
-    ${released.length ? `<div class="list-head"><h2>Archivio</h2><span class="eyebrow">${released.length} casi</span></div><div class="case-list">${released.map(card).join("")}</div>` : ""}
-    ${preview.length ? `<div class="list-head"><h2>In arrivo</h2><span class="eyebrow">Anteprima della bozza</span></div><div class="case-list">${preview.map(card).join("")}</div>` : ""}
-    <p class="draft-note">Bozza di prova: ${CASES.length} casi, grafica provvisoria.</p>`;
+    ${released.length ? `<div class="list-head"><h2>${T.archive}</h2><span class="eyebrow">${T.nCases(released.length)}</span></div><div class="case-list">${released.map(card).join("")}</div>` : ""}
+    ${preview.length ? `<div class="list-head"><h2>${T.coming}</h2><span class="eyebrow">${T.preview}</span></div><div class="case-list">${preview.map(card).join("")}</div>` : ""}
+    <p class="draft-note">${T.draft(CASES.length)}</p>`;
+  const lb = app.querySelector("#lang");
+  if (lb) lb.onclick = () => setLang(LANG === "zh" ? "it" : "zh");
   app.querySelectorAll("[data-case]").forEach(b => b.onclick = () => start(+b.dataset.case, !!b.dataset.daily));
-  tick = setInterval(() => { const el = document.getElementById("cd"); if (el) el.textContent = "Nuovo caso tra " + untilMidnight(); }, 30000);
+  tick = setInterval(() => { const el = document.getElementById("cd"); if (el) el.textContent = T.next(untilMidnight()); }, 30000);
   window.scrollTo(0, 0);
 }
 
@@ -308,12 +402,12 @@ const hardCount = sid => S.c.suspects.find(s => s.id === sid).questions.filter(q
 
 function notes() {
   const c = S.c, out = [];
-  c.details.forEach(d => { if (S.seen.includes(d.id)) out.push({ id: d.id, src: "Scena", text: d.insight }); });
+  c.details.forEach(d => { if (S.seen.includes(d.id)) out.push({ id: d.id, src: T.srcScene, text: d.insight }); });
   c.suspects.forEach(s => {
-    if (S.read.includes(s.id)) out.push({ id: "t_" + s.id, src: first(s) + ", osservato", text: s.tell });
-    s.questions.forEach(q => { if (S.asked.includes(q.id) && q.insight) out.push({ id: q.id, src: first(s) + ", interrogato", text: q.insight }); });
+    if (S.read.includes(s.id)) out.push({ id: "t_" + s.id, src: T.srcRead(first(s)), text: s.tell });
+    s.questions.forEach(q => { if (S.asked.includes(q.id) && q.insight) out.push({ id: q.id, src: T.srcAsk(first(s)), text: q.insight }); });
   });
-  c.contradictions.forEach(x => { if (S.found.includes(x.id)) out.push({ id: x.id, src: "Contraddizione", text: x.insight }); });
+  c.contradictions.forEach(x => { if (S.found.includes(x.id)) out.push({ id: x.id, src: T.srcX, text: x.insight }); });
   return out;
 }
 function have(id) {
@@ -328,20 +422,20 @@ function render() {
   app.innerHTML = `
     <div class="top">
       <div class="top-row">
-        <button class="back" id="back">← Casi</button>
+        <button class="back" id="back">${T.back}</button>
         <div class="budgets">
-          <span class="chip ${eyeLeft ? "" : "empty"}">Occhio <b>${eyeLeft}</b>/${BUDGET.eye}</span>
-          <span class="chip ${qLeft ? "" : "empty"}">Domande <b>${qLeft}</b>/${BUDGET.questions}</span>
+          <span class="chip ${eyeLeft ? "" : "empty"}">${T.eye} <b>${eyeLeft}</b>/${BUDGET.eye}</span>
+          <span class="chip ${qLeft ? "" : "empty"}">${T.questions} <b>${qLeft}</b>/${BUDGET.questions}</span>
         </div>
       </div>
       <div class="tabs" role="tablist">
-        ${[["scena", "Scena"], ["sospetti", "Sospettati"], ["taccuino", "Taccuino", nb.length], ["accusa", "Accusa"]].map(([k, l, n]) =>
+        ${[["scena", T.tabs[0]], ["sospetti", T.tabs[1]], ["taccuino", T.tabs[2], nb.length], ["accusa", T.tabs[3]]].map(([k, l, n]) =>
           `<button class="tab" role="tab" aria-selected="${S.tab === k}" data-tab="${k}">${l}${n ? `<span class="count">${n}</span>` : ""}</button>`).join("")}
       </div>
     </div>
     <div class="case-title">
       ${c.img && c.img.cover ? `<img class="cover" src="${c.img.cover}" alt="">` : ""}
-      <span class="eyebrow">${S.daily ? `Caso del giorno n. ${S.num}` : "Archivio"} · ${esc(c.place)}</span>
+      <span class="eyebrow">${S.daily ? T.dailyN(S.num) : T.arch} · ${esc(c.place)}</span>
       <h2>${esc(c.title)}</h2>
     </div>
     ${S.tab === "scena" ? scena(eyeLeft) : S.tab === "sospetti" ? sospetti(qLeft) : S.tab === "taccuino" ? taccuino(nb, qLeft) : accusa(nb)}`;
@@ -354,11 +448,11 @@ function scena(eyeLeft) {
   const c = S.c;
   return `<section class="panel">
     <p class="lede">${esc(c.intro)}</p>
-    <p class="hint">Tocca un dettaglio per esaminarlo. Te ne restano ${eyeLeft}.</p>
+    <p class="hint">${T.sceneHint(eyeLeft)}</p>
     ${c.details.map(d => {
       const seen = S.seen.includes(d.id), locked = !seen && eyeLeft === 0;
       return `<button class="detail ${seen ? "seen reveal" : ""} ${locked ? "locked" : ""}" data-detail="${d.id}" ${seen || locked ? "disabled" : ""}>
-        <div class="lbl">${esc(d.label)}<span>${seen ? "Esaminato" : locked ? "Occhio esaurito" : "Esamina"}</span></div>
+        <div class="lbl">${esc(d.label)}<span>${seen ? T.seen : locked ? T.eyeOut : T.examine}</span></div>
         ${seen ? `<div class="txt">${esc(d.text)}</div>` : ""}
       </button>`;
     }).join("")}
@@ -368,40 +462,40 @@ function scena(eyeLeft) {
 function sospetti(qLeft) {
   const c = S.c;
   return `<section class="panel">
-    <p class="hint">Osservare è gratis. Ogni domanda consuma una delle ${BUDGET.questions}. Te ne restano ${qLeft}.</p>
+    <p class="hint">${T.susHint(BUDGET.questions, qLeft)}</p>
     ${c.suspects.map(s => {
       const h = hardCount(s.id), closed = h >= BUDGET.hard;
       return `
       <article class="suspect">
         <div class="suspect-head ${pic(c, s.id) ? "has-portrait" : ""}">
-          ${pic(c, s.id) ? `<img class="portrait" src="${pic(c, s.id)}" alt="Ritratto di ${esc(s.name)}">` : ""}
+          ${pic(c, s.id) ? `<img class="portrait" src="${pic(c, s.id)}" alt="${esc(T.portrait(s.name))}">` : ""}
           <span class="role">${esc(s.role)}</span>
           <h3>${esc(s.name)}</h3>
           <p>${esc(s.look)}</p>
-          <div class="pressure" aria-label="Pressione ${h} su ${BUDGET.hard}">Pressione ${Array.from({ length: BUDGET.hard }, (_, k) => `<i class="${k < h ? "on" : ""}"></i>`).join("")}</div>
+          <div class="pressure" aria-label="${T.pressure} ${h}/${BUDGET.hard}">${T.pressure} ${Array.from({ length: BUDGET.hard }, (_, k) => `<i class="${k < h ? "on" : ""}"></i>`).join("")}</div>
         </div>
         <div class="suspect-body">
           ${S.read.includes(s.id)
-            ? `<div class="reading reveal"><b>Lettura</b>${esc(s.tell)}</div>`
-            : `<button class="act" data-read="${s.id}"><span class="tag">Gratis</span>Osservalo in silenzio</button>`}
+            ? `<div class="reading reveal"><b>${T.reading}</b>${esc(s.tell)}</div>`
+            : `<button class="act" data-read="${s.id}"><span class="tag">${T.free}</span>${T.observe}</button>`}
           ${s.questions.map(q => {
             if (S.asked.includes(q.id)) return `<div class="exchange reveal"><div class="q">${esc(q.q)}</div><div class="a">«${esc(q.a)}»${q.aside ? `<i>${esc(q.aside)}</i>` : ""}</div></div>`;
             if (closed || !(q.req || []).every(have)) return "";
-            return `<button class="act" data-ask="${q.id}" ${qLeft ? "" : "disabled"}>${q.req ? `<span class="tag">Domanda diretta · alza la pressione</span>` : ""}${esc(q.q)}</button>`;
+            return `<button class="act" data-ask="${q.id}" ${qLeft ? "" : "disabled"}>${q.req ? `<span class="tag">${T.direct}</span>` : ""}${esc(q.q)}</button>`;
           }).join("")}
-          ${closed ? `<div class="lawyer">«Da qui in poi parlo solo con il mio avvocato.»</div>` : ""}
+          ${closed ? `<div class="lawyer">${T.lawyer}</div>` : ""}
           ${c.contradictions.filter(x => x.who === s.id && S.found.includes(x.id)).map(x =>
-            `<div class="exchange"><div class="q">Messo di fronte alla contraddizione</div><div class="a">«${esc(x.reply)}»${x.aside ? `<i>${esc(x.aside)}</i>` : ""}</div></div>`).join("")}
+            `<div class="exchange"><div class="q">${T.faced}</div><div class="a">«${esc(x.reply)}»${x.aside ? `<i>${esc(x.aside)}</i>` : ""}</div></div>`).join("")}
         </div>
       </article>`;
     }).join("")}
     <div class="bluff">
-      <span class="eyebrow">Il trucco · uno per caso</span>
-      <h3>Il bluff</h3>
+      <span class="eyebrow">${T.trick}</span>
+      <h3>${T.bluff}</h3>
       <p>${esc(c.bluff.text)}</p>
       ${S.bluff
         ? `<div class="reactions reveal">${c.suspects.map(s => `<div><b>${esc(first(s))}:</b> ${esc(c.bluff.reactions[s.id])}</div>`).join("")}</div>`
-        : `<button class="btn" id="bluff">Fai il bluff</button>`}
+        : `<button class="btn" id="bluff">${T.doBluff}</button>`}
     </div>
   </section>`;
 }
@@ -410,16 +504,16 @@ function taccuino(nb, qLeft) {
   const f = S.flash;
   return `<section class="panel">
     ${f ? (f.hit
-      ? `<div class="flash hit reveal"><span class="eyebrow">${esc(f.who)} cede</span><div class="a">«${esc(f.reply)}»</div>${f.aside ? `<i>${esc(f.aside)}</i>` : ""}</div>`
-      : `<div class="flash miss reveal">Queste due note non si contraddicono. Hai perso tempo: una domanda in meno.</div>`) : ""}
+      ? `<div class="flash hit reveal"><span class="eyebrow">${esc(T.gives(f.who))}</span><div class="a">«${esc(f.reply)}»</div>${f.aside ? `<i>${esc(f.aside)}</i>` : ""}</div>`
+      : `<div class="flash miss reveal">${T.miss}</div>`) : ""}
     <div class="notebook">
-      <h3>Taccuino</h3>
+      <h3>${T.notebook}</h3>
       ${nb.length ? nb.map(n => `<button class="note" data-note="${n.id}" aria-pressed="${S.sel.includes(n.id)}"><span class="dot"></span><div><div class="src">${esc(n.src)}</div>${esc(n.text)}</div></button>`).join("")
-        : `<p class="empty-nb">Ancora niente. Esamina la scena e osserva i sospettati.</p>`}
+        : `<p class="empty-nb">${T.emptyNb}</p>`}
     </div>
     ${nb.length > 1 ? `<div class="confront-bar">
-      <span>${S.sel.length < 2 ? `Seleziona due note che non tornano (${S.sel.length}/2)` : "Pronto a confrontarle"}</span>
-      <button class="btn" id="confront" ${S.sel.length === 2 && qLeft > 0 ? "" : "disabled"}>Confronta</button>
+      <span>${S.sel.length < 2 ? T.select(S.sel.length) : T.ready}</span>
+      <button class="btn" id="confront" ${S.sel.length === 2 && qLeft > 0 ? "" : "disabled"}>${T.confront}</button>
     </div>` : ""}
   </section>`;
 }
@@ -427,16 +521,16 @@ function taccuino(nb, qLeft) {
 function accusa(nb) {
   const c = S.c, a = S.accuse;
   return `<section class="panel">
-    <p class="hint">Scegli il colpevole, la prova che lo inchioda e il movente. Come prova puoi citare solo quello che hai nel taccuino.</p>
-    <span class="eyebrow">Il colpevole è</span>
+    <p class="hint">${T.accHint}</p>
+    <span class="eyebrow">${T.culprit}</span>
     <div class="pick">${c.suspects.map(s => `<button class="opt" data-who="${s.id}" aria-pressed="${a.who === s.id}"><small>${esc(s.role)}</small>${esc(s.name)}</button>`).join("")}</div>
-    <span class="eyebrow">La prova decisiva</span>
+    <span class="eyebrow">${T.proof}</span>
     <div class="pick">${nb.length ? nb.map(n => `<button class="opt" data-ev="${n.id}" aria-pressed="${a.ev === n.id}"><small>${esc(n.src)}</small>${esc(n.text)}</button>`).join("")
-      : `<p class="hint">Il taccuino è vuoto: senza prove puoi solo tirare a indovinare.</p>`}</div>
-    <span class="eyebrow">Il movente</span>
+      : `<p class="hint">${T.emptyProof}</p>`}</div>
+    <span class="eyebrow">${T.motive}</span>
     <div class="pick">${c.motive.options.map((m, k) => `<button class="opt" data-mo="${k}" aria-pressed="${a.mo === k}">${esc(m)}</button>`).join("")}</div>
-    <p class="hint">Conta solo la prima accusa: le stelle non si rifanno.</p>
-    <button class="btn" id="accuse" ${a.who && a.mo !== null && (a.ev || !nb.length) ? "" : "disabled"}>Accusa</button>
+    <p class="hint">${T.firstOnly}</p>
+    <button class="btn" id="accuse" ${a.who && a.mo !== null && (a.ev || !nb.length) ? "" : "disabled"}>${T.accuse}</button>
   </section>`;
 }
 
@@ -493,28 +587,28 @@ function result() {
   if (firstTry) { firsts[c.id] = { stars, used: used(), seen: S.seen.length, found: S.found.length, bluff: S.bluff }; store.set("lettore-first", firsts); }
   const rec = firsts[c.id];
   const culprit = c.suspects.find(s => s.id === c.culprit);
-  const head = S.daily ? `🧠 Il Lettore n. ${S.num}` : `🧠 Il Lettore · ${c.title}`;
-  const share = `${head}\n${rec.stars ? "⭐".repeat(rec.stars) + "▫️".repeat(3 - rec.stars) : "❌ Ho accusato la persona sbagliata"}\n👁 ${rec.seen}/${BUDGET.eye} · ❓ ${rec.used}/${BUDGET.questions}${rec.found ? " · 💥".repeat(rec.found) : ""}${rec.bluff ? " · 🃏" : ""}\nTu lo risolvi al primo colpo?`;
+  const head = T.shareHead(S.daily, S.num, c.title);
+  const share = `${head}\n${rec.stars ? "⭐".repeat(rec.stars) + "▫️".repeat(3 - rec.stars) : T.wrongShare}\n👁 ${rec.seen}/${BUDGET.eye} · ❓ ${rec.used}/${BUDGET.questions}${rec.found ? " · 💥".repeat(rec.found) : ""}${rec.bluff ? " · 🃏" : ""}\n${T.challenge}`;
   app.innerHTML = `
-    <div class="top"><div class="top-row"><button class="back" id="back">← Casi</button></div></div>
+    <div class="top"><div class="top-row"><button class="back" id="back">${T.back}</button></div></div>
     <div class="result">
-      <span class="eyebrow">${S.daily ? `Caso del giorno n. ${S.num}` : "Archivio"} · ${esc(c.title)}</span>
-      <div class="verdict ${right ? "" : "bad"}">${right ? "Preso." : "Innocente."}</div>
-      <div class="big-stars" aria-label="${stars} stelle su 3">${starStr(stars)}</div>
+      <span class="eyebrow">${S.daily ? T.dailyN(S.num) : T.arch} · ${esc(c.title)}</span>
+      <div class="verdict ${right ? "" : "bad"}">${right ? T.caught : T.innocent}</div>
+      <div class="big-stars" aria-label="${T.stars(stars)}">${starStr(stars)}</div>
       <div class="score-lines">
-        <div>${right ? `Colpevole giusto: ${esc(culprit.name)}` : `Hai accusato la persona sbagliata. Era ${esc(culprit.name)}.`}</div>
-        ${right ? `<div>${proof ? "Prova decisiva centrata." : "La prova che hai scelto non basta a inchiodarlo."}</div>` : ""}
-        ${right ? `<div>${why ? "Movente giusto." : `Movente sbagliato. Era: ${esc(c.motive.options[c.motive.correct])}`}</div>` : ""}
-        <div>Domande usate: ${used()} su ${BUDGET.questions}.</div>
-        ${firstTry ? "" : `<div>Fuori classifica: conta il primo tentativo (${rec.stars} ${rec.stars === 1 ? "stella" : "stelle"}).</div>`}
-        ${S.found.length ? `<div>Contraddizioni scoperte: ${S.found.length} su ${c.contradictions.length}.</div>` : ""}
+        <div>${right ? esc(T.rightC(culprit.name)) : esc(T.wrongC(culprit.name))}</div>
+        ${right ? `<div>${proof ? T.proofOk : T.proofNo}</div>` : ""}
+        ${right ? `<div>${why ? T.whyOk : esc(T.whyNo(c.motive.options[c.motive.correct]))}</div>` : ""}
+        <div>${T.used(used(), BUDGET.questions)}</div>
+        ${firstTry ? "" : `<div>${T.offRank(rec.stars)}</div>`}
+        ${S.found.length ? `<div>${T.xFound(S.found.length, c.contradictions.length)}</div>` : ""}
       </div>
-      <div class="explain"><span class="eyebrow" style="color:var(--card-ink-2)">Come è andata</span><p>${esc(c.solution)}</p></div>
-      <span class="eyebrow">Sfida un amico</span>
+      <div class="explain"><span class="eyebrow" style="color:var(--card-ink-2)">${T.how}</span><p>${esc(c.solution)}</p></div>
+      <span class="eyebrow">${T.dare}</span>
       <textarea class="share-box" id="share" readonly>${esc(share)}</textarea>
       <div class="row">
-        <button class="btn" id="copy">Copia il risultato</button>
-        <button class="btn ghost" id="retry">Rigioca il caso</button>
+        <button class="btn" id="copy">${T.copy}</button>
+        <button class="btn ghost" id="retry">${T.retry}</button>
       </div>
       <div class="toast" id="toast" aria-live="polite"></div>
     </div>`;
@@ -522,9 +616,9 @@ function result() {
   app.querySelector("#retry").onclick = () => start(S.i, S.daily);
   app.querySelector("#copy").onclick = () => {
     const t = app.querySelector("#toast"), box = app.querySelector("#share");
-    const fallback = () => { box.focus(); box.select(); t.textContent = "Testo selezionato: copialo e incollalo in chat."; };
+    const fallback = () => { box.focus(); box.select(); t.textContent = T.selected; };
     try {
-      navigator.clipboard.writeText(share).then(() => { t.textContent = "Copiato. Incollalo nella chat con il link del gioco."; }, fallback);
+      navigator.clipboard.writeText(share).then(() => { t.textContent = T.copied; }, fallback);
     } catch (e) { fallback(); }
   };
   window.scrollTo(0, 0);
