@@ -110,6 +110,7 @@ const mode = process.argv[2] || "stima";
 const cases = loadCases();
 const manifest = loadManifest();
 let list = jobs(cases, manifest);
+if (mode === "una") list = list.filter(j => j.kind === "portrait").slice(0, 1);
 if (mode === "prova") list = list.filter(j => j.caseId === cases[0].id).concat(list.filter(j => j.kind === "cover").slice(1, 3)).slice(0, 6);
 
 const cost = list.reduce((t, j) => t + MODELS[j.kind].price, 0);
