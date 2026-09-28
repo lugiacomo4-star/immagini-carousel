@@ -138,7 +138,8 @@
  "ulivetolisi": {
   "suspects": {
    "vito": "img/ulivetolisi/vito.webp",
-   "sgobba": "img/ulivetolisi/sgobba.webp"
+   "sgobba": "img/ulivetolisi/sgobba.webp",
+   "tommaso": "img/ulivetolisi/tommaso.webp"
   },
   "cover": "img/ulivetolisi/cover.webp"
  },
@@ -153,7 +154,8 @@
  "sedutacastellana": {
   "suspects": {
    "livia": "img/sedutacastellana/livia.webp",
-   "filippo": "img/sedutacastellana/filippo.webp"
+   "filippo": "img/sedutacastellana/filippo.webp",
+   "orfeo": "img/sedutacastellana/orfeo.webp"
   },
   "cover": "img/sedutacastellana/cover.webp"
  },
@@ -176,7 +178,8 @@
  "studiodentistico": {
   "suspects": {
    "elisa": "img/studiodentistico/elisa.webp",
-   "irene": "img/studiodentistico/irene.webp"
+   "irene": "img/studiodentistico/irene.webp",
+   "tina": "img/studiodentistico/tina.webp"
   },
   "cover": "img/studiodentistico/cover.webp"
  },
